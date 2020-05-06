@@ -4,6 +4,7 @@
   "description": "Centralized platform for indie bands and DIY venues to connect and collaborate.",
   "main": "index.js",
   "scripts": {
+    "boot": "nodemon ./server/connection.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,8 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
