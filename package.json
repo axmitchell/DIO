@@ -1,0 +1,25 @@
+{
+  "name": "DIO",
+  "version": "1.0.0",
+  "description": "Centralized platform for indie bands and DIY venues to connect and collaborate.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axmitchell/DIO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axmitchell/DIO/issues"
+  },
+  "homepage": "https://github.com/axmitchell/DIO#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1"
+  }
+}
