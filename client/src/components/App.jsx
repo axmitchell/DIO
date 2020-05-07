@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import Menu from './Menu.jsx';
+import Content from './Content.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
+
   render() {
     return(
-      <div>
-        HOWDY!
+      <div id='main'>
+        <Menu />
+        <Content />
       </div>
     )
   }
