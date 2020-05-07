@@ -7,10 +7,10 @@ import SearchButton from './SearchButton.jsx';
 const Menu = props => {
   return(
     <div className='menu'>
-      <ProfileButton />
-      <PostButton />
-      <SurfButton />
-      <SearchButton />
+      <ProfileButton handleMenuButtonClick={props.handleMenuButtonClick}/>
+      <PostButton handleMenuButtonClick={props.handleMenuButtonClick}/>
+      <SurfButton handleMenuButtonClick={props.handleMenuButtonClick}/>
+      <SearchButton handleMenuButtonClick={props.handleMenuButtonClick}/>
     </div>
   )
 }

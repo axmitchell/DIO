@@ -2,7 +2,7 @@ import React from 'react';
 
 const PostButton = props => {
   return(
-    <button>POST</button>
+    <button id='PostButton' onClick={props.handleMenuButtonClick}>POST</button>
   )
 }
 

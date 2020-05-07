@@ -2,7 +2,7 @@ import React from 'react';
 
 const SurfButton = props => {
   return(
-    <button>SURF</button>
+    <button id='SurfButton' onClick={props.handleMenuButtonClick}>SURF</button>
   )
 }
 

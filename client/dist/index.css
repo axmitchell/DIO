@@ -20,7 +20,7 @@ body {
 }
 
 .menu button {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .content {
@@ -38,9 +38,15 @@ button {
     border: 1px solid green;
     cursor: pointer;
     opacity: 0.9;
+    padding: 10px 10px;
 }
 
 button:hover {
+  background: rgb(3, 71, 3);
+  color: black;
+}
+
+.currentButton {
   background: rgb(3, 71, 3);
   color: black;
 }

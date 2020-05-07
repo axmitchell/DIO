@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProfileButton = props => {
   return(
-    <button>PROFILE</button>
+    <button id='ProfileButton' onClick={props.handleMenuButtonClick}>PROFILE</button>
   )
 }
 
