@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
-import Menu from './Menu.jsx';
+import Nav from './Nav.jsx';
 import Content from './Content.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentButton: ''
+      user: 'Sitcom',
+      selectedNavButton: ''
     }
-    this.handleMenuButtonClick = this.handleMenuButtonClick.bind(this);
+    this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
   }
 
-  handleMenuButtonClick(e) {
+  handleNavButtonClick(e) {
     e.preventDefault()
-    if (this.state.currentButton !== '') {
-      document.getElementById(this.state.currentButton).classList.remove('currentButton')
+    if (this.state.selectedNavButton !== '') {
+      document.getElementById(this.state.selectedNavButton).classList.remove('SelectedNavButton')
     }
-    e.target.classList.add('currentButton')
-    this.setState({
-      currentButton: e.target.id
-    })
+    if (this.state.selectedNavButton !== e.target.id) {
+      e.target.classList.add('SelectedNavButton')
+      this.setState({
+        selectedNavButton: e.target.id
+      })
+    } else {
+      this.setState({
+        selectedNavButton: ''
+      })
+    }
   }
 
   render() {
     return(
-      <div id='main'>
-        <Menu handleMenuButtonClick={this.handleMenuButtonClick}/>
-        <Content />
+      <div id='Dashboard'>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.user}/>
+        <Content selectedNavButton={this.state.selectedNavButton}/>
       </div>
     )
   }

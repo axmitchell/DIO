@@ -3,51 +3,108 @@ body {
   margin: 0px;
 }
 
-#main {  
+button {
+  background: black;
+  color: green;
+  /* opacity: 0.9; */
+  padding: 10px 10px;
+  border: 1px solid green;
+  cursor: pointer;
+}
+
+/* button:hover {
+background: rgb(3, 71, 3);
+color: black;
+} */
+
+button:focus {outline:0;}
+
+#Dashboard {  
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas: "menu content";
+    grid-template-areas: "Nav content";
+    grid-template-columns: 25% 75%;
     width: 100vw;
     height: 100vh;
 }
 
-.menu {
+#Nav {
     display: flex;
-    grid-area: menu;
     flex-direction: column;
+    grid-area: Nav;
     justify-content: space-around;
     align-items: center;
 }
 
-.menu button {
-  font-size: 30px;
+#Nav button {
+font-size: 35px;
 }
 
-.content {
-    display: flex;
-    grid-area: content;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    border-color: green;
+#NavProfileButton {
+width: 70%;
 }
 
-button {
-    background: black;
-    color: green;
-    border: 1px solid green;
-    cursor: pointer;
-    opacity: 0.9;
-    padding: 10px 10px;
+.SelectedNavButton {
+background: rgb(3, 71, 3);
+color: black;
 }
 
-button:hover {
-  background: rgb(3, 71, 3);
-  color: black;
+#Content {
+  display: flex;
+  grid-area: content;
+  justify-content: center;
+  align-items: center;
 }
 
-.currentButton {
-  background: rgb(3, 71, 3);
-  color: black;
+.Content {
+  display: flex;
+  font-size: 50px;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: green;
 }
 
+#Home {
+  width: 90%;
+  height: 80%;
+}
+
+#User {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "UserInfo UserShows";
+  width: 90%;
+  height: 80%;
+}
+
+#UserInfo {
+  grid-area: UserInfo;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+}
+
+#UserShows {
+  grid-area: UserShows;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+}
+
+#SelfPostGallery {
+  width: 90%;
+  height: 80%;
+}
+
+#PostGallery {
+  width: 90%;
+  height: 80%;
+}
+
+#Users {
+  width: 90%;
+  height: 80%;
+}
