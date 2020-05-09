@@ -5,7 +5,7 @@ import UserShows from './UserShows.jsx';
 const User = props => {
   return (
     <div id='User'>
-      <UserInfo />
+      <UserInfo userInfo={props.userInfo} />
       <UserShows />
     </div>
   )

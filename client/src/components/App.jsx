@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Nav from './Nav.jsx';
 import Content from './Content.jsx';
 
@@ -6,10 +7,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: 'Sitcom',
+      user: 1,
+      name: '',
+      link: '',
+      location: '',
+      about: '',
+      photo: '',
       selectedNavButton: ''
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get(`/user/${this.state.user}`)
+      .then(res => {
+        const { name, link, location, about, photo } = res.data;
+        this.setState({
+          name,
+          link,
+          location,
+          about,
+          photo
+        })
+      })
+      .catch(console.log)
   }
 
   handleNavButtonClick(e) {
@@ -30,10 +51,18 @@ class App extends Component {
   }
 
   render() {
+    const { name, link, location, about, photo } = this.state;
+    const userInfo = {
+      name, 
+      link,
+      location,
+      about,
+      photo,
+    }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.user}/>
-        <Content selectedNavButton={this.state.selectedNavButton}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.name}/>
+        <Content selectedNavButton={this.state.selectedNavButton} userInfo={userInfo}/>
       </div>
     )
   }

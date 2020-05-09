@@ -79,11 +79,56 @@ color: black;
 }
 
 #UserInfo {
+  display: grid;
   grid-area: UserInfo;
+  grid-template-areas: 
+    "photo photo photo" 
+    "name location link"
+    "about about about";
   width: 100%;
   height: 100%;
   border-style: solid;
   border-color: green;
+  font-size: 20px;
+}
+
+#UserInfoPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: photo;
+}
+
+#UserInfoPhoto img {
+  width: 95%
+}
+
+#UserInfoName {
+  grid-area: name;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#UserInfoLocation {
+  grid-area: location;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#UserInfoLink {
+  grid-area: link;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#UserInfoAbout {
+  grid-area: about;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #UserShows {
@@ -95,8 +140,27 @@ color: black;
 }
 
 #SelfPostGallery {
+  display: flex;
   width: 90%;
   height: 80%;
+  justify-content: start;
+  align-items: start;
+}
+
+#SelfPostGallery div {
+  margin: 15px 15px;
+}
+
+#SelfPostGalleryAddButton {
+  display: flex;
+  font-size: 70px;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  border-style: dashed;
+  border-color: green;
+  width: 200px;
+  height: 200px;
 }
 
 #PostGallery {

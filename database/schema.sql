@@ -1,0 +1,8 @@
+-- CREATE TABLE users (
+--   id integer PRIMARY KEY,
+--   name VARCHAR(255),
+--   link VARCHAR(255),
+--   location VARCHAR(255),
+--   about VARCHAR(255),
+--   photo VARCHAR(255)
+-- )

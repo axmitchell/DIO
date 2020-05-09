@@ -15,7 +15,7 @@ const Content = props => {
   } else if (props.selectedNavButton === 'NavProfileButton') {
     return(
       <div id='Content'>
-        <User />
+        <User userInfo={props.userInfo} />
       </div>
     )
   } else if (props.selectedNavButton === 'NavPostButton') {
