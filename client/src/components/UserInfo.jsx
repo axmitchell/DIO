@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserInfo = props => {
   return (
-    <div id='UserInfo' className='Content' onClick={() => console.log('clicked')}>
+    <div id='UserInfo' className='Content'>
       <div id='UserInfoPhoto'>
         <img src={props.userInfo.photo}></img>
       </div>
@@ -12,6 +12,7 @@ const UserInfo = props => {
         <div id='UserInfoLink'><a href={props.userInfo.link} target="_blank">bandcamp</a></div>
       </div>
       <div id='UserInfoAbout'>{props.userInfo.about}</div>
+      {/* <button id='UserInfoEditButton'>edit</button> */}
     </div>
   )
 }

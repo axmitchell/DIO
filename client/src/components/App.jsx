@@ -7,15 +7,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: 1,
+      user: 2,
       name: '',
       link: '',
       location: '',
       about: '',
       photo: '',
-      selectedNavButton: ''
+      selectedNavButton: '',
+      posts: [],
+      page: '',
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount() {
@@ -27,42 +30,45 @@ class App extends Component {
           link,
           location,
           about,
-          photo
+          photo,
         })
       })
       .catch(console.log)
+  }
+
+  handlePageChange(page) {
+    this.setState({
+      page,
+    })
   }
 
   handleNavButtonClick(e) {
     e.preventDefault()
     if (this.state.selectedNavButton !== '') {
       document.getElementById(this.state.selectedNavButton).classList.remove('SelectedNavButton')
+      this.handlePageChange('')
     }
     if (this.state.selectedNavButton !== e.target.id) {
       e.target.classList.add('SelectedNavButton')
       this.setState({
-        selectedNavButton: e.target.id
+        selectedNavButton: e.target.id,
+        page: ''
       })
     } else {
       this.setState({
-        selectedNavButton: ''
+        selectedNavButton: '',
+        page: ''
       })
     }
   }
 
   render() {
-    const { name, link, location, about, photo } = this.state;
-    const userInfo = {
-      name, 
-      link,
-      location,
-      about,
-      photo,
-    }
+    const { name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
+    const userInfo = { name, link, location, about, photo }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.name}/>
-        <Content selectedNavButton={this.state.selectedNavButton} userInfo={userInfo}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} user={name}/>
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} posts={posts} handlePageChange={this.handlePageChange} page={page}/>
       </div>
     )
   }

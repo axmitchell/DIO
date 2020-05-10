@@ -4,6 +4,7 @@ import User from './User.jsx';
 import SelfPostGallery from './SelfPostGallery.jsx'
 import PostGallery from './PostGallery.jsx';
 import Users from './Users.jsx';
+import PostForm from './PostForm.jsx';
 
 const Content = props => {
   if (props.selectedNavButton === '') {
@@ -19,11 +20,17 @@ const Content = props => {
       </div>
     )
   } else if (props.selectedNavButton === 'NavPostButton') {
-    return (
-      <div id='Content'>
-        <SelfPostGallery />
-      </div>
-    )
+      if (props.page === 'PostForm') {
+        return(
+          <PostForm />
+        )
+      } else {
+        return (
+          <div id='Content'>
+            <SelfPostGallery posts={props.posts} handlePageChange={props.handlePageChange}/>
+          </div>
+        )
+    }
   } else if (props.selectedNavButton === 'NavSurfButton') {
     return(
       <div id='Content'>
