@@ -6,6 +6,11 @@ getUserInfo = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
+addBandPost = (req, res) => {
+  res.send('post success!')
+};
+
 module.exports = {
-  getUserInfo
+  getUserInfo,
+  addBandPost
 };

@@ -63,12 +63,11 @@ class App extends Component {
   }
 
   render() {
-    const { name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
-    const userInfo = { name, link, location, about, photo }
+    // const { user, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} user={name}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} posts={posts} handlePageChange={this.handlePageChange} page={page}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.name}/>
+        <Content selectedNavButton={this.state.selectedNavButton} userInfo={this.state} handlePageChange={this.handlePageChange}/>
       </div>
     )
   }
