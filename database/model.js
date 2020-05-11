@@ -4,7 +4,8 @@ const sequelize = require('./connection.js');
 const User = sequelize.define('users', {
   id: {
     type: Sequelize.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true,
   },
   name: {
     type: Sequelize.STRING,
@@ -26,6 +27,37 @@ const User = sequelize.define('users', {
   timestamps: false,
 });
 
+const Set = sequelize.define('sets', {
+  userId: {
+    type: Sequelize.INTEGER,
+  },
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  photo: {
+    type: Sequelize.STRING,
+  },
+  location: {
+    type: Sequelize.STRING,
+  },
+  date: {
+    type: Sequelize.STRING,
+  },
+  description: {
+    type: Sequelize.STRING,
+  },
+},
+{
+  timestamps: false,
+});
+
+Set.associate = models => {
+  Set.belongsTo(models.User);
+};
+
 module.exports = {
   User,
+  Set,
 };

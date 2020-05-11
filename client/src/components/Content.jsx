@@ -21,7 +21,7 @@ const Content = props => {
   } else if (props.selectedNavButton === 'NavPostButton') {
       return (
         <div id='Content'>
-          <SelfPostPage userInfo={props.userInfo} handlePageChange={props.handlePageChange} page={props.page} posts={props.posts}/>
+          <SelfPostPage userInfo={props.userInfo} handleAppStateChange={props.handleAppStateChange} page={props.page} posts={props.posts}/>
         </div>
       )
   } else if (props.selectedNavButton === 'NavSurfButton') {

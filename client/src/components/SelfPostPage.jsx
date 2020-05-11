@@ -3,6 +3,7 @@ import axios from 'axios';
 import SelfPostGallery from './SelfPostGallery.jsx'
 import SelfPostForm from './SelfPostForm.jsx';
 import SelfPostPreview from './SelfPostPreview.jsx';
+import SelfPost from './SelfPost.jsx';
 
 class SelfPostPage extends Component {
   constructor(props) {
@@ -25,17 +26,36 @@ class SelfPostPage extends Component {
     })
   }
 
+  // handleSelfPostPageState(property) {
+  //   const { image, location, date, description } = property;
+  //   this.setState({
+  //     image,
+  //     location,
+  //     date,
+  //     description,
+  //   })
+  // }
+
   handlePostSubmit(e) {
     e.preventDefault()
     const { image, location, date, description } = this.state;
-    const bandPost = Object.assign({user: this.props.userInfo.user}, this.state)
-    // if (image && location && date && description) {
+    if (image && location && date && description) {
+      const bandPost = {
+        userId: Number(this.props.userInfo.user),
+        photo: image,
+        location: location,
+        date: date,
+        description: description,
+      }
       axios.post('/bandPosts', bandPost) 
         .then(console.log)
         .catch(console.log)
-      // this.clearState()
-      // this.props.handlePageChange('')
-    // }
+      axios.get('/bandPosts')
+        .then(res => this.props.handleAppStateChange({posts: res.data}))
+        .catch(console.log);
+      this.clearState()
+      }
+    this.props.handleAppStateChange({page: ''})
   }
 
   clearState() {
@@ -50,15 +70,19 @@ class SelfPostPage extends Component {
   render() {
     if (this.props.userInfo.page === 'SelfPostForm') {
       return(
-        <SelfPostForm userInfo={this.props.userInfo} handlePageChange={this.props.handlePageChange} state={this.state} handleChange={this.handleChange}/>
+        <SelfPostForm userInfo={this.props.userInfo} handleAppStateChange={this.props.handleAppStateChange} state={this.state} handleChange={this.handleChange}/>
+      )
+    } else if (this.props.userInfo.page === 'SelfPost') {
+      return (
+        <SelfPost post={this.state}/>
       )
     } else if (this.props.userInfo.page === 'SelfPostPreview') {
       return (
-        <SelfPostPreview userInfo={this.props.userInfo} handlePageChange={this.props.handlePageChange} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
+        <SelfPostPreview userInfo={this.props.userInfo} handleAppStateChange={this.props.handleAppStateChange} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
       )
     } else {
       return (
-        <SelfPostGallery posts={this.props.userInfo.posts} handlePageChange={this.props.handlePageChange}/>
+        <SelfPostGallery posts={this.props.userInfo.posts} handleAppStateChange={this.props.handleAppStateChange} setState={this.setState}/>
       ) 
     }
   }

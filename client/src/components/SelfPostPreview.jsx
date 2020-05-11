@@ -20,7 +20,7 @@ const SelfPostPreview = props => {
         </div>
       </div>
       <div id='SelfPostFormButton'>
-        <button onClick={() => props.handlePageChange('SelfPostForm')}>edit</button>
+        <button onClick={() => props.handleAppStateChange({page: 'SelfPostForm'})}>edit</button>
         <button onClick={props.handlePostSubmit}>submit</button>
       </div>
     </div>

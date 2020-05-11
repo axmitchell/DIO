@@ -190,7 +190,22 @@ input, textarea {
   margin: 15px 15px;
 }
 
-/* #SelfPostGalleryAddButton {
+.SelfPostThumbnail {
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+}
+
+#SelfPostGalleryAddButton {
   display: flex;
   font-size: 70px;
   color: green;
@@ -198,9 +213,15 @@ input, textarea {
   align-items: center;
   border-style: dashed;
   border-color: green;
+  border-width: 1px;
   width: 200px;
   height: 200px;
-} */
+}
+
+#SelfPost {
+  width: 90%;
+  height: 80%;
+}
 
 #SelfPostForm {
   display: grid;

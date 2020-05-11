@@ -12,5 +12,8 @@ app.use(express.static(paths.DIST_DIR));
 
 app.get('/user/:id', controllers.getUserInfo);
 
+app.get('/bandPosts/:userId', controllers.getBandPosts);
+
 app.post('/bandPosts', controllers.addBandPost);
+
 module.exports = app;

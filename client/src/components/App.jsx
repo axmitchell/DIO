@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: 2,
+      user: 1,
       name: '',
       link: '',
       location: '',
@@ -18,7 +18,7 @@ class App extends Component {
       page: '',
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleAppStateChange = this.handleAppStateChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,19 +34,24 @@ class App extends Component {
         })
       })
       .catch(console.log)
+    axios.get(`/bandPosts/${this.state.user}`)
+      .then(res => {
+        this.setState({
+          posts: res.data
+        })
+      })
+      .catch(console.log)
   }
 
-  handlePageChange(page) {
-    this.setState({
-      page,
-    })
+  handleAppStateChange(property) {
+    this.setState(property)
   }
 
   handleNavButtonClick(e) {
     e.preventDefault()
     if (this.state.selectedNavButton !== '') {
       document.getElementById(this.state.selectedNavButton).classList.remove('SelectedNavButton')
-      this.handlePageChange('')
+      this.handleAppStateChange({page: ''})
     }
     if (this.state.selectedNavButton !== e.target.id) {
       e.target.classList.add('SelectedNavButton')
@@ -67,7 +72,7 @@ class App extends Component {
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.name}/>
-        <Content selectedNavButton={this.state.selectedNavButton} userInfo={this.state} handlePageChange={this.handlePageChange}/>
+        <Content selectedNavButton={this.state.selectedNavButton} userInfo={this.state} handleAppStateChange={this.handleAppStateChange}/>
       </div>
     )
   }

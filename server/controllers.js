@@ -6,11 +6,22 @@ getUserInfo = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
+getBandPosts = (req, res) => {
+  db.Set.findAll({where: {userId: Number(req.params.userId)}})
+    .then(data => res.send(data))
+    .catch(err => res.status(500).send(err));
+};
+
 addBandPost = (req, res) => {
-  res.send('post success!')
+  db.Set.create(req.body)
+    .then(() => res.send(201))
+    .catch((err) => {
+      res.status(500).send(err);
+    });
 };
 
 module.exports = {
   getUserInfo,
-  addBandPost
+  addBandPost,
+  getBandPosts,
 };
