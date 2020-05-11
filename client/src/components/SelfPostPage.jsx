@@ -17,6 +17,7 @@ class SelfPostPage extends Component {
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.handleSelfPostPageState = this.handleSelfPostPageState.bind(this);
   }
 
   handleChange({ target }) {
@@ -26,15 +27,15 @@ class SelfPostPage extends Component {
     })
   }
 
-  // handleSelfPostPageState(property) {
-  //   const { image, location, date, description } = property;
-  //   this.setState({
-  //     image,
-  //     location,
-  //     date,
-  //     description,
-  //   })
-  // }
+  handleSelfPostPageState(property) {
+    const { photo, location, date, description } = property;
+    this.setState({
+      image: photo,
+      location,
+      date,
+      description,
+    })
+  }
 
   handlePostSubmit(e) {
     e.preventDefault()
@@ -82,7 +83,7 @@ class SelfPostPage extends Component {
       )
     } else {
       return (
-        <SelfPostGallery posts={this.props.userInfo.posts} handleAppStateChange={this.props.handleAppStateChange} setState={this.setState}/>
+        <SelfPostGallery posts={this.props.userInfo.posts} handleAppStateChange={this.props.handleAppStateChange} handleSelfPostPageState={this.handleSelfPostPageState}/>
       ) 
     }
   }

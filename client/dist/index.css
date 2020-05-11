@@ -174,6 +174,7 @@ input, textarea {
   height: 100%;
   border-style: solid;
   border-color: green;
+  text-align: center;
 }
 
 /* ----- USER POSTS ----- */
@@ -203,6 +204,7 @@ input, textarea {
   width: 200px;
   height: 200px;
   text-align: center;
+  cursor: pointer;
 }
 
 #SelfPostGalleryAddButton {
@@ -216,11 +218,63 @@ input, textarea {
   border-width: 1px;
   width: 200px;
   height: 200px;
+  cursor: pointer;
 }
 
 #SelfPost {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "SelfPostInfo SelfPostCollabsList";
   width: 90%;
   height: 80%;
+}
+
+#SelfPostInfo {
+  display: grid;
+  grid-area: SelfPostInfo;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: 
+    "SelfPostPhoto" 
+    "SelfPostMainInfo"
+    "SelfPostDescription";
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+  text-align: center;
+  font-size: 30px;
+}
+
+#SelfPostInfo img {
+  grid-area: SelfPostPhoto;
+  display: flex;
+  justify-self: center;
+  width: 90%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#SelfPostMainInfo {
+  grid-area: SelfPostMainInfo;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#SelfPostDescription {
+  grid-area: SelfPostDescription;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#SelfPostCollabsList {
+  grid-area: SelfPostCollabsList;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+  text-align: center;
 }
 
 #SelfPostForm {
