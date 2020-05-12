@@ -1,42 +1,35 @@
 import React from 'react';
 import HomePage from './HomePage.jsx';
-import User from './User.jsx';
+import UserPage from './UserPage.jsx';
 import PostGallery from './PostGallery.jsx';
 import Users from './Users.jsx';
 import SelfPostPage from './SelfPostPage.jsx';
 
 const Content = props => {
-  if (props.selectedNavButton === '') {
-    return(
-      <div id='Content'>
-        <HomePage />
-      </div>
-    )
-  } else if (props.selectedNavButton === 'NavProfileButton') {
-    return(
-      <div id='Content'>
-        <User userInfo={props.userInfo} page={props.page}/>
-      </div>
-    )
-  } else if (props.selectedNavButton === 'NavPostButton') {
-      return (
-        <div id='Content'>
-          <SelfPostPage userInfo={props.userInfo} handleAppState={props.handleAppState} page={props.page}/>
-        </div>
-      )
-  } else if (props.selectedNavButton === 'NavSurfButton') {
-    return(
-      <div id='Content'>
-        <PostGallery />
-      </div>
-    )
-  } else if (props.selectedNavButton === 'NavSearchButton') {
-    return (
-      <div id='Content'>
-        <Users />
-      </div>
-    )
+  const { selectedNavButton, userInfo, page, handleAppState } = props;
+  let content
+  switch (selectedNavButton) {
+    case '':
+      content = <HomePage />
+      break;
+    case 'NavProfileButton':
+      content = <UserPage userInfo={userInfo} page={page}/>
+      break;
+    case 'NavPostButton':
+      content = <SelfPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
+      break;
+    case 'NavSurfButton':
+      content = <PostGallery />
+      break;
+    case 'NavSearchButton':
+      content = <Users />
+      break;
   }
+  return (
+    <div id='Content'>
+      {content}
+    </div>
+  )
 }
 
 export default Content;

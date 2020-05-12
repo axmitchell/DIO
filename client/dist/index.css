@@ -89,7 +89,7 @@ input, textarea {
 
 /* ----- USER PROFILE ----- */
 
-#User {
+#UserPage {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "UserInfo UserShows";

@@ -2,13 +2,13 @@ import React from 'react';
 import UserInfo from './UserInfo.jsx';
 import UserShows from './UserShows.jsx';
 
-const User = props => {
+const UserPage = props => {
   return (
-    <div id='User'>
+    <div id='UserPage'>
       <UserInfo userInfo={props.userInfo} />
       <UserShows />
     </div>
   )
 }
 
-export default User;
+export default UserPage;
