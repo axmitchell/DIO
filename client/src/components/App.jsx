@@ -8,52 +8,57 @@ class App extends Component {
     super(props);
     this.state = {
       user: 1,
+      type: '',
       name: '',
       link: '',
       location: '',
       about: '',
       photo: '',
-      selectedNavButton: '',
       posts: [],
+      selectedNavButton: '',
       page: '',
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
-    this.handleAppStateChange = this.handleAppStateChange.bind(this);
+    this.handleAppState = this.handleAppState.bind(this);
   }
 
   componentDidMount() {
-    axios.get(`/user/${this.state.user}`)
+    axios.get(`/users/${this.state.user}`)
       .then(res => {
-        const { name, link, location, about, photo } = res.data;
+        const { name, link, location, about, photo, type } = res.data;
         this.setState({
           name,
           link,
           location,
           about,
           photo,
+          type,
         })
-      })
-      .catch(console.log)
-    axios.get(`/bandPosts/${this.state.user}`)
-      .then(res => {
-        this.setState({
-          posts: res.data
-        })
+        let postRoute
+        type === 'band' ? postRoute = 'sets' : postRoute = 'shows'
+        axios.get(`/${postRoute}/${this.state.user}`)
+          .then(res => {
+            this.setState({
+              posts: res.data
+            })
+          })
+          .catch(console.log)
       })
       .catch(console.log)
   }
 
-  handleAppStateChange(property) {
-    this.setState(property)
+  handleAppState(propertyObject) {
+    this.setState(propertyObject)
   }
 
   handleNavButtonClick(e) {
+    const { selectedNavButton } = this.state
     e.preventDefault()
-    if (this.state.selectedNavButton !== '') {
-      document.getElementById(this.state.selectedNavButton).classList.remove('SelectedNavButton')
-      this.handleAppStateChange({page: ''})
+    if (selectedNavButton !== '') {
+      document.getElementById(selectedNavButton).classList.remove('SelectedNavButton')
+      this.setState({page: ''})
     }
-    if (this.state.selectedNavButton !== e.target.id) {
+    if (selectedNavButton !== e.target.id) {
       e.target.classList.add('SelectedNavButton')
       this.setState({
         selectedNavButton: e.target.id,
@@ -68,11 +73,12 @@ class App extends Component {
   }
 
   render() {
-    // const { user, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
+    const { user, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
+    const userInfo = { user, name, link, location, about, photo, posts }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} user={this.state.name}/>
-        <Content selectedNavButton={this.state.selectedNavButton} userInfo={this.state} handleAppStateChange={this.handleAppStateChange}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} user={name}/>
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState}/>
       </div>
     )
   }

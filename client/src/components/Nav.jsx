@@ -1,16 +1,12 @@
 import React from 'react';
-import NavProfileButton from './NavProfileButton.jsx';
-import NavPostButton from './NavPostButton.jsx';
-import NavSurfButton from './NavSurfButton.jsx';
-import NavSearchButton from './NavSearchButton.jsx';
 
 const Nav = props => {
   return(
     <div id='Nav'>
-      <NavProfileButton handleNavButtonClick={props.handleNavButtonClick} user={props.user}/>
-      <NavPostButton handleNavButtonClick={props.handleNavButtonClick}/>
-      <NavSurfButton handleNavButtonClick={props.handleNavButtonClick}/>
-      <NavSearchButton handleNavButtonClick={props.handleNavButtonClick}/>
+      <button id='NavProfileButton' onClick={props.handleNavButtonClick}>{props.user}</button>
+      <button id='NavPostButton' onClick={props.handleNavButtonClick}>POST</button>
+      <button id='NavSurfButton' onClick={props.handleNavButtonClick}>SURF</button>
+      <button id='NavSearchButton' onClick={props.handleNavButtonClick}>SEARCH</button>
     </div>
   )
 }

@@ -6,14 +6,28 @@ getUserInfo = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
-getBandPosts = (req, res) => {
+getUserSets = (req, res) => {
   db.Set.findAll({where: {userId: Number(req.params.userId)}})
     .then(data => res.send(data))
     .catch(err => res.status(500).send(err));
 };
 
-addBandPost = (req, res) => {
+getUserShows = (req, res) => {
+  db.Show.findAll({where: {userId: Number(req.params.userId)}})
+    .then(data => res.send(data))
+    .catch(err => res.status(500).send(err));
+};
+
+addUserSets = (req, res) => {
   db.Set.create(req.body)
+    .then(() => res.send(201))
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+};
+
+addUserShows = (req, res) => {
+  db.Show.create(req.body)
     .then(() => res.send(201))
     .catch((err) => {
       res.status(500).send(err);
@@ -22,6 +36,8 @@ addBandPost = (req, res) => {
 
 module.exports = {
   getUserInfo,
-  addBandPost,
-  getBandPosts,
+  getUserShows,
+  getUserSets,
+  addUserSets,
+  addUserShows
 };

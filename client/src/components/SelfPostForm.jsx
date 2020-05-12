@@ -19,7 +19,7 @@ const SelfPostForm = props => {
               <textarea name='description' value={description} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={props.handleChange}/>
             </div>
           </form>
-         <button id='SelfPostFormButton' onClick={() => props.handleAppStateChange({page: 'SelfPostPreview'})}>preview</button>
+         <button id='SelfPostFormButton' onClick={() => props.handleAppState({page: 'SelfPostPreview'})}>preview</button>
       </div>
   )
 }

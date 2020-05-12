@@ -207,6 +207,11 @@ input, textarea {
   cursor: pointer;
 }
 
+.SelfPostThumbnail:hover {
+  background: rgb(3, 71, 3);
+  color: black;
+}
+
 #SelfPostGalleryAddButton {
   display: flex;
   font-size: 70px;
@@ -219,6 +224,11 @@ input, textarea {
   width: 200px;
   height: 200px;
   cursor: pointer;
+}
+
+#SelfPostGalleryAddButton:hover {
+  background: rgb(3, 71, 3);
+  color: black;
 }
 
 #SelfPost {
@@ -378,6 +388,8 @@ input, textarea {
   align-items: center;
   text-align: center;
   font-size: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #SelfPostFormButton {

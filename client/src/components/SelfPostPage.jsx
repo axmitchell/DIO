@@ -48,15 +48,15 @@ class SelfPostPage extends Component {
         date: date,
         description: description,
       }
-      axios.post('/bandPosts', bandPost) 
-        .then(console.log)
-        .catch(console.log)
-      axios.get('/bandPosts')
-        .then(res => this.props.handleAppStateChange({posts: res.data}))
-        .catch(console.log);
+      // axios.post('/posts', bandPost) 
+      //   .then(console.log)
+      //   .catch(console.log)
+      // axios.get('/posts')
+      //   .then(res => this.props.handleAppState({posts: res.data}))
+      //   .catch(console.log);
       this.clearState()
       }
-    this.props.handleAppStateChange({page: ''})
+    this.props.handleAppState({page: ''})
   }
 
   clearState() {
@@ -69,21 +69,21 @@ class SelfPostPage extends Component {
   }
 
   render() {
-    if (this.props.userInfo.page === 'SelfPostForm') {
+    if (this.props.page === 'SelfPostForm') {
       return(
-        <SelfPostForm userInfo={this.props.userInfo} handleAppStateChange={this.props.handleAppStateChange} state={this.state} handleChange={this.handleChange}/>
+        <SelfPostForm userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handleChange={this.handleChange}/>
       )
-    } else if (this.props.userInfo.page === 'SelfPost') {
+    } else if (this.props.page === 'SelfPost') {
       return (
         <SelfPost post={this.state}/>
       )
-    } else if (this.props.userInfo.page === 'SelfPostPreview') {
+    } else if (this.props.page === 'SelfPostPreview') {
       return (
-        <SelfPostPreview userInfo={this.props.userInfo} handleAppStateChange={this.props.handleAppStateChange} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
+        <SelfPostPreview userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
       )
     } else {
       return (
-        <SelfPostGallery posts={this.props.userInfo.posts} handleAppStateChange={this.props.handleAppStateChange} handleSelfPostPageState={this.handleSelfPostPageState}/>
+        <SelfPostGallery posts={this.props.userInfo.posts} handleAppState={this.props.handleAppState} handleSelfPostPageState={this.handleSelfPostPageState}/>
       ) 
     }
   }

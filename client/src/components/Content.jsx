@@ -15,13 +15,13 @@ const Content = props => {
   } else if (props.selectedNavButton === 'NavProfileButton') {
     return(
       <div id='Content'>
-        <User userInfo={props.userInfo} />
+        <User userInfo={props.userInfo} page={props.page}/>
       </div>
     )
   } else if (props.selectedNavButton === 'NavPostButton') {
       return (
         <div id='Content'>
-          <SelfPostPage userInfo={props.userInfo} handleAppStateChange={props.handleAppStateChange} page={props.page} posts={props.posts}/>
+          <SelfPostPage userInfo={props.userInfo} handleAppState={props.handleAppState} page={props.page}/>
         </div>
       )
   } else if (props.selectedNavButton === 'NavSurfButton') {
