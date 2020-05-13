@@ -46,7 +46,7 @@ const Set = sequelize.define('sets', {
     type: Sequelize.STRING,
   },
   date: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
   },
   description: {
     type: Sequelize.STRING,

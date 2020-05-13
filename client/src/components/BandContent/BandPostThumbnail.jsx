@@ -1,10 +1,11 @@
 import React from 'react';
 
 const BandPostThumbnail = props => {
+  let { post, handleAppState, handleBandPostPageState } = props;
   return (
-    <div className='BandPostThumbnail' onClick={() => {props.handleAppState({page: 'BandPost'}); props.handleBandPostPageState(props.post)}}>
-      <div>{props.post.location}</div>
-      <div>{props.post.date}</div> 
+    <div className='BandPostThumbnail' onClick={() => {handleAppState({page: 'BandPost'}); handleBandPostPageState(post)}}>
+      <div>{post.location}</div>
+      <div>{post.date}</div> 
     </div>
   )
 }

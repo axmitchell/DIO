@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: 2,
+      userId: 1,
       type: '',
       name: '',
       link: '',
@@ -38,6 +38,9 @@ class App extends Component {
         type === 'band' ? postRoute = 'sets' : postRoute = 'shows'
         axios.get(`/${postRoute}/${this.state.userId}`)
           .then(res => {
+            res.data.forEach(post => {
+              post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
+            })
             this.setState({
               posts: res.data
             })

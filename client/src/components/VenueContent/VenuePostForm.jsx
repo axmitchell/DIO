@@ -14,7 +14,7 @@ const VenuePostForm = props => {
               <a id='VenuePostFormUserInfoLink' href={props.userInfo.link} target="_blank">link</a>
             </div>
             <div id='VenuePostFormInput'>
-              <input name='date' value={date} placeholder='desired date' onChange={props.handleChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
+              <input name='date' value={date} placeholder='date: mm/dd/yy' onChange={props.handleChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
               <textarea name='description' value={description} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={props.handleChange}/>
             </div>
           </form>

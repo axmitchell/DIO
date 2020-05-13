@@ -41,11 +41,12 @@ class BandPostPage extends Component {
     e.preventDefault()
     const { image, location, date, description } = this.state;
     if (image && location && date && description) {
+      let convertedDate = new Date(date.slice(0,6) + '20' + date.slice(6,8));
       const bandPost = {
         userId: Number(this.props.userInfo.userId),
         photo: image,
         location: location,
-        date: date,
+        date: convertedDate,
         description: description,
       }
       axios.post('/sets', bandPost) 

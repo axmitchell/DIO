@@ -14,8 +14,8 @@ const BandPostForm = props => {
               <a id='BandPostFormUserInfoLink' href={props.userInfo.link} target="_blank">bandcamp</a>
             </div>
             <div id='BandPostFormInput'>
-              <input name='location' value={location} placeholder='desired location' onChange={props.handleChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
-              <input name='date' value={date} placeholder='desired date' onChange={props.handleChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
+              <input name='location' value={location} placeholder='location' onChange={props.handleChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
+              <input name='date' value={date} placeholder='date: mm/dd/yy' onChange={props.handleChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
               <textarea name='description' value={description} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={props.handleChange}/>
             </div>
           </form>
