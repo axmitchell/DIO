@@ -6,7 +6,6 @@ const VenuePost = props => {
       <div id='VenuePostInfo' className='Content'>
         <img src={props.post.image}></img>
         <div id='VenuePostMainInfo'>
-          <div id='VenuePostLocation'>{props.post.location}</div>
           <div id='VenuePostDate'>{props.post.date}</div>
         </div>
         <div id='VenuePostDescription'>{props.post.description}</div>

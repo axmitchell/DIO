@@ -188,15 +188,19 @@ input, textarea {
   align-items: start;
 }
 
-#PostGallery {
+#VenuePostGallery {
   display: flex;
   width: 90%;
   height: 80%;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
 }
 
 #BandPostGallery div {
+  margin: 15px 15px;
+}
+
+#VenuePostGallery div {
   margin: 15px 15px;
 }
 
@@ -216,7 +220,28 @@ input, textarea {
   cursor: pointer;
 }
 
+.VenuePostThumbnail {
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+  width: 200px;
+  height: 275px;
+  text-align: center;
+  cursor: pointer;
+}
+
 .BandPostThumbnail:hover {
+  background: rgb(3, 71, 3);
+  color: black;
+}
+
+.VenuePostThumbnail:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
@@ -235,7 +260,26 @@ input, textarea {
   cursor: pointer;
 }
 
+#VenuePostGalleryAddButton {
+  display: flex;
+  font-size: 70px;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  border-style: dashed;
+  border-color: green;
+  border-width: 1px;
+  width: 200px;
+  height: 275px;
+  cursor: pointer;
+}
+
 #BandPostGalleryAddButton:hover {
+  background: rgb(3, 71, 3);
+  color: black;
+}
+
+#VenuePostGalleryAddButton:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
@@ -244,6 +288,14 @@ input, textarea {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "BandPostInfo BandPostCollabsList";
+  width: 90%;
+  height: 80%;
+}
+
+#VenuePost {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "VenuePostInfo VenuePostCollabsList";
   width: 90%;
   height: 80%;
 }
@@ -264,8 +316,33 @@ input, textarea {
   font-size: 30px;
 }
 
+#VenuePostInfo {
+  display: grid;
+  grid-area: VenuePostInfo;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: 
+    "VenuePostPhoto" 
+    "VenuePostMainInfo"
+    "VenuePostDescription";
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+  text-align: center;
+  font-size: 30px;
+}
+
 #BandPostInfo img {
   grid-area: BandPostPhoto;
+  display: flex;
+  justify-self: center;
+  width: 90%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#VenuePostInfo img {
+  grid-area: VenuePostPhoto;
   display: flex;
   justify-self: center;
   width: 90%;
@@ -280,6 +357,13 @@ input, textarea {
   justify-content: space-evenly;
 }
 
+#VenuePostMainInfo {
+  grid-area: VenuePostMainInfo;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 #BandPostDescription {
   grid-area: BandPostDescription;
   font-size: 20px;
@@ -287,8 +371,24 @@ input, textarea {
   padding-right: 10px;
 }
 
+#VenuePostDescription {
+  grid-area: VenuePostDescription;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 #BandPostCollabsList {
   grid-area: BandPostCollabsList;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+  text-align: center;
+}
+
+#VenuePostCollabsList {
+  grid-area: VenuePostCollabsList;
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -305,13 +405,33 @@ input, textarea {
   align-self: center;
 }
 
+#VenuePostForm {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 
+    "VenuePostFormImage VenuePostFormDetails"
+    "VenuePostFormButton VenuePostFormButton";
+  align-self: center;
+}
+
 #BandPostFormImage {
   grid-area: BandPostFormImage;
   width: 500px;
   height: 500px;
 }
 
+#VenuePostFormImage {
+  grid-area: VenuePostFormImage;
+  width: 500px;
+  height: 500px;
+}
+
 #BandPostFormImage img {
+  width: 100%;
+  height: 100%
+}
+
+#VenuePostFormImage img {
   width: 100%;
   height: 100%
 }
@@ -329,32 +449,76 @@ input, textarea {
   align-items: center;
 }
 
+#VenuePostFormDetails {
+  grid-area: VenuePostFormDetails;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  grid-template-areas: 
+    'VenuePostFormUserInfo'
+    'VenuePostFormInput';
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
 #BandPostFormUserInfo {
   width: 100%;
   grid-area: BandPostFormUserInfo;
   display: grid;
   grid-template-columns: auto 10px auto;
   grid-template-areas: 
-    'name . location'
-    'link link link';
-    justify-content: center;
-    align-items: center;
+    'Bandname . Bandlocation'
+    'Bandlink Bandlink Bandlink';
+  justify-content: center;
+  align-items: center;
+}
+
+#VenuePostFormUserInfo {
+  width: 100%;
+  grid-area: VenuePostFormUserInfo;
+  display: grid;
+  grid-template-columns: auto 10px auto;
+  grid-template-areas: 
+    'Venuename . Venuelocation'
+    'Venuelink Venuelink Venuelink';
+  justify-content: center;
+  align-items: center;
 }
 
 #BandPostFormUserInfoName {
-  grid-area: name;
+  grid-area: Bandname;
+  justify-self: center;
+  align-self: center;
+}
+
+#VenuePostFormUserInfoName {
+  grid-area: Venuename;
   justify-self: center;
   align-self: center;
 }
 
 #BandPostFormUserInfoLocation {
-  grid-area: location;
+  grid-area: Bandlocation;
+  justify-self: center;
+  align-self: center;
+}
+
+#VenuePostFormUserInfoLocation {
+  grid-area: Venuelocation;
   justify-self: center;
   align-self: center;
 }
 
 #BandPostFormUserInfoLink {
-  grid-area: link;
+  grid-area: Bandlink;
+  font-size: 30px;
+  justify-self: center;
+  align-self: center;
+}
+
+#VenuePostFormUserInfoLink {
+  grid-area: Venuelink;
   font-size: 30px;
   justify-self: center;
   align-self: center;
@@ -370,6 +534,19 @@ input, textarea {
     'BandPostFormInputLocation'
     'BandPostFormInputDate'
     'BandPostFormInputDescription';
+  justify-content: center;
+  align-items: center;
+}
+
+#VenuePostFormInput {
+  height: 100%;
+  width: 100%;
+  grid-area: VenuePostFormInput;
+  display: grid;
+  grid-template-rows: 20% 80%;
+  grid-template-areas: 
+    'VenuePostFormInputDate'
+    'VenuePostFormInputDescription';
   justify-content: center;
   align-items: center;
 }
@@ -390,8 +567,27 @@ input, textarea {
   font-size: 30px;
 }
 
+#VenuePostFormInputDate {
+  grid-area: VenuePostFormInputDate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
 #BandPostFormInputDescription {
   grid-area: BandPostFormInputDescription;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#VenuePostFormInputDescription {
+  grid-area: VenuePostFormInputDescription;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -408,7 +604,19 @@ input, textarea {
   margin-top: 15px;
 }
 
+#VenuePostFormButton {
+  grid-area: VenuePostFormButton;
+  font-size: 20px;
+  margin: auto;
+  margin-top: 15px;
+}
+
 #BandPostFormButton button {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+#VenuePostFormButton button {
   font-size: 20px;
   margin-right: 15px;
 }
@@ -461,10 +669,12 @@ input, textarea {
 
 
 /* ----- SURF ----- */
-
 #PostGallery {
+  display: flex;
   width: 90%;
   height: 80%;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ----- Search ----- */

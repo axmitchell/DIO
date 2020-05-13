@@ -4,6 +4,7 @@ import UserPage from './UserPage.jsx';
 import PostGallery from './PostGallery.jsx';
 import Users from './Users.jsx';
 import BandPostPage from './BandContent/BandPostPage.jsx';
+import VenuePostPage from './VenueContent/VenuePostPage.jsx';
 
 const Content = props => {
   const { selectedNavButton, userInfo, page, handleAppState } = props;
@@ -21,7 +22,7 @@ const Content = props => {
         content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
 
       } else if (userInfo.type === 'venue') {
-        content = 'error'
+        content =  <VenuePostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
       }
       break;
     case 'NavSurfButton':

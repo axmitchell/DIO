@@ -5,12 +5,11 @@ import VenuePostForm from './VenuePostForm.jsx';
 import VenuePostPreview from './VenuePostPreview.jsx';
 import VenuePost from './VenuePost.jsx';
 
-class BandPostPage extends Component {
+class VenuePostPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: '',
-      location: '',
       date: '',
       description: '',
     }
@@ -28,10 +27,9 @@ class BandPostPage extends Component {
   }
 
   handleVenuePostPageState(property) {
-    const { photo, location, date, description } = property;
+    const { photo, date, description } = property;
     this.setState({
       image: photo,
-      location,
       date,
       description,
     })
@@ -39,19 +37,18 @@ class BandPostPage extends Component {
 
   handlePostSubmit(e) {
     e.preventDefault()
-    const { image, location, date, description } = this.state;
-    if (image && location && date && description) {
-      const bandPost = {
+    const { image, date, description } = this.state;
+    if (image && date && description) {
+      const VenuePost = {
         userId: Number(this.props.userInfo.userId),
         photo: image,
-        location: location,
         date: date,
         description: description,
       }
-      axios.post('/sets', bandPost) 
+      axios.post('/shows', VenuePost) 
         .then(console.log)
         .catch(console.log)
-      axios.get(`/sets/:${Number(this.props.userInfo.userId)}`)
+      axios.get(`/shows/:${Number(this.props.userInfo.userId)}`)
         .then(res => this.props.handleAppState({posts: res.data}))
         .catch(console.log);
       this.clearState()
@@ -62,7 +59,6 @@ class BandPostPage extends Component {
   clearState() {
     this.setState({
       image: '',
-      location: '',
       date: '',
       description: '',
     })
@@ -89,4 +85,4 @@ class BandPostPage extends Component {
   }
 }
 
-export default BandPostPage
+export default VenuePostPage
