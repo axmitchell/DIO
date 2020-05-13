@@ -188,6 +188,14 @@ input, textarea {
   align-items: start;
 }
 
+#PostGallery {
+  display: flex;
+  width: 90%;
+  height: 80%;
+  justify-content: start;
+  align-items: start;
+}
+
 #BandPostGallery div {
   margin: 15px 15px;
 }

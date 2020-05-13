@@ -4,13 +4,13 @@ import BandPostThumbnail from './BandPostThumbnail.jsx'
 const BandPostGallery = props => {
   if (props.posts.length === 0) {
     return (
-      <div id='BandPostGallery' className='Content' onClick={() => props.handleAppState({page: 'BandPostForm'})} style={{justifyContent: 'center', alignItems: 'center'}} >
+      <div id='PostGallery' className='Content' onClick={() => props.handleAppState({page: 'BandPostForm'})} style={{justifyContent: 'center', alignItems: 'center'}} >
         You have no posts. Click to add one.
       </div>
     );
   } else {
     return (
-      <div id='BandPostGallery' className='Content'>
+      <div id='PostGallery' className='Content'>
         {props.posts.map(post => {
           return <BandPostThumbnail key={post.id} post={post}  handleAppState={props.handleAppState} handleBandPostPageState={props.handleBandPostPageState}/>
         })}

@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: 2,
+      userId: 1,
       type: '',
       name: '',
       link: '',
