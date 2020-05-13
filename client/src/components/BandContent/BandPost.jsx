@@ -1,22 +1,22 @@
 import React from 'react';
 
-const VenuePost = props => {
+const BandPost = props => {
   return (
-    <div id='VenuePost'>
-      <div id='VenuePostInfo' className='Content'>
+    <div id='BandPost'>
+      <div id='BandPostInfo' className='Content'>
         <img src={props.post.image}></img>
-        <div id='VenuePostMainInfo'>
-          <div id='VenuePostLocation'>{props.post.location}</div>
-          <div id='VenuePostDate'>{props.post.date}</div>
+        <div id='BandPostMainInfo'>
+          <div id='BandPostLocation'>{props.post.location}</div>
+          <div id='BandPostDate'>{props.post.date}</div>
         </div>
-        <div id='VenuePostDescription'>{props.post.description}</div>
+        <div id='BandPostDescription'>{props.post.description}</div>
       </div>
-      <div id='VenuePostCollabsList' className='Content'>
+      <div id='BandPostCollabsList' className='Content'>
         COLLAB THREADS GO HERE
       </div>
-      {/* <VenuePostCollabsList /> */}
+      {/* <BandPostCollabsList /> */}
     </div>
   )
 }
 
-export default VenuePost;
+export default BandPost;
