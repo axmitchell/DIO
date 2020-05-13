@@ -180,7 +180,7 @@ input, textarea {
 
 
 /* ----- USER POSTS ----- */
-#SelfPostGallery {
+#BandPostGallery {
   display: flex;
   width: 90%;
   height: 80%;
@@ -188,11 +188,11 @@ input, textarea {
   align-items: start;
 }
 
-#SelfPostGallery div {
+#BandPostGallery div {
   margin: 15px 15px;
 }
 
-.SelfPostThumbnail {
+.BandPostThumbnail {
   display: flex;
   flex-direction: column;
   font-size: 40px;
@@ -208,12 +208,12 @@ input, textarea {
   cursor: pointer;
 }
 
-.SelfPostThumbnail:hover {
+.BandPostThumbnail:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
 
-#SelfPostGalleryAddButton {
+#BandPostGalleryAddButton {
   display: flex;
   font-size: 70px;
   color: green;
@@ -227,27 +227,27 @@ input, textarea {
   cursor: pointer;
 }
 
-#SelfPostGalleryAddButton:hover {
+#BandPostGalleryAddButton:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
 
-#SelfPost {
+#BandPost {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-areas: "SelfPostInfo SelfPostCollabsList";
+  grid-template-areas: "BandPostInfo BandPostCollabsList";
   width: 90%;
   height: 80%;
 }
 
-#SelfPostInfo {
+#BandPostInfo {
   display: grid;
-  grid-area: SelfPostInfo;
+  grid-area: BandPostInfo;
   grid-template-rows: auto auto 1fr;
   grid-template-areas: 
-    "SelfPostPhoto" 
-    "SelfPostMainInfo"
-    "SelfPostDescription";
+    "BandPostPhoto" 
+    "BandPostMainInfo"
+    "BandPostDescription";
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -256,8 +256,8 @@ input, textarea {
   font-size: 30px;
 }
 
-#SelfPostInfo img {
-  grid-area: SelfPostPhoto;
+#BandPostInfo img {
+  grid-area: BandPostPhoto;
   display: flex;
   justify-self: center;
   width: 90%;
@@ -265,22 +265,22 @@ input, textarea {
   margin-bottom: 15px;
 }
 
-#SelfPostMainInfo {
-  grid-area: SelfPostMainInfo;
+#BandPostMainInfo {
+  grid-area: BandPostMainInfo;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-#SelfPostDescription {
-  grid-area: SelfPostDescription;
+#BandPostDescription {
+  grid-area: BandPostDescription;
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-#SelfPostCollabsList {
-  grid-area: SelfPostCollabsList;
+#BandPostCollabsList {
+  grid-area: BandPostCollabsList;
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -288,42 +288,42 @@ input, textarea {
   text-align: center;
 }
 
-#SelfPostForm {
+#BandPostForm {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: 
-    "SelfPostFormImage SelfPostFormDetails"
-    "SelfPostFormButton SelfPostFormButton";
+    "BandPostFormImage BandPostFormDetails"
+    "BandPostFormButton BandPostFormButton";
   align-self: center;
 }
 
-#SelfPostFormImage {
-  grid-area: SelfPostFormImage;
+#BandPostFormImage {
+  grid-area: BandPostFormImage;
   width: 500px;
   height: 500px;
 }
 
-#SelfPostFormImage img {
+#BandPostFormImage img {
   width: 100%;
   height: 100%
 }
 
-#SelfPostFormDetails {
-  grid-area: SelfPostFormDetails;
+#BandPostFormDetails {
+  grid-area: BandPostFormDetails;
   display: grid;
   grid-template-rows: 40% 60%;
   grid-template-areas: 
-    'SelfPostFormUserInfo'
-    'SelfPostFormInput';
+    'BandPostFormUserInfo'
+    'BandPostFormInput';
   width: 500px;
   height: 500px;
   justify-content: center;
   align-items: center;
 }
 
-#SelfPostFormUserInfo {
+#BandPostFormUserInfo {
   width: 100%;
-  grid-area: SelfPostFormUserInfo;
+  grid-area: BandPostFormUserInfo;
   display: grid;
   grid-template-columns: auto 10px auto;
   grid-template-areas: 
@@ -333,57 +333,57 @@ input, textarea {
     align-items: center;
 }
 
-#SelfPostFormUserInfoName {
+#BandPostFormUserInfoName {
   grid-area: name;
   justify-self: center;
   align-self: center;
 }
 
-#SelfPostFormUserInfoLocation {
+#BandPostFormUserInfoLocation {
   grid-area: location;
   justify-self: center;
   align-self: center;
 }
 
-#SelfPostFormUserInfoLink {
+#BandPostFormUserInfoLink {
   grid-area: link;
   font-size: 30px;
   justify-self: center;
   align-self: center;
 }
 
-#SelfPostFormInput {
+#BandPostFormInput {
   height: 100%;
   width: 100%;
-  grid-area: SelfPostFormInput;
+  grid-area: BandPostFormInput;
   display: grid;
   grid-template-rows: 20% 20% 60%;
   grid-template-areas: 
-    'SelfPostFormInputLocation'
-    'SelfPostFormInputDate'
-    'SelfPostFormInputDescription';
+    'BandPostFormInputLocation'
+    'BandPostFormInputDate'
+    'BandPostFormInputDescription';
   justify-content: center;
   align-items: center;
 }
 
-#SelfPostFormInputLocation {
-  grid-area: SelfPostFormInputLocation;
+#BandPostFormInputLocation {
+  grid-area: BandPostFormInputLocation;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 35px;
 }
 
-#SelfPostFormInputDate {
-  grid-area: SelfPostFormInputDate;
+#BandPostFormInputDate {
+  grid-area: BandPostFormInputDate;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
 }
 
-#SelfPostFormInputDescription {
-  grid-area: SelfPostFormInputDescription;
+#BandPostFormInputDescription {
+  grid-area: BandPostFormInputDescription;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -393,19 +393,19 @@ input, textarea {
   padding-right: 15px;
 }
 
-#SelfPostFormButton {
-  grid-area: SelfPostFormButton;
+#BandPostFormButton {
+  grid-area: BandPostFormButton;
   font-size: 20px;
   margin: auto;
   margin-top: 15px;
 }
 
-#SelfPostFormButton button {
+#BandPostFormButton button {
   font-size: 20px;
   margin-right: 15px;
 }
 
-#SelfPostPreviewPage {
+#BandPostPreviewPage {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -414,7 +414,7 @@ input, textarea {
   justify-content: center;
 }
 
-#SelfPostPreview {
+#BandPostPreview {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "PostImagePreview PostDetailsPreview";
@@ -445,7 +445,7 @@ input, textarea {
   align-items: center;
 }
 
-#SelfPostPreviewButton {
+#BandPostPreviewButton {
   font-size: 20px;
 }
 

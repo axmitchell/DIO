@@ -3,7 +3,8 @@ import HomePage from './HomePage.jsx';
 import UserPage from './UserPage.jsx';
 import PostGallery from './PostGallery.jsx';
 import Users from './Users.jsx';
-import SelfPostPage from './SelfPostPage.jsx';
+import BandPostPage from './BandContent/BandPostPage.jsx';
+import VenuePostPage from './VenueContent/VenuePostPage.jsx';
 
 const Content = props => {
   const { selectedNavButton, userInfo, page, handleAppState } = props;
@@ -16,7 +17,11 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-      content = <SelfPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
+      if (userInfo.type === 'band') {
+        content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
+      } else if (userInfo.type === 'venue') {
+        content = <VenuePostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
+      }
       break;
     case 'NavSurfButton':
       content = <PostGallery />

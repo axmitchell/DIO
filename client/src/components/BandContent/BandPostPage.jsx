@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import SelfPostGallery from './SelfPostGallery.jsx'
-import SelfPostForm from './SelfPostForm.jsx';
-import SelfPostPreview from './SelfPostPreview.jsx';
-import SelfPost from './SelfPost.jsx';
+import BandPostGallery from './BandPostGallery.jsx'
+import BandPostForm from './BandPostForm.jsx';
+import BandPostPreview from './BandPostPreview.jsx';
+import BandPost from './BandPost.jsx';
 
-class SelfPostPage extends Component {
+class BandPostPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class SelfPostPage extends Component {
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.clearState = this.clearState.bind(this);
-    this.handleSelfPostPageState = this.handleSelfPostPageState.bind(this);
+    this.handleBandPostPageState = this.handleBandPostPageState.bind(this);
   }
 
   handleChange({ target }) {
@@ -27,7 +27,7 @@ class SelfPostPage extends Component {
     })
   }
 
-  handleSelfPostPageState(property) {
+  handleBandPostPageState(property) {
     const { photo, location, date, description } = property;
     this.setState({
       image: photo,
@@ -69,24 +69,24 @@ class SelfPostPage extends Component {
   }
 
   render() {
-    if (this.props.page === 'SelfPostForm') {
+    if (this.props.page === 'BandPostForm') {
       return(
-        <SelfPostForm userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handleChange={this.handleChange}/>
+        <BandPostForm userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handleChange={this.handleChange}/>
       )
-    } else if (this.props.page === 'SelfPost') {
+    } else if (this.props.page === 'BandPost') {
       return (
-        <SelfPost post={this.state}/>
+        <BandPost post={this.state}/>
       )
-    } else if (this.props.page === 'SelfPostPreview') {
+    } else if (this.props.page === 'BandPostPreview') {
       return (
-        <SelfPostPreview userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
+        <BandPostPreview userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
       )
     } else {
       return (
-        <SelfPostGallery posts={this.props.userInfo.posts} handleAppState={this.props.handleAppState} handleSelfPostPageState={this.handleSelfPostPageState}/>
+        <BandPostGallery posts={this.props.userInfo.posts} handleAppState={this.props.handleAppState} handleBandPostPageState={this.handleBandPostPageState}/>
       ) 
     }
   }
 }
 
-export default SelfPostPage
+export default BandPostPage
