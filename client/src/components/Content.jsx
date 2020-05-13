@@ -23,7 +23,6 @@ const Content = props => {
       break;
     case 'NavSearchButton':
       content = <Users />
-      break;
   }
   return (
     <div id='Content'>

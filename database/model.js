@@ -60,7 +60,7 @@ Set.associate = models => {
   Set.belongsTo(models.User);
 };
 
-const Show = sequelize.define('sets', {
+const Show = sequelize.define('shows', {
   userId: {
     type: Sequelize.INTEGER,
   },

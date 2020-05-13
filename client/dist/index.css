@@ -36,7 +36,7 @@ input, textarea {
 /* ----- MAIN PAGE ----- */
 #Dashboard {  
     display: grid;
-    grid-template-areas: "Nav content";
+    grid-template-areas: "Nav Content";
     grid-template-columns: 25% 75%;
     width: 100vw;
     height: 100vh;
@@ -65,7 +65,7 @@ input, textarea {
 
 #Content {
   display: flex;
-  grid-area: content;
+  grid-area: Content;
   justify-content: center;
   align-items: center;
 }
@@ -87,8 +87,9 @@ input, textarea {
   height: 80%;
 }
 
-/* ----- USER PROFILE ----- */
 
+
+/* ----- USER PROFILE ----- */
 #UserPage {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -101,7 +102,6 @@ input, textarea {
   display: grid;
   grid-area: UserInfo;
   grid-template-rows: auto auto 1fr;
-  grid-template-columns: auto;
   grid-template-areas: 
     "photo" 
     "main"
@@ -177,8 +177,9 @@ input, textarea {
   text-align: center;
 }
 
-/* ----- USER POSTS ----- */
 
+
+/* ----- USER POSTS ----- */
 #SelfPostGallery {
   display: flex;
   width: 90%;

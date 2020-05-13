@@ -21,8 +21,7 @@ app.get('/users/:id', controllers.getUserInfo);
 app.get('/sets/:userId', controllers.getUserSets);
 app.get('/shows/:userId', controllers.getUserShows);
 
-app.post('/sets', controllers.addUserShows);
-
+app.post('/sets', controllers.addUserSets);
 app.post('/shows', controllers.addUserShows);
 
-module.exports = app;
+module.exports = app; 

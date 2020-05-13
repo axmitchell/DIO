@@ -42,18 +42,18 @@ class SelfPostPage extends Component {
     const { image, location, date, description } = this.state;
     if (image && location && date && description) {
       const bandPost = {
-        userId: Number(this.props.userInfo.user),
+        userId: Number(this.props.userInfo.userId),
         photo: image,
         location: location,
         date: date,
         description: description,
       }
-      // axios.post('/posts', bandPost) 
-      //   .then(console.log)
-      //   .catch(console.log)
-      // axios.get('/posts')
-      //   .then(res => this.props.handleAppState({posts: res.data}))
-      //   .catch(console.log);
+      axios.post('/sets', bandPost) 
+        .then(console.log)
+        .catch(console.log)
+      axios.get(`/sets/:${Number(this.props.userInfo.userId)}`)
+        .then(res => this.props.handleAppState({posts: res.data}))
+        .catch(console.log);
       this.clearState()
       }
     this.props.handleAppState({page: ''})

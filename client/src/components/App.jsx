@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: 1,
+      userId: 1,
       type: '',
       name: '',
       link: '',
@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/users/${this.state.user}`)
+    axios.get(`/users/${this.state.userId}`)
       .then(res => {
         const { name, link, location, about, photo, type } = res.data;
         this.setState({
@@ -36,7 +36,7 @@ class App extends Component {
         })
         let postRoute
         type === 'band' ? postRoute = 'sets' : postRoute = 'shows'
-        axios.get(`/${postRoute}/${this.state.user}`)
+        axios.get(`/${postRoute}/${this.state.userId}`)
           .then(res => {
             this.setState({
               posts: res.data
@@ -73,8 +73,8 @@ class App extends Component {
   }
 
   render() {
-    const { user, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
-    const userInfo = { user, name, link, location, about, photo, posts }
+    const { userId, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
+    const userInfo = { userId, name, link, location, about, photo, posts }
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} user={name}/>
