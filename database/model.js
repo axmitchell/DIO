@@ -75,6 +75,9 @@ const Show = sequelize.define('shows', {
   date: {
     type: Sequelize.STRING,
   },
+  location: {
+    type: Sequelize.STRING,
+  },
   description: {
     type: Sequelize.STRING,
   },

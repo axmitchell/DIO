@@ -1,24 +1,36 @@
 const db = require('../database/model.js');
 
-getUserInfo = (req, res) => {
+getUser = (req, res) => {
   db.User.findOne({where: {id: Number(req.params.id)}})
     .then(data => res.send(data))
     .catch(err => res.status(500).send(err));
 };
 
-getUserSets = (req, res) => {
-  db.Set.findAll({where: {userId: Number(req.params.userId)}})
-    .then(data => res.send(data))
-    .catch(err => res.status(500).send(err));
+getSets = (req, res) => {
+  if (req.params.userId) {
+    db.Set.findAll({where: {userId: Number(req.params.userId)}})
+      .then(data => res.send(data))
+      .catch(err => res.status(500).send(err));
+  } else {
+    db.Set.findAll()
+      .then(data => res.send(data))
+      .catch(err => res.status(500).send(err));
+  }
 };
 
-getUserShows = (req, res) => {
-  db.Show.findAll({where: {userId: Number(req.params.userId)}})
-    .then(data => res.send(data))
-    .catch(err => res.status(500).send(err));
+getShows = (req, res) => {
+  if (req.params.userId) {
+    db.Show.findAll({where: {userId: Number(req.params.userId)}})
+      .then(data => res.send(data))
+      .catch(err => res.status(500).send(err));
+  } else {
+    db.Show.findAll()
+      .then(data => res.send(data))
+      .catch(err => res.status(500).send(err));
+  }
 };
 
-addUserSets = (req, res) => {
+addSets = (req, res) => {
   db.Set.create(req.body)
     .then(() => res.send(201))
     .catch((err) => {
@@ -26,7 +38,7 @@ addUserSets = (req, res) => {
     });
 };
 
-addUserShows = (req, res) => {
+addShows = (req, res) => {
   db.Show.create(req.body)
     .then(() => res.send(201))
     .catch((err) => {
@@ -35,9 +47,9 @@ addUserShows = (req, res) => {
 };
 
 module.exports = {
-  getUserInfo,
-  getUserShows,
-  getUserSets,
-  addUserSets,
-  addUserShows
+  getUser,
+  getShows,
+  getSets,
+  addSets,
+  addShows
 };

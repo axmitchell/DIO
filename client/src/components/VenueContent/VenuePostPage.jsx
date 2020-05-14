@@ -38,22 +38,26 @@ class VenuePostPage extends Component {
   handlePostSubmit(e) {
     e.preventDefault()
     const { image, date, description } = this.state;
+    const { userInfo, handleAppState } = this.props;
+    
     if (image && date && description) {
+      let convertedDate = new Date(date.slice(0,6) + '20' + date.slice(6,8));
       const VenuePost = {
-        userId: Number(this.props.userInfo.userId),
+        userId: Number(userInfo.userId),
         photo: image,
-        date: date,
+        location: userInfo.location,
+        date: convertedDate,
         description: description,
       }
       axios.post('/shows', VenuePost) 
         .then(console.log)
         .catch(console.log)
-      axios.get(`/shows/:${Number(this.props.userInfo.userId)}`)
-        .then(res => this.props.handleAppState({posts: res.data}))
+      axios.get(`/shows/:${Number(userInfo.userId)}`)
+        .then(res => handleAppState({posts: res.data}))
         .catch(console.log);
       this.clearState()
       }
-    this.props.handleAppState({page: ''})
+    handleAppState({page: ''})
   }
 
   clearState() {

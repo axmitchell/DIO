@@ -16,12 +16,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(paths.DIST_DIR));
 
-app.get('/users/:id', controllers.getUserInfo);
+app.get('/users/:id', controllers.getUser);
 
-app.get('/sets/:userId', controllers.getUserSets);
-app.get('/shows/:userId', controllers.getUserShows);
+app.get('/sets', controllers.getSets);
+app.get('/sets/:userId', controllers.getSets);
 
-app.post('/sets', controllers.addUserSets);
-app.post('/shows', controllers.addUserShows);
+app.get('/shows', controllers.getShows);
+app.get('/shows/:userId', controllers.getShows);
+
+
+app.post('/sets', controllers.addSets);
+app.post('/shows', controllers.addShows);
 
 module.exports = app; 

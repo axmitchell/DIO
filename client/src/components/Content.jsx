@@ -26,7 +26,7 @@ const Content = props => {
       }
       break;
     case 'NavSurfButton':
-      content = <PostGallery />
+      content = <PostGallery type={props.userInfo.type}/>
       break;
     case 'NavSearchButton':
       content = <Users />
