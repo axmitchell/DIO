@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import BandPostThumbnail from './BandContent/BandPostThumbnail.jsx'
-// import VenuePostThumbnail from './VenueContent/VenuePostThumbnail.jsx'
 import SurfPost from './SurfPost.jsx';
 import axios from 'axios';
 
@@ -73,7 +71,7 @@ class PostGallery extends Component {
 
   render() {
     const { type } = this.props;
-    const { otherUserPosts, selectedPost, photo, name, location, link, date, description } = this.state;
+    const { photo, name, location, link, date, description } = this.state;
     let currentPost = { photo, name, location, link, date, description }
     if (this.state.otherUserPosts.length === 0) {
       return (
@@ -81,39 +79,19 @@ class PostGallery extends Component {
           NO USER POSTS JUST YET
         </div>
       )
-    }
-    if (type === 'band') {
+    } else if (type === 'band') {
       return (
         <div id='PostGallery' className='Content'>
-          {/* {this.state.otherUserPosts.map(post => {
-            // return <VenuePostThumbnail key={post.id} post={post} type={type}/>
-            // return <OtherPosts key={post.id} post={post} />
-            return <SurfPost key={post.id} post={post}/>
-          })} */}
-          {/* <div id='PreviousShow'></div> */}
           <SurfPost key={currentPost.link} post={currentPost} handlePostGalleryState={this.handlePostGalleryState}/>
-          {/* <div id='NextShow'></div> */}
         </div>
       )
     } else if (type === 'venue') {
       return (
         <div id='PostGallery' className='Content'>
-          {/* {this.state.otherUserPosts.map(post => {
-            // return <BandPostThumbnail key={post.id} post={post} type={type}/>
-            // return <OtherPosts key={post.id} post={post} />
-            return <SurfPost key={currentPost.link} post={currentPost} />
-          })} */}
-          {/* <div id='PreviousSet'></div> */}
             <SurfPost key={currentPost.link} post={currentPost} handlePostGalleryState={this.handlePostGalleryState}/>
-          {/* <div id='NextSet'></div> */}
         </div>
       )
     }
-    // return (
-    //   <div id='PostGallery' className='Content'>
-    //     <SurfPost post={this.state.otherUserPosts[0]} />
-    //   </div>
-    // )
   }
 }
 
