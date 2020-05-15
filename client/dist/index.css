@@ -422,10 +422,24 @@ input, textarea {
   height: 500px;
 }
 
+#PreviousSet {
+  grid-area: VenuePostFormImage;
+  height: 500px;
+  width: 60px;
+  background: transparent;
+  position: absolute;
+  border: 0px;
+}
+
 #VenuePostFormImage {
   grid-area: VenuePostFormImage;
   width: 500px;
   height: 500px;
+}
+
+#PreviousShow {
+  grid-area: VenuePostFormImage;
+  height: 100%;
 }
 
 #BandPostFormImage img {
@@ -451,6 +465,16 @@ input, textarea {
   align-items: center;
 }
 
+#NextSet {
+  display: flex;
+  justify-self: end;
+  grid-area: VenuePostFormDetails;
+  height: 500px;
+  width: 60px;
+  background: transparent;
+  border: 0px;
+}
+
 #VenuePostFormDetails {
   grid-area: VenuePostFormDetails;
   display: grid;
@@ -462,6 +486,11 @@ input, textarea {
   height: 500px;
   justify-content: center;
   align-items: center;
+}
+
+#NextShow {
+  grid-area: VenuePostFormDetails;
+  height: 100%;
 }
 
 #BandPostFormUserInfo {

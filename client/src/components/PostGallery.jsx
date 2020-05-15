@@ -43,12 +43,24 @@ class PostGallery extends Component {
       .catch(console.log)
   }
 
-  handlePostGalleryState() {
+  handlePostGalleryState(e) {
     const { selectedPost, otherUserPosts } = this.state
-    if (selectedPost < otherUserPosts.length - 1) {
-      let nextPost = selectedPost + 1
+    let nextPost;
+    if (e.target.id === 'NextSet' && selectedPost < otherUserPosts.length - 1) {
+      nextPost = selectedPost + 1;
       this.setState({
-        selectedPost: selectedPost + 1,
+        selectedPost: nextPost,
+        photo: otherUserPosts[nextPost].photo, 
+        name: otherUserPosts[nextPost].name, 
+        location: otherUserPosts[nextPost].location, 
+        link: otherUserPosts[nextPost].link, 
+        date: otherUserPosts[nextPost].date, 
+        description: otherUserPosts[nextPost].description,
+      })
+    } else if (e.target.id === 'PreviousSet' && selectedPost > 0) {
+      nextPost = selectedPost - 1;
+      this.setState({
+        selectedPost: nextPost,
         photo: otherUserPosts[nextPost].photo, 
         name: otherUserPosts[nextPost].name, 
         location: otherUserPosts[nextPost].location, 
@@ -72,23 +84,28 @@ class PostGallery extends Component {
     }
     if (type === 'band') {
       return (
-        <div id='PostGallery' className='Content' onClick={this.handlePostGalleryState}>
+        <div id='PostGallery' className='Content'>
           {/* {this.state.otherUserPosts.map(post => {
             // return <VenuePostThumbnail key={post.id} post={post} type={type}/>
             // return <OtherPosts key={post.id} post={post} />
             return <SurfPost key={post.id} post={post}/>
           })} */}
-          <SurfPost post={currentPost}/>
+          {/* <div id='PreviousShow'></div> */}
+          <SurfPost key={currentPost.link} post={currentPost} handlePostGalleryState={this.handlePostGalleryState}/>
+          {/* <div id='NextShow'></div> */}
         </div>
       )
     } else if (type === 'venue') {
       return (
         <div id='PostGallery' className='Content'>
-          {this.state.otherUserPosts.map(post => {
+          {/* {this.state.otherUserPosts.map(post => {
             // return <BandPostThumbnail key={post.id} post={post} type={type}/>
             // return <OtherPosts key={post.id} post={post} />
-            return <SurfPost post={currentPost} />
-          })}
+            return <SurfPost key={currentPost.link} post={currentPost} />
+          })} */}
+          {/* <div id='PreviousSet'></div> */}
+            <SurfPost key={currentPost.link} post={currentPost} handlePostGalleryState={this.handlePostGalleryState}/>
+          {/* <div id='NextSet'></div> */}
         </div>
       )
     }
