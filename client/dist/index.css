@@ -671,7 +671,7 @@ input, textarea {
 
 
 /* ----- SURF ----- */
-#PostGallery {
+/* #PostGallery {
   display: flex;
   width: 90%;
   height: 80%;
@@ -681,7 +681,7 @@ input, textarea {
 
 #PostGallery div {
   margin: 15px;
-}
+} */
 
 /* ----- Search ----- */
 

@@ -44,6 +44,8 @@ class BandPostPage extends Component {
       let convertedDate = new Date(date.slice(0,6) + '20' + date.slice(6,8));
       const bandPost = {
         userId: Number(this.props.userInfo.userId),
+        name: this.props.userInfo.name,
+        link: this.props.userInfo.link,
         photo: image,
         location: location,
         date: convertedDate,

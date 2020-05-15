@@ -45,6 +45,8 @@ class VenuePostPage extends Component {
       const VenuePost = {
         userId: Number(userInfo.userId),
         photo: image,
+        name: userInfo.name,
+        link: userInfo.link,
         location: userInfo.location,
         date: convertedDate,
         description: description,
