@@ -80,7 +80,7 @@ class App extends Component {
     const userInfo = { userId, name, link, location, about, photo, posts, type }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} user={name}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState}/>
         <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState}/>
       </div>
     )
