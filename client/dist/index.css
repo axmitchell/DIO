@@ -54,13 +54,32 @@ input, textarea {
   font-size: 35px;
 }
 
-#NavProfileButton {
+.ChangedNavProfile {
+  display: flex;
+  width: 80%;
+  height: 18%;
+  font-size: 45px;
+  background: black;
+  color: green;
+  border: 1px solid green;
+  justify-content: center;
+  /* opacity: 0.9; */
+  align-items: center;
+}
+
+.backButton {
+  border: 1px groove green;
+}
+
+.NavButtons {
+  display: flex;
   width: 70%;
 }
 
 .SelectedNavButton {
   background: rgb(3, 71, 3);
   color: black;
+  border: 1px groove green;
 }
 
 #Content {

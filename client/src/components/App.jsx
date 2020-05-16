@@ -55,22 +55,19 @@ class App extends Component {
   }
 
   handleNavButtonClick(e) {
-    const { selectedNavButton } = this.state
     e.preventDefault()
-    if (selectedNavButton !== '') {
-      document.getElementById(selectedNavButton).classList.remove('SelectedNavButton')
-      this.setState({page: ''})
-    }
-    if (selectedNavButton !== e.target.id) {
-      e.target.classList.add('SelectedNavButton')
-      this.setState({
-        selectedNavButton: e.target.id,
-        page: ''
-      })
-    } else {
+    const { selectedNavButton } = this.state
+    if (selectedNavButton !== '' && e.target.id === 'NavSearchButton') {
+      document.getElementById('NavProfileButton').classList.remove('SelectedNavButton')
       this.setState({
         selectedNavButton: '',
         page: ''
+      })
+    } else {
+      console.log('hey')
+      document.getElementById('NavProfileButton').classList.add('SelectedNavButton')  
+      this.setState({
+        selectedNavButton: e.target.id
       })
     }
   }
