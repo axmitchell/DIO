@@ -17,7 +17,6 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-
       if (userInfo.type === 'band') {
         content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
 

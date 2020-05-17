@@ -18,10 +18,10 @@ const VenuePostPreview = props => {
           <div id='VenuePostFormInputDescription'>{description}</div>
         </div>
       </div>
-      <div id='VenuePostFormButton'>
+      {/* <div id='VenuePostFormButton'>
         <button onClick={() => props.handleAppState({page: 'VenuePostForm'})}>edit</button>
         <button onClick={props.handlePostSubmit}>submit</button>
-      </div>
+      </div> */}
     </div>
   )
 }

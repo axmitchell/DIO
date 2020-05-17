@@ -19,10 +19,10 @@ const BandPostPreview = props => {
           <div id='BandPostFormInputDescription'>{description}</div>
         </div>
       </div>
-      <div id='BandPostFormButton'>
+      {/* <div id='BandPostFormButton'>
         <button onClick={() => props.handleAppState({page: 'BandPostForm'})}>edit</button>
         <button onClick={props.handlePostSubmit}>submit</button>
-      </div>
+      </div> */}
     </div>
   )
 }

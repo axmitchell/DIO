@@ -19,7 +19,6 @@ const BandPostForm = props => {
               <textarea name='description' value={description} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={props.handleChange}/>
             </div>
           </form>
-         <button id='BandPostFormButton' onClick={() => props.handleAppState({page: 'BandPostPreview'})}>preview</button>
       </div>
   )
 }

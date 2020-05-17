@@ -14,9 +14,6 @@ const VenuePostGallery = props => {
         {props.posts.map(post => {
           return <VenuePostThumbnail key={post.id} post={post}  handleAppState={props.handleAppState} handleVenuePostPageState={props.handleVenuePostPageState}/>
         })}
-        <div id='VenuePostGalleryAddButton' onClick={() => props.handleAppState({page: 'VenuePostForm'})}>
-          +
-        </div>
       </div>
     )
   }

@@ -65,6 +65,7 @@ input, textarea {
   justify-content: center;
   /* opacity: 0.9; */
   align-items: center;
+  text-align: center;
 }
 
 .backButton {
@@ -74,6 +75,7 @@ input, textarea {
 .NavButtons {
   display: flex;
   width: 70%;
+  /* border: 3px ridge green; */
 }
 
 .SelectedNavButton {
@@ -421,8 +423,7 @@ input, textarea {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: 
-    "BandPostFormImage BandPostFormDetails"
-    "BandPostFormButton BandPostFormButton";
+    "BandPostFormImage BandPostFormDetails";
   align-self: center;
 }
 
@@ -430,8 +431,7 @@ input, textarea {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: 
-    "VenuePostFormImage VenuePostFormDetails"
-    "VenuePostFormButton VenuePostFormButton";
+    "VenuePostFormImage VenuePostFormDetails";
   align-self: center;
 }
 
@@ -647,29 +647,6 @@ input, textarea {
   padding-right: 15px;
 }
 
-#BandPostFormButton {
-  grid-area: BandPostFormButton;
-  font-size: 20px;
-  margin: auto;
-  margin-top: 15px;
-}
-
-#VenuePostFormButton {
-  grid-area: VenuePostFormButton;
-  font-size: 20px;
-  margin: auto;
-  margin-top: 15px;
-}
-
-#BandPostFormButton button {
-  font-size: 20px;
-  margin-right: 15px;
-}
-
-#VenuePostFormButton button {
-  font-size: 20px;
-  margin-right: 15px;
-}
 
 #BandPostPreviewPage {
   display: flex;
@@ -681,6 +658,16 @@ input, textarea {
 }
 
 #BandPostPreview {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "PostImagePreview PostDetailsPreview";
+  width: 90%;
+  height: 60%;
+  margin-bottom: 15px;
+  align-self: center;
+}
+
+#VenuePostPreview {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "PostImagePreview PostDetailsPreview";

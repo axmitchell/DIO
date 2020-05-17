@@ -18,7 +18,6 @@ const VenuePostForm = props => {
               <textarea name='description' value={description} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={props.handleChange}/>
             </div>
           </form>
-         <button id='VenuePostFormButton' onClick={() => props.handleAppState({page: 'VenuePostPreview'})}>preview</button>
       </div>
   )
 }
