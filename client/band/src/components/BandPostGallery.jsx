@@ -14,9 +14,6 @@ const BandPostGallery = props => {
         {props.posts.map(post => {
           return <BandPostThumbnail key={post.id} post={post}  handleAppState={props.handleAppState} handleBandPostPageState={props.handleBandPostPageState}/>
         })}
-        <div id='BandPostGalleryAddButton' onClick={() => props.handleAppState({page: 'BandPostForm'})}>
-          +
-        </div>
       </div>
     )
   }

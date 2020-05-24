@@ -12,9 +12,19 @@ const app = express();
 //   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 //   next();
 // });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(paths.DIST_DIR));
+
+// const checkUserType = (req, res, next) => {
+//   // validate user and type
+//   req.url = '/venueApp';
+//   next();
+// };
+
+// app.use(checkUserType);
+app.use('/bandApp', express.static(paths.BAND_DIST_DIR));
+app.use('/venueApp', express.static(paths.VENUE_DIST_DIR));
 
 app.get('/users/:id', controllers.getUser);
 

@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: 1,
+      userId: 2,
       type: '',
       name: '',
       link: '',
@@ -17,10 +17,6 @@ class App extends Component {
       posts: [],
       selectedNavButton: '',
       page: '',
-      postImage: '',
-      postLocation: '',
-      postDate: '',
-      postDescription: '',
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handleAppState = this.handleAppState.bind(this);
@@ -68,7 +64,6 @@ class App extends Component {
         page: ''
       })
     } else {
-      console.log('hey')
       document.getElementById('NavProfileButton').classList.add('SelectedNavButton')  
       this.setState({
         selectedNavButton: e.target.id
