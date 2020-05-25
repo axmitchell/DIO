@@ -7,8 +7,8 @@ const Nav = props => {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SHOP</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={props.handleNavButtonClick}>EDIT</button>
-          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={props.handleNavButtonClick}>DELETE</button>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('Edit Profile')}>EDIT</button>
+          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('Delete Profile')}>DELETE</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={props.handleNavButtonClick}>{'< - - -'}</button>
         </div>
       )
