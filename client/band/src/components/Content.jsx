@@ -6,7 +6,7 @@ import Users from './Users.jsx';
 import BandPostPage from './BandPostPage.jsx';
 
 const Content = props => {
-  const { selectedNavButton, userInfo, page, handleAppState } = props;
+  const { selectedNavButton, userInfo, page, handleAppState, handlePostFormChange, postInfo } = props;
   let content
   switch (selectedNavButton) {
     case '':
@@ -16,7 +16,7 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-      content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
+      content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo}/>
       break;
     case 'NavSurfButton':
       content = <PostGallery/>

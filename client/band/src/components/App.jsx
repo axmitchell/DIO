@@ -16,9 +16,16 @@ class App extends Component {
       posts: [],
       selectedNavButton: '',
       page: '',
+      postPhoto: '',
+      postLocation: '',
+      postDate: '',
+      postDescription: ''
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handleAppState = this.handleAppState.bind(this);
+    this.handlePostFormChange = this.handlePostFormChange.bind(this);
+    this.handlePostViewState = this.handlePostViewState.bind(this);
+    this.handlePostSubmit = this.handlePostSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -67,13 +74,63 @@ class App extends Component {
     }
   }
 
+  handlePostFormChange({ target }) {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    })
+  }
+
+  handlePostViewState(property) {
+    const { photo, location, date, description } = property;
+    this.setState({
+      postPhoto: photo,
+      postLocation: location,
+      postDate: date,
+      postDescription: description,
+    })
+  }
+
+  handlePostSubmit(e) {
+    e.preventDefault()
+    const { postPhoto, postLocation, postDate, postDescription } = this.state;
+    if (postPhoto && postLocation && postDate && postDescription) {
+      let convertedDate = new Date(postDate.slice(0,6) + '20' + postDate.slice(6,8));
+      const bandPost = {
+        userId: Number(this.state.userId),
+        name: this.state.name,
+        link: this.state.link,
+        photo: postPhoto,
+        location: postLocation,
+        date: convertedDate,
+        description: postDescription,
+      }
+      axios.post('/sets', bandPost) 
+        .then(console.log)
+        .catch(console.log)
+      axios.get(`/sets/:${Number(this.state.userId)}`)
+        .then(res => this.setState({
+          posts: res.data
+        }))
+        .catch(console.log);
+      this.setState = {
+        postPhoto: '',
+        postLocation: '',
+        postDate: '',
+        postDescription: '',
+        page: '',
+      }
+    }
+  }
+
   render() {
-    const { userId, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
+    const { userId, name, link, location, about, photo, posts, selectedNavButton, page, postPhoto, postDescription, postDate, postLocation } = this.state;
     const userInfo = { userId, name, link, location, about, photo, posts }
+    const postInfo = { postPhoto, postDescription, postDate, postLocation }
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState}/>
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo}/>
       </div>
     )
   }
