@@ -78,11 +78,11 @@ class BandPostPage extends Component {
       )
     } else if (this.props.page === 'BandPost') {
       return (
-        <BandPost post={this.state}/>
+        <BandPost post={this.props.postInfo}/>
       )
     } else if (this.props.page === 'BandPostPreview') {
       return (
-        <BandPostPreview userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} state={this.state} handlePostSubmit={this.handlePostSubmit}/>
+        <BandPostPreview userInfo={this.props.userInfo} postInfo={this.props.postInfo}/>
       )
     } else {
       return (
