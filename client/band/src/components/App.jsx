@@ -8,7 +8,6 @@ class App extends Component {
     super(props);
     this.state = {
       userId: 1,
-      type: '',
       name: '',
       link: '',
       location: '',
@@ -25,18 +24,15 @@ class App extends Component {
   componentDidMount() {
     axios.get(`/users/${this.state.userId}`)
       .then(res => {
-        const { name, link, location, about, photo, type } = res.data;
+        const { name, link, location, about, photo } = res.data;
         this.setState({
           name,
           link,
           location,
           about,
           photo,
-          type,
         })
-        let postRoute
-        type === 'band' ? postRoute = 'sets' : postRoute = 'shows'
-        axios.get(`/${postRoute}/${this.state.userId}`)
+        axios.get(`/sets/${this.state.userId}`)
           .then(res => {
             res.data.forEach(post => {
               post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
@@ -72,8 +68,8 @@ class App extends Component {
   }
 
   render() {
-    const { userId, name, link, location, about, photo, posts, selectedNavButton, page, type } = this.state;
-    const userInfo = { userId, name, link, location, about, photo, posts, type }
+    const { userId, name, link, location, about, photo, posts, selectedNavButton, page } = this.state;
+    const userInfo = { userId, name, link, location, about, photo, posts }
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState}/>

@@ -16,15 +16,10 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-      if (userInfo.type === 'band') {
-        content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
-
-      } else if (userInfo.type === 'venue') {
-        content =  <VenuePostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
-      }
+      content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
       break;
     case 'NavSurfButton':
-      content = <PostGallery type={props.userInfo.type}/>
+      content = <PostGallery/>
       break;
     case 'NavSearchButton':
       content = <Users />

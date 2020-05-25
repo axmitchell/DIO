@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 // };
 
 // app.use(checkUserType);
-app.use('/bandApp', express.static(paths.BAND_DIST_DIR));
-app.use('/venueApp', express.static(paths.VENUE_DIST_DIR));
+app.use(express.static(paths.BAND_DIST_DIR));
+// app.use(express.static(paths.VENUE_DIST_DIR));
 
 app.get('/users/:id', controllers.getUser);
 

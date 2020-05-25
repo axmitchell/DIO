@@ -13,10 +13,9 @@ const Nav = props => {
         </div>
       )
     } else if (props.appState.selectedNavButton === 'NavPostButton') {
-      let postPage
-      props.appState.type === 'venue' ? postPage = 'VenuePostForm' : postPage = 'BandPostForm'
+      let postPage = 'BandPostForm';
       if (props.appState.page.indexOf('PostForm') !== -1) {
-        props.appState.page === 'BandPostForm' ? postPage = 'BandPostPreview' : postPage = 'VenuePostPreview'
+        postPage = 'BandPostPreview'
         return (
           <div id='Nav'>
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
@@ -26,11 +25,10 @@ const Nav = props => {
           </div>
         )
       } else if (props.appState.page.indexOf('PostPreview') !== -1) {
-        props.appState.page === 'BandPostPreview' ? postPage = 'BandPostForm' : postPage = 'VenuePostForm'
         return (
           <div id='Nav'>
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
-            <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => props.handleAppState({page: postPage})}>EDIT</button>
+            <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => props.handleAppState({page: 'BandPostForm'})}>EDIT</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={props.handleNavButtonClick}>SAVE</button>
             <button id='NavSearchButton' className='NavButtons backButton' onClick={props.handleNavButtonClick}>{'< - - -'}</button>
           </div>
