@@ -21,7 +21,7 @@ const Nav = props => {
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => props.handleAppState({page: postPage})}>PREVIEW</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={props.handlePostSubmit}>SAVE</button>
-            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => props.handleAppState({page: ''})}>{'< - - - - - -'}</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => props.handleAppState({page: ''})}>{'< - - - < - - -'}</button>
           </div>
         )
       } else if (props.appState.page.indexOf('PostPreview') !== -1) {
@@ -30,7 +30,7 @@ const Nav = props => {
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => props.handleAppState({page: 'BandPostForm'})}>EDIT</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={props.handlePostSubmit}>SAVE</button>
-            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => props.handleAppState({page: ''})}>{'< - - - - - -'}</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => props.handleAppState({page: ''})}>{'< - - - < - - -'}</button>
           </div>
         )
       } else if (props.appState.page === 'BandPost') {
@@ -39,7 +39,7 @@ const Nav = props => {
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('edit post')}>EDIT</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('delete post')}>DELETE</button>
-            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => props.handleAppState({page: ''})}>{'< - - - - - -'}</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => props.handleAppState({page: ''})}>{'< - - - < - - -'}</button>
           </div>
         )
       }
