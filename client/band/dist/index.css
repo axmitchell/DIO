@@ -205,6 +205,7 @@ input, textarea {
   display: flex;
   flex-wrap: wrap;
   width: 90%;
+  height: 80%;
   max-height: 80vh;
   justify-content: start;
   align-items: start;
