@@ -6,7 +6,7 @@ import Users from './Users.jsx';
 import VenuePostPage from './VenuePostPage.jsx';
 
 const Content = props => {
-  const { selectedNavButton, userInfo, page, handleAppState } = props;
+  const { selectedNavButton, userInfo, page, handleAppState, handlePostFormChange, postInfo, handlePostSubmit, handlePostViewState } = props;
   let content
   switch (selectedNavButton) {
     case '':
@@ -16,15 +16,10 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-      if (userInfo.type === 'band') {
-        content = <BandPostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
-
-      } else if (userInfo.type === 'venue') {
-        content =  <VenuePostPage userInfo={userInfo} handleAppState={handleAppState} page={page}/>
-      }
+      content = <VenuePostPage userInfo={userInfo} handleAppState={handleAppState} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo} handlePostSubmit={handlePostSubmit} handlePostViewState={handlePostViewState}/>
       break;
     case 'NavSurfButton':
-      content = <PostGallery type={props.userInfo.type}/>
+      content = <PostGallery/>
       break;
     case 'NavSearchButton':
       content = <Users />

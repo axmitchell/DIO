@@ -19,11 +19,7 @@ class PostGallery extends Component {
   }
 
   componentDidMount() {
-    const { type } = this.props;
-    let route
-    type === 'band' ? route = 'shows' : route = 'sets';
-    console.log(route);
-    axios.get(`/${route}`)
+    axios.get(`/sets`)
       .then(res => {
         res.data.forEach(post => {
           post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
@@ -70,7 +66,6 @@ class PostGallery extends Component {
   }
 
   render() {
-    const { type } = this.props;
     const { photo, name, location, link, date, description } = this.state;
     let currentPost = { photo, name, location, link, date, description }
     if (this.state.otherUserPosts.length === 0) {
@@ -79,16 +74,10 @@ class PostGallery extends Component {
           NO USER POSTS JUST YET
         </div>
       )
-    } else if (type === 'band') {
+    } else {
       return (
         <div id='PostGallery' className='Content'>
           <SurfPost key={currentPost.link} post={currentPost} handlePostGalleryState={this.handlePostGalleryState}/>
-        </div>
-      )
-    } else if (type === 'venue') {
-      return (
-        <div id='PostGallery' className='Content'>
-            <SurfPost key={currentPost.link} post={currentPost} handlePostGalleryState={this.handlePostGalleryState}/>
         </div>
       )
     }
