@@ -54,6 +54,7 @@ input, textarea {
   font-size: 35px;
 }
 
+
 .ChangedNavProfile {
   display: flex;
   width: 80%;
@@ -66,6 +67,12 @@ input, textarea {
   /* opacity: 0.9; */
   align-items: center;
   text-align: center;
+}
+
+.mainButtons {
+  border-left: 5px double green;
+  border-top: 5px double green;
+  border-bottom: 5px double green;
 }
 
 .backButton {
