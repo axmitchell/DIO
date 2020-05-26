@@ -28,7 +28,7 @@ app.use(express.static(paths.BAND_DIST_DIR));
 
 app.get('/users/:id', controllers.getUser);
 
-app.get('/sets', controllers.getSets);
+// app.get('/sets', controllers.getSets);
 app.get('/sets/:userId', controllers.getSets);
 
 app.get('/shows', controllers.getShows);

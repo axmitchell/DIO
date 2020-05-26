@@ -1,15 +1,17 @@
 import React from 'react';
 
 const BandPost = props => {
+  const { postInfo } = props;
+  const { postPhoto, postLocation, postDate, postDescription } = postInfo;
   return (
     <div id='BandPost'>
       <div id='BandPostInfo' className='Content'>
-        <img src={props.post.image}></img>
+        <img src={postPhoto}></img>
         <div id='BandPostMainInfo'>
-          <div id='BandPostLocation'>{props.post.location}</div>
-          <div id='BandPostDate'>{props.post.date}</div>
+          <div id='BandPostLocation'>{postLocation}</div>
+          <div id='BandPostDate'>{postDate}</div>
         </div>
-        <div id='BandPostDescription'>{props.post.description}</div>
+        <div id='BandPostDescription'>{postDescription}</div>
       </div>
       <div id='BandPostCollabsList' className='Content'>
         COLLAB THREADS GO HERE

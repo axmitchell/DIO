@@ -8,7 +8,7 @@ getUser = (req, res) => {
 
 getSets = (req, res) => {
   if (req.params.userId) {
-    db.Set.findAll({where: {userId: Number(req.params.userId)}})
+    db.Set.findAll({where: {userId: req.params.userId }})
       .then(data => res.send(data))
       .catch(err => res.status(500).send(err));
   } else {
