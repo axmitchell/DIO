@@ -69,9 +69,9 @@ input, textarea {
 }
 
 .mainButtons {
-  border-left: 5px double green;
-  border-top: 5px double green;
-  border-bottom: 5px double green;
+  border-left: 4px double green;
+  border-top: 4px double green;
+  border-bottom: 4px double green;
 }
 
 .backButton {
