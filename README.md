@@ -35,20 +35,21 @@ __`nodemon` is required for the script, `boot-dev`, and is not included in the p
 
 `seed`:
 
-Creates a postgres database `DIO`
+Creates a postgres database, `DIO`
 
 Clears tables in the database.
 
-Seeds tables, `users`
+Seeds tables, `users`,
 with a band user and venue user
 
-Seeds tables `sets` and `shows`
+Seeds tables, `sets` and `shows`,
 with two sets and two shows
 
 ---
 
 ## Switch User Type
 Append `/band` to the url to connect as the seeded band user
+
 Append `/venue` to the url to connect as the seeded venue user
 
 ---
