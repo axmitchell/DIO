@@ -3,16 +3,7 @@ import React from 'react';
 const Nav = props => {
   let profileButtonText = props.appState.name.toUpperCase();
   if (props.appState.selectedNavButton !== '') {
-    if (props.appState.page === 'CollabPage') {
-      return (
-        <div id='Nav'>
-          <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('send message')}>SEND</button>
-          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('????')}>????</button>
-          <button id='NavSearchButton' className='NavButtons backButton' onClick={props.handleNavButtonClick}>{'< - - -'}</button>
-        </div>
-      )
-    } else if (props.appState.selectedNavButton === 'NavProfileButton') {
+    if (props.appState.selectedNavButton === 'NavProfileButton') {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SHOP</div>
@@ -64,7 +55,7 @@ const Nav = props => {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => props.handleAppState({page: 'CollabPage'})}>REPLY</button>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('reply to post')}>REPLY</button>
           <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={props.handleNavButtonClick}>{'< - - -'}</button>
         </div>
