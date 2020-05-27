@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/model.js');
 const controllers = require('./controllers.js');
-const chosenDistDir = require('./connection.js');
 
 const app = express();
 
