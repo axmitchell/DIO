@@ -107,6 +107,7 @@ class App extends Component {
       let convertedDate = new Date(postDate.slice(0,6) + '20' + postDate.slice(6,8));
       const bandPost = {
         userId: Number(this.state.userId),
+        userLocation: this.state.location,
         name: this.state.name,
         link: this.state.link,
         photo: postPhoto,

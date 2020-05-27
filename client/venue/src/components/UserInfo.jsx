@@ -9,7 +9,7 @@ const UserInfo = props => {
       <div id='UserInfoMain'>
         <div id='UserInfoName'>{props.userInfo.name}</div>
         <div id='UserInfoLocation'>({props.userInfo.location})</div>
-        <div id='UserInfoLink'><a href={props.userInfo.link} target="_blank">venuecamp</a></div>
+        <div id='UserInfoLink'><a href={props.userInfo.link} target="_blank">link</a></div>
       </div>
       <div id='UserInfoAbout'>{props.userInfo.about}</div>
       {/* <button id='UserInfoEditButton'>edit</button> */}

@@ -51,6 +51,9 @@ const Set = sequelize.define('sets', {
   location: {
     type: Sequelize.STRING,
   },
+  userLocation: {
+    type: Sequelize.STRING,
+  },
   date: {
     type: Sequelize.DATE,
   },

@@ -13,10 +13,11 @@ button {
   cursor: pointer;
 }
 
-/* button:hover {
-background: rgb(3, 71, 3);
-color: black;
-} */
+button:hover {
+  background: rgb(3, 71, 3);
+  color: black;
+  border-color: black;
+}
 
 button:focus {outline:0;}
 

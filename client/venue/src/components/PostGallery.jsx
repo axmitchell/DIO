@@ -11,6 +11,7 @@ class PostGallery extends Component {
       photo: '', 
       name: '', 
       location: '', 
+      userLocation: '',
       link: '', 
       date: '', 
       description: '',
@@ -29,6 +30,7 @@ class PostGallery extends Component {
           photo: res.data[0].photo, 
           name: res.data[0].name, 
           location: res.data[0].location, 
+          userLocation: res.data[0].userLocation,
           link: res.data[0].link, 
           date: res.data[0].date, 
           description: res.data[0].description,
@@ -47,6 +49,7 @@ class PostGallery extends Component {
         photo: otherUserPosts[nextPost].photo, 
         name: otherUserPosts[nextPost].name, 
         location: otherUserPosts[nextPost].location, 
+        userLocation: otherUserPosts[nextPost].userLocation,
         link: otherUserPosts[nextPost].link, 
         date: otherUserPosts[nextPost].date, 
         description: otherUserPosts[nextPost].description,
@@ -58,6 +61,7 @@ class PostGallery extends Component {
         photo: otherUserPosts[nextPost].photo, 
         name: otherUserPosts[nextPost].name, 
         location: otherUserPosts[nextPost].location, 
+        userLocation: otherUserPosts[nextPost].userLocation,
         link: otherUserPosts[nextPost].link, 
         date: otherUserPosts[nextPost].date, 
         description: otherUserPosts[nextPost].description,
@@ -66,8 +70,8 @@ class PostGallery extends Component {
   }
 
   render() {
-    const { photo, name, location, link, date, description } = this.state;
-    let currentPost = { photo, name, location, link, date, description }
+    const { photo, name, location, userLocation, link, date, description } = this.state;
+    let currentPost = { photo, name, location, userLocation, link, date, description }
     if (this.state.otherUserPosts.length === 0) {
       return (
         <div id='PostGallery' className='Content' style={{width: '90%', height: '80%'}}>

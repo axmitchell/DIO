@@ -64,8 +64,8 @@ const Nav = props => {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE WEB</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={props.handleNavButtonClick}>????</button>
-          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={props.handleNavButtonClick}>FILTER</button>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('?????')}>????</button>
+          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={props.handleNavButtonClick}>{'< - - -'}</button>
         </div>
       )

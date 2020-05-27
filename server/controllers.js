@@ -34,6 +34,7 @@ addSets = (req, res) => {
   db.Set.create(req.body)
     .then(() => res.send(201))
     .catch((err) => {
+      console.log(err);
       res.status(500).send(err);
     });
 };
