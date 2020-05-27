@@ -1,6 +1,8 @@
 # DIO
 Centralized platform for indie bands and DIY venues to connect and collaborate.
 
+![](https://i.imgur.com/oFGpC0n.png)
+
 ## Getting Started
 
 This service is supported on Node v12.16.1
