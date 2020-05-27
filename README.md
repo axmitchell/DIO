@@ -14,6 +14,8 @@ Install package dependencies.
 Install and start postgresql database if not already installed.
 https://www.postgresql.org/download/
 
+Fill out .envTemplate and rename to .env
+
 ---
 ## scripts
 
