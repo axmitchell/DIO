@@ -46,3 +46,9 @@ Seeds tables `sets` and `shows`
 with two sets and two shows
 
 ---
+
+## Switch User Type
+Append `/band` to the url to connect as the seeded band user
+Append `/venue` to the url to connect as the seeded venue user
+
+---

@@ -9,8 +9,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(paths.BAND_DIST_DIR));
-// app.use(express.static(paths.VENUE_DIST_DIR));
+app.use('/band', express.static(paths.BAND_DIST_DIR));
+app.use('/venue', express.static(paths.VENUE_DIST_DIR));
 
 app.get('/users/:id', controllers.getUser);
 
@@ -19,7 +19,6 @@ app.get('/sets/:userId', controllers.getSets);
 
 app.get('/shows', controllers.getShows);
 app.get('/shows/:userId', controllers.getShows);
-
 
 app.post('/sets', controllers.addSets);
 app.post('/shows', controllers.addShows);
