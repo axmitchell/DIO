@@ -44,29 +44,19 @@ class PostGallery extends Component {
     let nextPost;
     if (e.target.id === 'NextSet' && selectedPost < otherUserPosts.length - 1) {
       nextPost = selectedPost + 1;
-      this.setState({
-        selectedPost: nextPost,
-        photo: otherUserPosts[nextPost].photo, 
-        name: otherUserPosts[nextPost].name, 
-        location: otherUserPosts[nextPost].location, 
-        userLocation: otherUserPosts[nextPost].userLocation,
-        link: otherUserPosts[nextPost].link, 
-        date: otherUserPosts[nextPost].date, 
-        description: otherUserPosts[nextPost].description,
-      })
     } else if (e.target.id === 'PreviousSet' && selectedPost > 0) {
       nextPost = selectedPost - 1;
-      this.setState({
-        selectedPost: nextPost,
-        photo: otherUserPosts[nextPost].photo, 
-        name: otherUserPosts[nextPost].name, 
-        location: otherUserPosts[nextPost].location, 
-        userLocation: otherUserPosts[nextPost].userLocation,
-        link: otherUserPosts[nextPost].link, 
-        date: otherUserPosts[nextPost].date, 
-        description: otherUserPosts[nextPost].description,
-      })
     }
+    this.setState({
+      selectedPost: nextPost,
+      photo: otherUserPosts[nextPost].photo, 
+      name: otherUserPosts[nextPost].name, 
+      location: otherUserPosts[nextPost].location, 
+      userLocation: otherUserPosts[nextPost].userLocation,
+      link: otherUserPosts[nextPost].link, 
+      date: otherUserPosts[nextPost].date, 
+      description: otherUserPosts[nextPost].description,
+    })
   }
 
   render() {

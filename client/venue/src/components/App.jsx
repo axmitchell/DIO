@@ -29,23 +29,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/users/${this.state.userId}`)
-      .then(res => {
-        const { name, link, location, about, photo } = res.data;
-        this.setState({
-          name,
-          link,
-          location,
-          about,
-          photo,
-        })
-        axios.get(`/shows/${this.state.userId}`)
-          .then(res => {
-            res.data.forEach(post => {
+    const { userId } = this.state;
+    axios.get(`/users/${userId}`)
+      .then(({ data }) => {
+        this.setState(data)
+        axios.get(`/shows/${userId}`)
+          .then(({ data }) => {
+            data.forEach(post => {
               post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
             })
             this.setState({
-              posts: res.data
+              posts: data
             })
           })
           .catch(console.log)
