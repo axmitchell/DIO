@@ -1,7 +1,7 @@
 const db = require('../database/model.js');
 
 getUser = (req, res) => {
-  db.User.findOne({where: {id: Number(req.params.id)}})
+  db.User.findOne({where: {id: req.params.id}})
     .then(data => res.send(data))
     .catch(err => res.status(500).send(err));
 };
@@ -20,7 +20,7 @@ getSets = (req, res) => {
 
 getShows = (req, res) => {
   if (req.params.userId) {
-    db.Show.findAll({where: {userId: Number(req.params.userId)}})
+    db.Show.findAll({where: {userId: req.params.userId}})
       .then(data => res.send(data))
       .catch(err => res.status(500).send(err));
   } else {
@@ -39,6 +39,15 @@ addSets = (req, res) => {
     });
 };
 
+deleteSet = (req, res) => {
+  db.Set.destroy({ where: { id: req.params.postId } })
+    .then(() => res.send('post deleted'))
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+};
+
 addShows = (req, res) => {
   db.Show.create(req.body)
     .then(() => res.send(201))
@@ -52,5 +61,6 @@ module.exports = {
   getShows,
   getSets,
   addSets,
+  deleteSet,
   addShows
 };

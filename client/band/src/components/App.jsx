@@ -136,7 +136,7 @@ class App extends Component {
 
   }
   handlePostDelete() {
-    axios.delete(`/sets/:${this.state.postId}`)
+    axios.delete(`/sets/${Number(this.state.postId)}`)
       .then(() => console.log('set deleted'))
       .catch(console.log);
     this.setState({
