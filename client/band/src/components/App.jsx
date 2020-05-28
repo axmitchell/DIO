@@ -28,6 +28,7 @@ class App extends Component {
     this.handlePostViewState = this.handlePostViewState.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handlePostDelete = this.handlePostDelete.bind(this);
+    this.getSets = this.getSets.bind(this);
   }
 
   componentDidMount() {
@@ -114,34 +115,36 @@ class App extends Component {
       }
       axios.post('/sets', bandPost) 
         .then(
-          axios.get(`/sets/${Number(this.state.userId)}`)
-            .then(res => {
-              res.data.forEach(post => {
-                post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`;
-              })
-              this.setState({
-                posts: res.data,
-                postPhoto: '',
-                postLocation: '',
-                postDate: '',
-                postDescription: '',
-                selectedNavButton: 'NavPostButton',
-                page: ''
-              })
-            })
-            .catch(console.log)
+          this.getSets()
         )
         .catch(console.log)
     }
-
   }
+
+  getSets() {
+    axios.get(`/sets/${Number(this.state.userId)}`)
+    .then(res => {
+      res.data.forEach(post => {
+        post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`;
+      })
+      this.setState({
+        posts: res.data,
+        postPhoto: '',
+        postLocation: '',
+        postDate: '',
+        postDescription: '',
+        selectedNavButton: 'NavPostButton',
+        page: ''
+      })
+    })
+    .catch(console.log)
+  }
+
   handlePostDelete() {
     axios.delete(`/sets/${Number(this.state.postId)}`)
       .then(() => console.log('set deleted'))
       .catch(console.log);
-    this.setState({
-      page: ''
-    })
+    this.getSets()
   }
 
   render() {
