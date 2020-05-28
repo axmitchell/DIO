@@ -1,9 +1,9 @@
 import React from 'react';
 
 const VenuePostThumbnail = props => {
-  let { post, handlePage, handlePostViewState } = props;
+  let { post, handlePage, handlePostView } = props;
   return (
-    <div className='VenuePostThumbnail' onClick={() => { handlePostViewState(post); handlePage('VenuePost') }}>
+    <div className='VenuePostThumbnail' onClick={() => { handlePostView(post); handlePage('VenuePost') }}>
       <div>{post.location}</div>
       <div>{post.date}</div> 
     </div>

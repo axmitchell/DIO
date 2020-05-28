@@ -86,7 +86,7 @@ class VenuePostPage extends Component {
       )
     } else {
       return (
-        <VenuePostGallery posts={this.props.userInfo.posts} handlePage={this.props.handlePage} handlePostViewState={this.props.handlePostViewState}/>
+        <VenuePostGallery posts={this.props.userInfo.posts} handlePage={this.props.handlePage} handlePostView={this.props.handlePostView}/>
       ) 
     }
   }

@@ -25,7 +25,7 @@ class App extends Component {
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
     this.handlePostFormChange = this.handlePostFormChange.bind(this);
-    this.handlePostViewState = this.handlePostViewState.bind(this);
+    this.handlePostView = this.handlePostView.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.getSets = this.getSets.bind(this);
@@ -57,8 +57,8 @@ class App extends Component {
     }
   }
 
-  handlePostViewState(property) {
-    const { photo, location, date, description, id } = property;
+  handlePostView(post) {
+    const { photo, location, date, description, id } = post;
     this.setState({
       postId: id,
       postPhoto: photo,
@@ -156,7 +156,7 @@ class App extends Component {
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} />
       </div>
     )
   }

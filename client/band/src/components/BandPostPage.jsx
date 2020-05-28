@@ -86,7 +86,7 @@ class BandPostPage extends Component {
       )
     } else {
       return (
-        <BandPostGallery posts={this.props.userInfo.posts} handlePage={this.props.handlePage} handlePostViewState={this.props.handlePostViewState}/>
+        <BandPostGallery posts={this.props.userInfo.posts} handlePage={this.props.handlePage} handlePostView={this.props.handlePostView}/>
       ) 
     }
   }
