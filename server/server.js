@@ -1,8 +1,8 @@
-const paths = require('../PATHS.js');
+const paths = require('./utils/PATHS.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/model.js');
-const controllers = require('./controllers.js');
+const controllers = require('./utils/controllers.js');
 
 const app = express();
 

@@ -1,14 +1,13 @@
 const path = require('path');
-const paths = require('./PATHS.js');
 
 module.exports = {
   entry: {
-    'band/dist/bundle': `${paths.BAND_SRC_DIR}/index.jsx`, 
-    'venue/dist/bundle': `${paths.VENUE_SRC_DIR}/index.jsx`,
+    'band/dist/bundle': path.resolve(__dirname,'band/src/index.jsx'), 
+    'venue/dist/bundle': path.resolve(__dirname,'venue/src/index.jsx'),
   },
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, 'client'),
+    path: path.resolve(__dirname),
     filename: '[name].js'
   },
   module: {

@@ -1,4 +1,4 @@
-const db = require('../database/model.js');
+const db = require('../../database/model.js');
 
 getUser = (req, res) => {
   db.User.findOne({where: {id: req.params.id}})
