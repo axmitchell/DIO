@@ -3,6 +3,12 @@ Centralized platform for indie bands and DIY venues to connect and collaborate.
 
 ![](https://i.imgur.com/oFGpC0n.png)
 
+## Table of Contents
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+* [API Spec](#api-spec)
+* [Misc](#misc)
+
 ## Built With
 * [Node](https://nodejs.org/en/docs/) - For the runtime environment
 * [React](https://reactjs.org/docs/getting-started.html) - For the front end
@@ -25,7 +31,7 @@ Install and start postgresql database if not already installed:
 Fill out .envTemplate and rename to .env
 
 ---
-## scripts
+### scripts
 
 `build`:
 
@@ -55,7 +61,7 @@ with two sets and two shows
 
 ---
 
-## Switch User Type
+### Switching User Types
 Append `/band` to the url to connect as the seeded band user
 
 Append `/venue` to the url to connect as the seeded venue user
@@ -198,4 +204,11 @@ Append `/venue` to the url to connect as the seeded venue user
 ```
 ---
 
+## Misc
+
+The repo includes mockups/visual-brainstorms for the app.
+
+These can be open in the browser at [https://app.diagrams.net/](https://app.diagrams.net/) or with the application draw.io: [https://drawio-app.com/](https://drawio-app.com/)
+
+These files may not reflect the current state of the app but I do try to keep them updated. 
 
