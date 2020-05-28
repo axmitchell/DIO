@@ -55,11 +55,11 @@ class BandPostPage extends Component {
   //       .then(console.log)
   //       .catch(console.log)
   //     axios.get(`/sets/:${Number(this.props.userInfo.userId)}`)
-  //       .then(res => this.props.handleAppState({posts: res.data}))
+  //       .then(res => this.props.handlePage({posts: res.data}))
   //       .catch(console.log);
   //     this.clearState()
   //     }
-  //   this.props.handleAppState({page: ''})
+  //   this.props.handlePage('')
   // }
 
   // clearState() {
@@ -74,7 +74,7 @@ class BandPostPage extends Component {
   render() {
     if (this.props.page === 'BandPostForm') {
       return(
-        <BandPostForm userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} postInfo={this.props.postInfo} handlePostFormChange={this.props.handlePostFormChange}/>
+        <BandPostForm userInfo={this.props.userInfo} postInfo={this.props.postInfo} handlePostFormChange={this.props.handlePostFormChange}/>
       )
     } else if (this.props.page === 'BandPost' || this.props.page === 'PostDrop') {
       return (
@@ -86,7 +86,7 @@ class BandPostPage extends Component {
       )
     } else {
       return (
-        <BandPostGallery posts={this.props.userInfo.posts} handleAppState={this.props.handleAppState} handlePostViewState={this.props.handlePostViewState}/>
+        <BandPostGallery posts={this.props.userInfo.posts} handlePage={this.props.handlePage} handlePostViewState={this.props.handlePostViewState}/>
       ) 
     }
   }

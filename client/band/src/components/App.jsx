@@ -23,12 +23,13 @@ class App extends Component {
       postId: ''
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
-    this.handleAppState = this.handleAppState.bind(this);
+    this.handlePage = this.handlePage.bind(this);
     this.handlePostFormChange = this.handlePostFormChange.bind(this);
     this.handlePostViewState = this.handlePostViewState.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.getSets = this.getSets.bind(this);
+    this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
   }
 
   componentDidMount() {
@@ -36,31 +37,35 @@ class App extends Component {
     axios.get(`/users/${userId}`)
       .then(({ data }) => {
         this.setState(data)
-        axios.get(`/sets/${userId}`)
-          .then(({ data }) => {
-            data.forEach(post => {
-              post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
-            })
-            this.setState({
-              posts: data
-            })
-          })
-          .catch(console.log)
+        this.getSets()
       })
       .catch(console.log)
   }
 
-  handleAppState(propertyObject) {
-    if (propertyObject.page === '') {
-      propertyObject = {
+  handlePage(page) {
+    if (page === '') {
+      this.setState({
         page: '',
+        postId: '',
         postPhoto: '',
         postLocation: '',
         postDate: '',
         postDescription: ''
-      };
-    } 
-    this.setState(propertyObject)
+      });
+    } else {
+      this.setState({ page })
+    }
+  }
+
+  handlePostViewState(property) {
+    const { photo, location, date, description, id } = property;
+    this.setState({
+      postId: id,
+      postPhoto: photo,
+      postLocation: location,
+      postDate: date,
+      postDescription: description,
+    })
   }
 
   handleNavButtonClick(e) {
@@ -87,17 +92,6 @@ class App extends Component {
     })
   }
 
-  handlePostViewState(property) {
-    const { photo, location, date, description, id } = property;
-    this.setState({
-      postId: id,
-      postPhoto: photo,
-      postLocation: location,
-      postDate: date,
-      postDescription: description,
-    })
-  }
-
   handlePostSubmit(e) {
     e.preventDefault()
     const { postPhoto, postLocation, postDate, postDescription } = this.state;
@@ -114,7 +108,10 @@ class App extends Component {
         description: postDescription,
       }
       axios.post('/sets', bandPost) 
-        .then(() => this.getSets())
+        .then(() => {
+          this.getSets();
+          this.clearStateForPostPage();
+        })
         .catch(console.log)
     }
   }
@@ -127,12 +124,6 @@ class App extends Component {
       })
       this.setState({
         posts: res.data,
-        postPhoto: '',
-        postLocation: '',
-        postDate: '',
-        postDescription: '',
-        selectedNavButton: 'NavPostButton',
-        page: ''
       })
     })
     .catch(console.log)
@@ -140,8 +131,22 @@ class App extends Component {
 
   handlePostDelete() {
     axios.delete(`/sets/${Number(this.state.postId)}`)
-      .then(() => this.getSets())
+      .then(() => {
+        this.getSets(); 
+        this.clearStateForPostPage()
+      })
       .catch(console.log);
+  }
+
+  clearStateForPostPage() {
+    this.setState({
+      postPhoto: '',
+      postLocation: '',
+      postDate: '',
+      postDescription: '',
+      selectedNavButton: 'NavPostButton',
+      page: ''
+    })
   }
 
   render() {
@@ -150,8 +155,8 @@ class App extends Component {
     const postInfo = { postPhoto, postDescription, postDate, postLocation }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
       </div>
     )
   }

@@ -23,7 +23,7 @@ class App extends Component {
       postId: ''
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
-    this.handleAppState = this.handleAppState.bind(this);
+    this.handlePage = this.handlePage.bind(this);
     this.handlePostFormChange = this.handlePostFormChange.bind(this);
     this.handlePostViewState = this.handlePostViewState.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
@@ -50,17 +50,19 @@ class App extends Component {
       .catch(console.log)
   }
 
-  handleAppState(propertyObject) {
-    if (propertyObject.page === '') {
-      propertyObject = {
+  handlePage(page) {
+    if (page === '') {
+      this.setState({
         page: '',
+        postId: '',
         postPhoto: '',
         postLocation: '',
         postDate: '',
         postDescription: ''
-      };
-    } 
-    this.setState(propertyObject)
+      });
+    } else {
+      this.setState({ page })
+    }
   }
 
   handleNavButtonClick(e) {
@@ -150,8 +152,8 @@ class App extends Component {
     const postInfo = { postPhoto, postDescription, postDate, postLocation }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
       </div>
     )
   }

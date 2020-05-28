@@ -12,7 +12,7 @@ const BandPostGallery = props => {
     return (
       <div id='BandPostGallery' className='Content'>
         {props.posts.map(post => {
-          return <BandPostThumbnail key={post.id} post={post}  handleAppState={props.handleAppState} handlePostViewState={props.handlePostViewState}/>
+          return <BandPostThumbnail key={post.id} post={post}  handlePage={props.handlePage} handlePostViewState={props.handlePostViewState}/>
         })}
       </div>
     )
