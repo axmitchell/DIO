@@ -11,7 +11,7 @@ const VenuePostPreview = props => {
         <div id='VenuePostFormUserInfo'>
           <div id='VenuePostFormUserInfoName'>{props.userInfo.name}</div>
           <div id='VenuePostFormUserInfoLocation'>({props.userInfo.location})</div>
-          <a id='VenuePostFormUserInfoLink' href={props.userInfo.link} target="_blank">venuecamp</a>
+          <a id='VenuePostFormUserInfoLink' href={props.userInfo.link} target="_blank">link</a>
         </div>
         <div id='VenuePostFormInput'>
           <div id='VenuePostFormInputLocation'>{postLocation}</div>
