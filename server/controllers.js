@@ -48,6 +48,15 @@ deleteSet = (req, res) => {
     });
 };
 
+deleteShow = (req, res) => {
+  db.Show.destroy({ where: { id: req.params.postId } })
+    .then(() => res.send('post deleted'))
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+};
+
 addShows = (req, res) => {
   db.Show.create(req.body)
     .then(() => res.send(201))
@@ -62,5 +71,6 @@ module.exports = {
   getSets,
   addSets,
   deleteSet,
+  deleteShow,
   addShows
 };

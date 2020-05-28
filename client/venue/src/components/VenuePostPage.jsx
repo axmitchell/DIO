@@ -76,7 +76,7 @@ class VenuePostPage extends Component {
       return(
         <VenuePostForm userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} postInfo={this.props.postInfo} handlePostFormChange={this.props.handlePostFormChange}/>
       )
-    } else if (this.props.page === 'VenuePost') {
+    } else if (this.props.page === 'VenuePost' || this.props.page === 'PostDrop') {
       return (
         <VenuePost postInfo={this.props.postInfo}/>
       )

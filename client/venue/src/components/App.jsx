@@ -19,13 +19,16 @@ class App extends Component {
       postPhoto: '',
       postLocation: '',
       postDate: '',
-      postDescription: ''
+      postDescription: '',
+      postId: ''
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handleAppState = this.handleAppState.bind(this);
     this.handlePostFormChange = this.handlePostFormChange.bind(this);
     this.handlePostViewState = this.handlePostViewState.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
+    this.handlePostDelete = this.handlePostDelete.bind(this);
+    this.getShows = this.getShows.bind(this);
   }
 
   componentDidMount() {
@@ -85,8 +88,9 @@ class App extends Component {
   }
 
   handlePostViewState(property) {
-    const { photo, location, date, description } = property;
+    const { photo, location, date, description, id } = property;
     this.setState({
+      postId: id,
       postPhoto: photo,
       postLocation: location,
       postDate: date,
@@ -101,6 +105,7 @@ class App extends Component {
       let convertedDate = new Date(postDate.slice(0,6) + '20' + postDate.slice(6,8));
       const venuePost = {
         userId: Number(this.state.userId),
+        userLocation: this.state.location,
         name: this.state.name,
         link: this.state.link,
         photo: postPhoto,
@@ -110,25 +115,36 @@ class App extends Component {
       }
       axios.post('/shows', venuePost) 
         .then(
-          axios.get(`/shows/${Number(this.state.userId)}`)
-            .then(res => {
-              res.data.forEach(post => {
-                post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`;
-              })
-              this.setState({
-                posts: res.data,
-                postPhoto: '',
-                postLocation: '',
-                postDate: '',
-                postDescription: '',
-                selectedNavButton: 'NavPostButton',
-                page: ''
-              })
-            })
-            .catch(console.log)
+          this.getShows()
         )
         .catch(console.log)
     }
+  }
+
+  getShows() {
+    axios.get(`/shows/${Number(this.state.userId)}`)
+    .then(res => {
+      res.data.forEach(post => {
+        post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`;
+      })
+      this.setState({
+        posts: res.data,
+        postPhoto: '',
+        postLocation: '',
+        postDate: '',
+        postDescription: '',
+        selectedNavButton: 'NavPostButton',
+        page: ''
+      })
+    })
+    .catch(console.log)
+  }
+
+  handlePostDelete() {
+    axios.delete(`/shows/${Number(this.state.postId)}`)
+      .then(() => console.log('set deleted'))
+      .catch(console.log);
+    this.getShows()
   }
 
   render() {
@@ -137,7 +153,7 @@ class App extends Component {
     const postInfo = { postPhoto, postDescription, postDate, postLocation }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState} handlePostSubmit={this.handlePostSubmit}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
         <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
       </div>
     )

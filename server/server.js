@@ -16,12 +16,14 @@ app.get('/users/:id', controllers.getUser);
 
 app.get('/sets', controllers.getSets);
 app.get('/sets/:userId', controllers.getSets);
-app.delete('/sets/:postId', controllers.deleteSet);
 
 app.get('/shows', controllers.getShows);
 app.get('/shows/:userId', controllers.getShows);
 
 app.post('/sets', controllers.addSets);
 app.post('/shows', controllers.addShows);
+
+app.delete('/sets/:postId', controllers.deleteSet);
+app.delete('/shows/:postId', controllers.deleteShow);
 
 module.exports = app; 
