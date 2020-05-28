@@ -32,7 +32,7 @@ getShows = (req, res) => {
 
 addSets = (req, res) => {
   db.Set.create(req.body)
-    .then(() => res.send(201))
+    .then(() => res.send('set added'))
     .catch((err) => {
       console.log(err);
       res.status(500).send(err);
