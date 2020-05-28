@@ -4,7 +4,7 @@ Centralized platform for indie bands and DIY venues to connect and collaborate.
 ![](https://i.imgur.com/oFGpC0n.png)
 
 ## Built With
-
+* [Node](https://nodejs.org/en/docs/) - For the runtime environment
 * [React](https://reactjs.org/docs/getting-started.html) - For the front end
 * [Express](https://expressjs.com/en/guide/routing.html) - For the back end
 * [PostgreSQL](https://www.postgresql.org/docs/) - For the database
