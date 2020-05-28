@@ -76,7 +76,7 @@ class BandPostPage extends Component {
       return(
         <BandPostForm userInfo={this.props.userInfo} handleAppState={this.props.handleAppState} postInfo={this.props.postInfo} handlePostFormChange={this.props.handlePostFormChange}/>
       )
-    } else if (this.props.page === 'BandPost') {
+    } else if (this.props.page === 'BandPost' || this.props.page === 'PostDrop') {
       return (
         <BandPost postInfo={this.props.postInfo}/>
       )

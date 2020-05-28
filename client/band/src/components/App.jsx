@@ -19,13 +19,15 @@ class App extends Component {
       postPhoto: '',
       postLocation: '',
       postDate: '',
-      postDescription: ''
+      postDescription: '',
+      postId: ''
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handleAppState = this.handleAppState.bind(this);
     this.handlePostFormChange = this.handlePostFormChange.bind(this);
     this.handlePostViewState = this.handlePostViewState.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
+    this.handlePostDelete = this.handlePostDelete.bind(this);
   }
 
   componentDidMount() {
@@ -85,8 +87,9 @@ class App extends Component {
   }
 
   handlePostViewState(property) {
-    const { photo, location, date, description } = property;
+    const { photo, location, date, description, id } = property;
     this.setState({
+      postId: id,
       postPhoto: photo,
       postLocation: location,
       postDate: date,
@@ -130,6 +133,15 @@ class App extends Component {
         )
         .catch(console.log)
     }
+
+  }
+  handlePostDelete() {
+    axios.delete(`/sets/:${this.state.postId}`)
+      .then(() => console.log('set deleted'))
+      .catch(console.log);
+    this.setState({
+      page: ''
+    })
   }
 
   render() {
@@ -138,7 +150,7 @@ class App extends Component {
     const postInfo = { postPhoto, postDescription, postDate, postLocation }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState} handlePostSubmit={this.handlePostSubmit}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handleAppState={this.handleAppState} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
         <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handleAppState={this.handleAppState} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostViewState={this.handlePostViewState} />
       </div>
     )
