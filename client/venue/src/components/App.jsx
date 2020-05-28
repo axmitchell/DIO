@@ -114,9 +114,7 @@ class App extends Component {
         description: postDescription,
       }
       axios.post('/shows', venuePost) 
-        .then(
-          this.getShows()
-        )
+        .then(() => this.getShows())
         .catch(console.log)
     }
   }
@@ -142,9 +140,8 @@ class App extends Component {
 
   handlePostDelete() {
     axios.delete(`/shows/${Number(this.state.postId)}`)
-      .then(() => console.log('set deleted'))
+      .then(() => this.getShows())
       .catch(console.log);
-    this.getShows()
   }
 
   render() {

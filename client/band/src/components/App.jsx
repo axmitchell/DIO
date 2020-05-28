@@ -114,9 +114,7 @@ class App extends Component {
         description: postDescription,
       }
       axios.post('/sets', bandPost) 
-        .then(
-          this.getSets()
-        )
+        .then(() => this.getSets())
         .catch(console.log)
     }
   }
@@ -142,9 +140,8 @@ class App extends Component {
 
   handlePostDelete() {
     axios.delete(`/sets/${Number(this.state.postId)}`)
-      .then(() => console.log('set deleted'))
+      .then(() => this.getSets())
       .catch(console.log);
-    this.getSets()
   }
 
   render() {
