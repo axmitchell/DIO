@@ -31,7 +31,7 @@ Builds the webpack bundles of both client modules.
 
 Starts and watches the service server locally.
 
-__`nodemon` is required for the script, `boot-dev`, and is not included in the package dependencies. `nodemon` must be installed separately or globally.__ 
+__`nodemon` is required for the script, `boot`, and is not included in the package dependencies. `nodemon` must be installed separately or globally.__ 
 
 ---
 
