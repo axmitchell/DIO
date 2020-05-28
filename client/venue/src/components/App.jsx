@@ -89,8 +89,8 @@ class App extends Component {
     })
   }
 
-  handlePostView(property) {
-    const { photo, location, date, description, id } = property;
+  handlePostView(post) {
+    const { photo, location, date, description, id } = post;
     this.setState({
       postId: id,
       postPhoto: photo,
