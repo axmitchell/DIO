@@ -21,7 +21,7 @@ const venue = {
 const sets = [
   {
     userId: 1,
-    photo: 'https://i.imgur.com/mszPF8s.jpg',
+    photo: 'https://i.imgur.com/thiF7RE.gif',
     location: 'D.C.',
     date: '10/31/20',
     description: 'Got some spooky tunes for your spooky show. Check us out.',
