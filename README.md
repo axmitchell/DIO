@@ -206,10 +206,9 @@ Append `/venue` to the url to connect as the seeded venue user
 
 ## Misc
 The repo includes mockups/visual-brainstorms for the app:
-* DIO Flowchart.drawio
-* DIO Flowchart v2 (simplified controls).drawio
+* DIO Flowchart.drawio: The original design (more buttons)
+* DIO Flowchart v2 (simplified controls).drawio: The current design (less buttons)
 
 These can be open in the browser at [https://app.diagrams.net/](https://app.diagrams.net/) or with the application draw.io: [https://drawio-app.com/](https://drawio-app.com/)
 
-These files may not reflect the current state of the app but I do try to keep them updated. 
-
+I try to keep the designs updated but they may not always reflect the current state of the app.
