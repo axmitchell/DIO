@@ -7,12 +7,14 @@ getUser = (req, res) => {
 };
 
 getSets = (req, res) => {
+  db.User.hasMany(Set, {foreignKey: 'userId'})
+  db.Set.belongsTo(User, {foreignKey: 'userId'})
   if (req.params.userId) {
-    db.Set.findAll({where: {userId: req.params.userId }})
+    db.Set.findAll({where: {userId: req.params.userId }}, { include : [db.User] })
       .then(data => res.send(data))
       .catch(err => res.status(500).send(err));
   } else {
-    db.Set.findAll()
+    db.Set.findAll({ include : [db.User] })
       .then(data => res.send(data))
       .catch(err => res.status(500).send(err));
   }

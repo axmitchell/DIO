@@ -25,9 +25,6 @@ const sets = [
     location: 'D.C.',
     date: '10/31/20',
     description: 'Got some spooky tunes for your spooky show. Check us out.',
-    name: 'Index',
-    link: 'https://indexxxband.bandcamp.com/',
-    userLocation: 'D.C.'
   },
   {
     userId: 1,
@@ -35,9 +32,6 @@ const sets = [
     location: 'D.C.',
     date: '12/31/20',
     description: 'Who needs some new year music for their new year show?',
-    name: 'Index',
-    link: 'https://indexxxband.bandcamp.com/',
-    userLocation: 'D.C.'
   }
 ];
 
@@ -45,20 +39,14 @@ const shows = [
   {
     userId: 2,
     photo: 'https://i.imgur.com/AHA6wLd.gif',
-    location: 'D.C.',
     date: '10/31/20',
     description: 'Looking for some scary music to make our ears bleed.',
-    name: 'The Void',
-    link: 'https://www.facebook.com/avoidlife/',
   },
   {
     userId: 2,
     photo: 'https://i.imgur.com/5rT9u.gif',
-    location: 'D.C.',
     date: '12/31/20',
     description: 'Let\'s put 2020 behind us with some 2021 music. Who\'s got it?',
-    name: 'The Void',
-    link: 'https://www.facebook.com/avoidlife/',
   }
 ];
 
