@@ -42,16 +42,7 @@ const Set = sequelize.define('sets', {
   photo: {
     type: Sequelize.STRING,
   },
-  name: {
-    type: Sequelize.STRING,
-  },
-  link: {
-    type: Sequelize.STRING,
-  },
   location: {
-    type: Sequelize.STRING,
-  },
-  userLocation: {
     type: Sequelize.STRING,
   },
   date: {
@@ -77,20 +68,11 @@ const Show = sequelize.define('shows', {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-  },  
-  name: {
-    type: Sequelize.STRING,
-  },
-  link: {
-    type: Sequelize.STRING,
-  },
+  }, 
   photo: {
     type: Sequelize.STRING,
   },
   date: {
-    type: Sequelize.STRING,
-  },
-  location: {
     type: Sequelize.STRING,
   },
   description: {
