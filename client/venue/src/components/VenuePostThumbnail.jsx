@@ -4,7 +4,7 @@ const VenuePostThumbnail = props => {
   let { post, handlePage, handlePostView } = props;
   return (
     <div className='VenuePostThumbnail' onClick={() => { handlePostView(post); handlePage('VenuePost') }}>
-      <div>{post.location}</div>
+      <div>{post.user.location}</div>
       <div>{post.date}</div> 
     </div>
   )

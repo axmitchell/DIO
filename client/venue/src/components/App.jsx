@@ -29,23 +29,31 @@ class App extends Component {
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.getShows = this.getShows.bind(this);
+    this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
   }
 
   componentDidMount() {
+    // const { userId } = this.state;
+    // axios.get(`/users/${userId}`)
+    //   .then(({ data }) => {
+    //     this.setState(data)
+    //     axios.get(`/shows/${userId}`)
+    //       .then(({ data }) => {
+    //         data.forEach(post => {
+    //           post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
+    //         })
+    //         this.setState({
+    //           posts: data
+    //         })
+    //       })
+    //       .catch(console.log)
+    //   })
+    //   .catch(console.log)
     const { userId } = this.state;
     axios.get(`/users/${userId}`)
       .then(({ data }) => {
         this.setState(data)
-        axios.get(`/shows/${userId}`)
-          .then(({ data }) => {
-            data.forEach(post => {
-              post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
-            })
-            this.setState({
-              posts: data
-            })
-          })
-          .catch(console.log)
+        this.getShows()
       })
       .catch(console.log)
   }
@@ -90,7 +98,8 @@ class App extends Component {
   }
 
   handlePostView(post) {
-    const { photo, location, date, description, id } = post;
+    const { photo, date, description, id, user } = post;
+    const { location } = user
     this.setState({
       postId: id,
       postPhoto: photo,
@@ -103,20 +112,19 @@ class App extends Component {
   handlePostSubmit(e) {
     e.preventDefault()
     const { postPhoto, postLocation, postDate, postDescription } = this.state;
-    if (postPhoto && postLocation && postDate && postDescription) {
+    if (postPhoto && postDate && postDescription) {
       let convertedDate = new Date(postDate.slice(0,6) + '20' + postDate.slice(6,8));
       const venuePost = {
         userId: Number(this.state.userId),
-        userLocation: this.state.location,
-        name: this.state.name,
-        link: this.state.link,
         photo: postPhoto,
-        location: postLocation,
         date: convertedDate,
         description: postDescription,
       }
       axios.post('/shows', venuePost) 
-        .then(() => this.getShows())
+        .then(() => {
+          this.getShows();
+          this.clearStateForPostPage();
+        })
         .catch(console.log)
     }
   }
@@ -129,12 +137,6 @@ class App extends Component {
       })
       this.setState({
         posts: res.data,
-        postPhoto: '',
-        postLocation: '',
-        postDate: '',
-        postDescription: '',
-        selectedNavButton: 'NavPostButton',
-        page: ''
       })
     })
     .catch(console.log)
@@ -144,6 +146,17 @@ class App extends Component {
     axios.delete(`/shows/${Number(this.state.postId)}`)
       .then(() => this.getShows())
       .catch(console.log);
+  }
+
+  clearStateForPostPage() {
+    this.setState({
+      postPhoto: '',
+      postLocation: '',
+      postDate: '',
+      postDescription: '',
+      selectedNavButton: 'NavPostButton',
+      page: ''
+    })
   }
 
   render() {

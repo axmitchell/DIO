@@ -21,16 +21,14 @@ class PostGallery extends Component {
   componentDidMount() {
     axios.get(`/shows`)
       .then(res => {
-        res.data.forEach(post => {
-          post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
-        })
+        const { date } = res.data[0];
         this.setState({
           otherUserPosts: res.data,
           photo: res.data[0].photo, 
-          name: res.data[0].name, 
-          location: res.data[0].location, 
-          link: res.data[0].link, 
-          date: res.data[0].date, 
+          name: res.data[0].user.name, 
+          location: res.data[0].user.location, 
+          link: res.data[0].user.link, 
+          date: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
           description: res.data[0].description,
         })
       })
@@ -42,27 +40,37 @@ class PostGallery extends Component {
     let nextPost;
     if (e.target.id === 'NextSet' && selectedPost < otherUserPosts.length - 1) {
       nextPost = selectedPost + 1;
-      this.setState({
-        selectedPost: nextPost,
-        photo: otherUserPosts[nextPost].photo, 
-        name: otherUserPosts[nextPost].name, 
-        location: otherUserPosts[nextPost].location, 
-        link: otherUserPosts[nextPost].link, 
-        date: otherUserPosts[nextPost].date, 
-        description: otherUserPosts[nextPost].description,
-      })
+      // this.setState({
+      //   selectedPost: nextPost,
+      //   photo: otherUserPosts[nextPost].photo, 
+      //   name: otherUserPosts[nextPost].user.name, 
+      //   location: otherUserPosts[nextPost].user.location, 
+      //   link: otherUserPosts[nextPost].user.link, 
+      //   date: otherUserPosts[nextPost].date, 
+      //   description: otherUserPosts[nextPost].description,
+      // })
     } else if (e.target.id === 'PreviousSet' && selectedPost > 0) {
       nextPost = selectedPost - 1;
-      this.setState({
-        selectedPost: nextPost,
-        photo: otherUserPosts[nextPost].photo, 
-        name: otherUserPosts[nextPost].name, 
-        location: otherUserPosts[nextPost].location, 
-        link: otherUserPosts[nextPost].link, 
-        date: otherUserPosts[nextPost].date, 
-        description: otherUserPosts[nextPost].description,
-      })
+      // this.setState({
+      //   selectedPost: nextPost,
+      //   photo: otherUserPosts[nextPost].photo, 
+      //   name: otherUserPosts[nextPost].name, 
+      //   location: otherUserPosts[nextPost].location, 
+      //   link: otherUserPosts[nextPost].link, 
+      //   date: otherUserPosts[nextPost].date, 
+      //   description: otherUserPosts[nextPost].description,
+      // })
     }
+    const { date } = otherUserPosts[nextPost]
+    this.setState({
+      selectedPost: nextPost,
+      photo: otherUserPosts[nextPost].photo, 
+      name: otherUserPosts[nextPost].user.name, 
+      location: otherUserPosts[nextPost].user.location, 
+      link: otherUserPosts[nextPost].user.link, 
+      date: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
+      description: otherUserPosts[nextPost].description,
+    })
   }
 
   render() {

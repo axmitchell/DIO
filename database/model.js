@@ -73,7 +73,7 @@ const Show = sequelize.define('shows', {
     type: Sequelize.STRING,
   },
   date: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
   },
   description: {
     type: Sequelize.STRING,

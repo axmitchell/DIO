@@ -22,17 +22,15 @@ class PostGallery extends Component {
   componentDidMount() {
     axios.get(`/sets`)
       .then(res => {
-        res.data.forEach(post => {
-          post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`
-        })
+        const { date } = res.data[0];
         this.setState({
           otherUserPosts: res.data,
           photo: res.data[0].photo, 
-          name: res.data[0].name, 
+          name: res.data[0].user.name, 
           location: res.data[0].location, 
-          userLocation: res.data[0].userLocation,
-          link: res.data[0].link, 
-          date: res.data[0].date, 
+          userLocation: res.data[0].user.location,
+          link: res.data[0].user.link, 
+          date:  `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
           description: res.data[0].description,
         })
       })
@@ -47,14 +45,15 @@ class PostGallery extends Component {
     } else if (e.target.id === 'PreviousSet' && selectedPost > 0) {
       nextPost = selectedPost - 1;
     }
+    const { date } = otherUserPosts[nextPost]
     this.setState({
       selectedPost: nextPost,
       photo: otherUserPosts[nextPost].photo, 
-      name: otherUserPosts[nextPost].name, 
+      name: otherUserPosts[nextPost].user.name, 
       location: otherUserPosts[nextPost].location, 
-      userLocation: otherUserPosts[nextPost].userLocation,
-      link: otherUserPosts[nextPost].link, 
-      date: otherUserPosts[nextPost].date, 
+      userLocation: otherUserPosts[nextPost].user.location,
+      link: otherUserPosts[nextPost].user.link, 
+      date: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
       description: otherUserPosts[nextPost].description,
     })
   }

@@ -4,21 +4,21 @@ const SurfPost = props => {
   const { post, handlePostGalleryState } = props;
   const { photo, name, location, link, date, description, userLocation } = post;
   return (
-    <div id='VenuePostForm'>
+    <div id='SurfPost'>
       <button id='PreviousSet' onClick={handlePostGalleryState}/>
-      <div id='VenuePostFormImage' className='Content'>
+      <div id='SurfPostImage' className='Content'>
         <img src={photo}></img>
       </div>
-      <div id='VenuePostFormDetails' className='Content'>
-        <div id='VenuePostFormUserInfo'>
-          <div id='VenuePostFormUserInfoName'>{name}</div>
-          <div id='VenuePostFormUserInfoLocation'>({userLocation})</div>
-          <a id='VenuePostFormUserInfoLink' href={link} target="_blank">link</a>
+      <div id='SurfPostDetails' className='Content'>
+        <div id='SurfPostUserInfo'>
+          <div id='SurfPostUserInfoName'>{name}</div>
+          <div id='SurfPostUserInfoLocation'>({userLocation})</div>
+          <a id='SurfPostUserInfoLink' href={link} target="_blank">link</a>
         </div>
-        <div id='VenuePostFormInput'>
-          <div id='VenuePostFormInputLocation'>{location}</div>
-          <div id='VenuePostFormInputDate'>{date}</div>
-          <div id='VenuePostFormInputDescription'>{description}</div>
+        <div id='SurfPostInput'>
+          <div id='SurfPostInputLocation'>{location}</div>
+          <div id='SurfPostInputDate'>{date}</div>
+          <div id='SurfPostInputDescription'>{description}</div>
         </div>
       </div>
       <button id='NextSet' onClick={handlePostGalleryState}/>

@@ -35,13 +35,17 @@ getShows = (req, res) => {
       where: {userId: req.params.userId},
       include: {model: db.User, attributes: { exclude: ["type", "id", "about", "photo"], required: false }}
     })
-      .then(data => res.send(data))
+      .then(data => {
+        res.send(data)
+      })
       .catch(err => res.status(500).send(err));
   } else {
     db.Show.findAll({
       include: {model: db.User, attributes: { exclude: ["type", "id", "about", "photo"], required: false }}
     })
-      .then(data => res.send(data))
+      .then(data => {
+        res.send(data)
+      })
       .catch(err => res.status(500).send(err));
   }
 };
