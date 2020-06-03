@@ -118,15 +118,19 @@ Append `/venue` to the url to connect as the seeded venue user
 | Field | Type |
 | ----- | ---- |
 | userId | `Number`|
-| name | `String`|
-| link | `String`|
-| userLocation | `String`|
 | id | `Number`|
+| location | `String`|
 | date | `Date`|
 | description | `String`|
-| location | `String`|
 | photo | `String`|
+| user  | `Object`|
 
+#### Response User Object:
+| Field | Type |
+| ----- | ---- |
+| name | `Number`|
+| link | `String`|
+| location | `String`|
 
 ```
 [
@@ -134,23 +138,27 @@ Append `/venue` to the url to connect as the seeded venue user
         "userId": 1,
         "id": 1,
         "photo": "https://i.imgur.com/thiF7RE.gif",
-        "name": "Index",
-        "link": "https://indexxxband.bandcamp.com/",
         "location": "D.C.",
-        "userLocation": "D.C.",
-        "date": "2020-10-31",
-        "description": "Got some spooky tunes for your spooky show. Check us out."
+        "date": "2020-10-31 04:00:00.000 +00:00",
+        "description": "Got some spooky tunes for your spooky show. Check us out.",
+        "user": {
+            "name": "Index",
+            "link": "https://indexxxband.bandcamp.com/",
+            "location": "D.C."
+        }
     },
     {
         "userId": 1,
         "id": 2,
         "photo": "https://i.imgur.com/RbCKrf8.gif",
-        "name": "Index",
-        "link": "https://indexxxband.bandcamp.com/",
         "location": "D.C.",
-        "userLocation": "D.C.",
-        "date": "2020-12-31",
-        "description": "Who needs some new year music for their new year show?"
+        "date": "2020-12-31 05:00:00.000 +00:00",
+        "description": "Who needs some new year music for their new year show?",
+        "user": {
+            "name": "Index",
+            "link": "https://indexxxband.bandcamp.com/",
+            "location": "D.C."
+        }
     }
 ]
 ```
@@ -169,13 +177,19 @@ Append `/venue` to the url to connect as the seeded venue user
 | Field | Type |
 | ----- | ---- |
 | userId | `Number`|
-| name | `String`|
-| link | `String`|
 | id | `Number`|
 | date | `Date`|
 | description | `String`|
-| location | `String`|
 | photo | `String`|
+| user  | `Object`|
+
+#### Response User Object:
+| Field | Type |
+| ----- | ---- |
+| name | `Number`|
+| link | `String`|
+| location | `String`|
+
 
 
 ```
@@ -183,22 +197,26 @@ Append `/venue` to the url to connect as the seeded venue user
     {
         "userId": 2,
         "id": 1,
-        "name": "The Void",
-        "link": "https://www.facebook.com/avoidlife/",
         "photo": "https://i.imgur.com/AHA6wLd.gif",
-        "date": "2020-10-31",
-        "location": "D.C.",
-        "description": "Looking for some scary music to make our ears bleed."
+        "date": "2020-10-31 04:00:00.000 +00:00",
+        "description": "Looking for some scary music to make our ears bleed.",
+        "user": {
+            "name": "The Void",
+            "link": "https://www.facebook.com/avoidlife/",
+            "location": "D.C."
+        }
     },
     {
         "userId": 2,
         "id": 2,
-        "name": "The Void",
-        "link": "https://www.facebook.com/avoidlife/",
         "photo": "https://i.imgur.com/5rT9u.gif",
-        "date": "2020-12-31",
-        "location": "D.C.",
-        "description": "Let's put 2020 behind us with some 2021 music. Who's got it?"
+        "date": "2020-12-31 05:00:00.000 +00:00",
+        "description": "Let's put 2020 behind us with some 2021 music. Who's got it?",
+        "user": {
+            "name": "The Void",
+            "link": "https://www.facebook.com/avoidlife/",
+            "location": "D.C."
+        }
     }
 ]
 ```
