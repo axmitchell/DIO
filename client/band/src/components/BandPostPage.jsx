@@ -1,94 +1,28 @@
-import React, { Component } from 'react'
-// import axios from 'axios';
+import React from 'react';
 import BandPostGallery from './BandPostGallery.jsx'
 import BandPostForm from './BandPostForm.jsx';
 import BandPostPreview from './BandPostPreview.jsx';
 import BandPost from './BandPost.jsx';
 
-class BandPostPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // image: '',
-      // location: '',
-      // date: '',
-      // description: '',
-    }
-    // this.handlePostSubmit = this.handlePostSubmit.bind(this);
-    // // this.handleChange = this.handleChange.bind(this);
-    // this.clearState = this.clearState.bind(this);
-    // this.handleBandPostPageState = this.handleBandPostPageState.bind(this);
-  }
-
-  // handleChange({ target }) {
-  //   const { name, value } = target;
-  //   this.setState({
-  //     [name]: value,
-  //   })
-  // }
-
-  // handleBandPostPageState(property) {
-  //   const { photo, location, date, description } = property;
-  //   this.setState({
-  //     image: photo,
-  //     location,
-  //     date,
-  //     description,
-  //   })
-  // }
-
-  // handlePostSubmit(e) {
-  //   e.preventDefault()
-  //   const { image, location, date, description } = this.state;
-  //   if (image && location && date && description) {
-  //     let convertedDate = new Date(date.slice(0,6) + '20' + date.slice(6,8));
-  //     const bandPost = {
-  //       userId: Number(this.props.userInfo.userId),
-  //       name: this.props.userInfo.name,
-  //       link: this.props.userInfo.link,
-  //       photo: image,
-  //       location: location,
-  //       date: convertedDate,
-  //       description: description,
-  //     }
-  //     axios.post('/sets', bandPost) 
-  //       .then(console.log)
-  //       .catch(console.log)
-  //     axios.get(`/sets/:${Number(this.props.userInfo.userId)}`)
-  //       .then(res => this.props.handlePage({posts: res.data}))
-  //       .catch(console.log);
-  //     this.clearState()
-  //     }
-  //   this.props.handlePage('')
-  // }
-
-  // clearState() {
-  //   this.setState({
-  //     image: '',
-  //     location: '',
-  //     date: '',
-  //     description: '',
-  //   })
-  // }
-
-  render() {
-    if (this.props.page === 'BandPostForm') {
-      return(
-        <BandPostForm userInfo={this.props.userInfo} postInfo={this.props.postInfo} handlePostFormChange={this.props.handlePostFormChange}/>
-      )
-    } else if (this.props.page === 'BandPost' || this.props.page === 'PostDrop') {
-      return (
-        <BandPost postInfo={this.props.postInfo}/>
-      )
-    } else if (this.props.page === 'BandPostPreview') {
-      return (
-        <BandPostPreview userInfo={this.props.userInfo} postInfo={this.props.postInfo}/>
-      )
-    } else {
-      return (
-        <BandPostGallery posts={this.props.userInfo.posts} handlePage={this.props.handlePage} handlePostView={this.props.handlePostView}/>
-      ) 
-    }
+const BandPostPage = props => {
+  const { page, userInfo, postInfo, handlePostFormChange, handlePage, handlePostView} = props;
+  const { posts } = userInfo;
+  if (page === 'BandPostForm') {
+    return(
+      <BandPostForm userInfo={userInfo} postInfo={postInfo} handlePostFormChange={handlePostFormChange}/>
+    )
+  } else if (page === 'BandPost' || page === 'PostDrop') {
+    return (
+      <BandPost postInfo={postInfo}/>
+    )
+  } else if (page === 'BandPostPreview') {
+    return (
+      <BandPostPreview userInfo={userInfo} postInfo={postInfo}/>
+    )
+  } else {
+    return (
+      <BandPostGallery posts={posts} handlePage={handlePage} handlePostView={handlePostView}/>
+    ) 
   }
 }
 
