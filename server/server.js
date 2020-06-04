@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/band', express.static(paths.BAND_DIST_DIR));
 app.use('/venue', express.static(paths.VENUE_DIST_DIR));
+app.use('/admin', express.static(paths.ADMIN_DIST_DIR));
+app.use('/fan', express.static(paths.FAN_DIST_DIR));
 
 app.get('/users/:id', controllers.getUser);
 

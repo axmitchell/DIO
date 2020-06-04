@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     'band/dist/bundle': path.resolve(__dirname,'band/src/index.jsx'), 
     'venue/dist/bundle': path.resolve(__dirname,'venue/src/index.jsx'),
+    'fan/dist/bundle': path.resolve(__dirname,'fan/src/index.jsx'),
   },
   devtool: 'source-map',
   output: {
