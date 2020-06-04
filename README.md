@@ -230,3 +230,5 @@ The repo includes mockups/visual-brainstorms for the app:
 These can be open in the browser at [https://app.diagrams.net/](https://app.diagrams.net/) or with the application draw.io: [https://drawio-app.com/](https://drawio-app.com/)
 
 I try to keep the designs updated but they may not always reflect the current state of the app.
+
+![](https://i.imgur.com/xDiJkNr.png)
