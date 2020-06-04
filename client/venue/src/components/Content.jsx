@@ -1,9 +1,9 @@
 import React from 'react';
 import HomePage from './HomePage.jsx';
 import UserPage from './UserPage.jsx';
-import PostGallery from './PostGallery.jsx';
+import SurfGallery from './SurfGallery.jsx';
 import Users from './Users.jsx';
-import VenuePostPage from './VenuePostPage.jsx';
+import PostPage from './PostPage.jsx';
 
 const Content = props => {
   const { selectedNavButton, userInfo, page, handlePage, handlePostFormChange, postInfo, handlePostSubmit, handlePostView } = props;
@@ -16,10 +16,10 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-      content = <VenuePostPage userInfo={userInfo} handlePage={handlePage} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo} handlePostSubmit={handlePostSubmit} handlePostView={handlePostView}/>
+      content = <PostPage userInfo={userInfo} handlePage={handlePage} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo} handlePostSubmit={handlePostSubmit} handlePostView={handlePostView}/>
       break;
     case 'NavSurfButton':
-      content = <PostGallery/>
+      content = <SurfGallery/>
       break;
     case 'NavSearchButton':
       content = <Users />

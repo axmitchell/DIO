@@ -210,7 +210,7 @@ input, textarea {
 
 /* ----- USER POSTS ----- */
 
-#VenuePostGallery {
+#PostGallery {
   display: flex;
   flex-wrap: wrap;
   width: 90%;
@@ -221,7 +221,7 @@ input, textarea {
   overflow: auto;
 }
 
-.VenuePostThumbnail {
+.PostThumbnail {
   display: flex;
   flex-direction: column;
   font-size: 40px;
@@ -239,12 +239,12 @@ input, textarea {
   margin-top: 30px;
 }
 
-.VenuePostThumbnail:hover {
+.PostThumbnail:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
 
-#VenuePostGalleryAddButton {
+#PostGalleryAddButton {
   display: flex;
   font-size: 70px;
   color: green;
@@ -258,27 +258,27 @@ input, textarea {
   cursor: pointer;
 }
 
-#VenuePostGalleryAddButton:hover {
+#PostGalleryAddButton:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
 
-#VenuePost {
+#Post {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-areas: "VenuePostInfo VenuePostCollabsList";
+  grid-template-areas: "PostInfo PostCollabsList";
   width: 90%;
   height: 80%;
 }
 
-#VenuePostInfo {
+#PostInfo {
   display: grid;
-  grid-area: VenuePostInfo;
+  grid-area: PostInfo;
   grid-template-rows: auto auto 1fr;
   grid-template-areas: 
-    "VenuePostPhoto" 
-    "VenuePostMainInfo"
-    "VenuePostDescription";
+    "PostPhoto" 
+    "PostMainInfo"
+    "PostDescription";
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -287,8 +287,8 @@ input, textarea {
   font-size: 30px;
 }
 
-#VenuePostInfo img {
-  grid-area: VenuePostPhoto;
+#PostInfo img {
+  grid-area: PostPhoto;
   display: flex;
   justify-self: center;
   width: 450px;
@@ -297,22 +297,22 @@ input, textarea {
   margin-bottom: 15px;
 }
 
-#VenuePostMainInfo {
-  grid-area: VenuePostMainInfo;
+#PostMainInfo {
+  grid-area: PostMainInfo;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-#VenuePostDescription {
-  grid-area: VenuePostDescription;
+#PostDescription {
+  grid-area: PostDescription;
   font-size: 20px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-#VenuePostCollabsList {
-  grid-area: VenuePostCollabsList;
+#PostCollabsList {
+  grid-area: PostCollabsList;
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -347,7 +347,7 @@ input, textarea {
 }
 
 #PreviousShow {
-  grid-area: VenuePostFormImage;
+  grid-area: PostFormImage;
   height: 100%;
 }
 
@@ -381,7 +381,7 @@ input, textarea {
 }
 
 #NextShow {
-  grid-area: VenuePostFormDetails;
+  grid-area: PostFormDetails;
   height: 100%;
 }
 
@@ -457,7 +457,7 @@ input, textarea {
   padding-right: 15px;
 }
 
-/* #VenuePostPreviewPage {
+/* #PostPreviewPage {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -466,7 +466,7 @@ input, textarea {
   justify-content: center;
 }
 
-#VenuePostPreview {
+#PostPreview {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "PostImagePreview PostDetailsPreview";
@@ -484,37 +484,37 @@ input, textarea {
 
 /* SURF POST SURF POST */
 
-#VenuePostForm {
+#PostForm {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: 
-    "VenuePostFormImage VenuePostFormDetails";
+    "PostFormImage PostFormDetails";
   align-self: center;
 }
 
-#VenuePostFormImage {
-  grid-area: VenuePostFormImage;
+#PostFormImage {
+  grid-area: PostFormImage;
   width: 500px;
   height: 500px;
 }
 
 #PreviousShow {
-  grid-area: VenuePostFormImage;
+  grid-area: PostFormImage;
   height: 100%;
 }
 
-#VenuePostFormImage img {
+#PostFormImage img {
   width: 100%;
   height: 100%
 }
 
-#VenuePostFormDetails {
-  grid-area: VenuePostFormDetails;
+#PostFormDetails {
+  grid-area: PostFormDetails;
   display: grid;
   grid-template-rows: 40% 60%;
   grid-template-areas: 
-    'VenuePostFormUserInfo'
-    'VenuePostFormInput';
+    'PostFormUserInfo'
+    'PostFormInput';
   width: 500px;
   height: 500px;
   justify-content: center;
@@ -522,13 +522,13 @@ input, textarea {
 }
 
 #NextShow {
-  grid-area: VenuePostFormDetails;
+  grid-area: PostFormDetails;
   height: 100%;
 }
 
-#VenuePostFormUserInfo {
+#PostFormUserInfo {
   width: 100%;
-  grid-area: VenuePostFormUserInfo;
+  grid-area: PostFormUserInfo;
   display: grid;
   grid-template-columns: auto 10px auto;
   grid-template-areas: 
@@ -538,56 +538,56 @@ input, textarea {
   align-items: center;
 }
 
-#VenuePostFormUserInfoName {
+#PostFormUserInfoName {
   grid-area: Venuename;
   justify-self: center;
   align-self: center;
 }
 
-#VenuePostFormUserInfoLocation {
+#PostFormUserInfoLocation {
   grid-area: Venuelocation;
   justify-self: center;
   align-self: center;
 }
 
-#VenuePostFormUserInfoLink {
+#PostFormUserInfoLink {
   grid-area: Venuelink;
   font-size: 30px;
   justify-self: center;
   align-self: center;
 }
 
-#VenuePostFormInput {
+#PostFormInput {
   height: 100%;
   width: 100%;
-  grid-area: VenuePostFormInput;
+  grid-area: PostFormInput;
   display: grid;
   grid-template-rows: 40% 60%;
   grid-template-areas: 
-    'VenuePostFormInputDate'
-    'VenuePostFormInputDescription';
+    'PostFormInputDate'
+    'PostFormInputDescription';
   justify-content: center;
   align-items: center;
 }
 
-#VenuePostFormInputLocation {
-  grid-area: VenuePostFormInputLocation;
+#PostFormInputLocation {
+  grid-area: PostFormInputLocation;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 35px;
 }
 
-#VenuePostFormInputDate {
-  grid-area: VenuePostFormInputDate;
+#PostFormInputDate {
+  grid-area: PostFormInputDate;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 50px;
 }
 
-#VenuePostFormInputDescription {
-  grid-area: VenuePostFormInputDescription;
+#PostFormInputDescription {
+  grid-area: PostFormInputDescription;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -597,7 +597,7 @@ input, textarea {
   padding-right: 15px;
 }
 
-#VenuePostPreviewPage {
+#PostPreviewPage {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -606,7 +606,7 @@ input, textarea {
   justify-content: center;
 }
 
-#VenuePostPreview {
+#PostPreview {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "PostImagePreview PostDetailsPreview";
@@ -637,7 +637,7 @@ input, textarea {
   align-items: center;
 }
 
-#VenuePostPreviewButton {
+#PostPreviewButton {
   font-size: 20px;
 }
 
