@@ -1,26 +1,26 @@
 import React from 'react';
 
 const SurfPost = props => {
-  const { post, handlePostGalleryState } = props;
+  const { post, handleSurfGalleryState } = props;
   const { photo, name, location, link, date, description } = post;
   return (
-    <div id='BandPostForm'>
-      <button id='PreviousSet' onClick={handlePostGalleryState}/>
-      <div id='BandPostFormImage' className='Content'>
+    <div id='PostForm'>
+      <button id='PreviousSet' onClick={handleSurfGalleryState}/>
+      <div id='PostFormImage' className='Content'>
         <img src={photo}></img>
       </div>
-      <div id='BandPostFormDetails' className='Content'>
-        <div id='BandPostFormUserInfo'>
-          <div id='BandPostFormUserInfoName'>{name}</div>
-          <div id='BandPostFormUserInfoLocation'>({location})</div>
-          <a id='BandPostFormUserInfoLink' href={link} target="_blank">link</a>
+      <div id='PostFormDetails' className='Content'>
+        <div id='PostFormUserInfo'>
+          <div id='PostFormUserInfoName'>{name}</div>
+          <div id='PostFormUserInfoLocation'>({location})</div>
+          <a id='PostFormUserInfoLink' href={link} target="_blank">link</a>
         </div>
-        <div id='BandPostFormInput'>
-          <div id='BandPostFormInputDate'>{date}</div>
-          <div id='BandPostFormInputDescription'>{description}</div>
+        <div id='PostFormInput'>
+          <div id='PostFormInputDate'>{date}</div>
+          <div id='PostFormInputDescription'>{description}</div>
         </div>
       </div>
-      <button id='NextSet' onClick={handlePostGalleryState}/>
+      <button id='NextSet' onClick={handleSurfGalleryState}/>
     </div>
   )
 }

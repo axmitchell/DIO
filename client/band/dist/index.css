@@ -208,7 +208,7 @@ input, textarea {
 
 
 /* ----- USER POSTS ----- */
-#BandPostGallery {
+#PostGallery {
   display: flex;
   flex-wrap: wrap;
   width: 90%;
@@ -219,7 +219,7 @@ input, textarea {
   overflow: auto;
 }
 
-.BandPostThumbnail {
+.PostThumbnail {
   display: flex;
   flex-direction: column;
   font-size: 40px;
@@ -237,12 +237,12 @@ input, textarea {
   margin-top: 30px;
 }
 
-.BandPostThumbnail:hover {
+.PostThumbnail:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
 
-#BandPostGalleryAddButton {
+#PostGalleryAddButton {
   display: flex;
   font-size: 70px;
   color: green;
@@ -256,27 +256,27 @@ input, textarea {
   cursor: pointer;
 }
 
-#BandPostGalleryAddButton:hover {
+#PostGalleryAddButton:hover {
   background: rgb(3, 71, 3);
   color: black;
 }
 
-#BandPost {
+#Post {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-areas: "BandPostInfo BandPostCollabsList";
+  grid-template-areas: "PostInfo PostCollabsList";
   width: 90%;
   height: 80%;
 }
 
-#BandPostInfo {
+#PostInfo {
   display: grid;
-  grid-area: BandPostInfo;
+  grid-area: PostInfo;
   grid-template-rows: auto auto 1fr;
   grid-template-areas: 
-    "BandPostPhoto" 
-    "BandPostMainInfo"
-    "BandPostDescription";
+    "PostPhoto" 
+    "PostMainInfo"
+    "PostDescription";
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -285,8 +285,8 @@ input, textarea {
   font-size: 30px;
 }
 
-#BandPostInfo img {
-  grid-area: BandPostPhoto;
+#PostInfo img {
+  grid-area: PostPhoto;
   display: flex;
   justify-self: center;
   width: 450px;
@@ -295,22 +295,22 @@ input, textarea {
   margin-bottom: 15px;
 }
 
-#BandPostMainInfo {
-  grid-area: BandPostMainInfo;
+#PostMainInfo {
+  grid-area: PostMainInfo;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-#BandPostDescription {
-  grid-area: BandPostDescription;
+#PostDescription {
+  grid-area: PostDescription;
   font-size: 20px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-#BandPostCollabsList {
-  grid-area: BandPostCollabsList;
+#PostCollabsList {
+  grid-area: PostCollabsList;
   width: 100%;
   height: 100%;
   border-style: solid;
@@ -318,16 +318,16 @@ input, textarea {
   text-align: center;
 }
 
-#BandPostForm {
+#PostForm {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: 
-    "BandPostFormImage BandPostFormDetails";
+    "PostFormImage PostFormDetails";
   align-self: center;
 }
 
 #PreviousSet {
-  grid-area: BandPostFormImage;
+  grid-area: PostFormImage;
   height: 500px;
   width: 60px;
   background: transparent;
@@ -335,29 +335,29 @@ input, textarea {
   border: 0px;
 }
 
-#BandPostFormImage {
-  grid-area: BandPostFormImage;
+#PostFormImage {
+  grid-area: PostFormImage;
   width: 500px;
   height: 500px;
 }
 
 #PreviousShow {
-  grid-area: BandPostFormImage;
+  grid-area: PostFormImage;
   height: 100%;
 }
 
-#BandPostFormImage img {
+#PostFormImage img {
   width: 100%;
   height: 100%
 }
 
-#BandPostFormDetails {
-  grid-area: BandPostFormDetails;
+#PostFormDetails {
+  grid-area: PostFormDetails;
   display: grid;
   grid-template-rows: 40% 60%;
   grid-template-areas: 
-    'BandPostFormUserInfo'
-    'BandPostFormInput';
+    'PostFormUserInfo'
+    'PostFormInput';
   width: 500px;
   height: 500px;
   justify-content: center;
@@ -368,7 +368,7 @@ input, textarea {
 #NextSet {
   display: flex;
   justify-self: end;
-  grid-area: BandPostFormDetails;
+  grid-area: PostFormDetails;
   height: 500px;
   width: 60px;
   background: transparent;
@@ -376,13 +376,13 @@ input, textarea {
 }
 
 #NextShow {
-  grid-area: BandPostFormDetails;
+  grid-area: PostFormDetails;
   height: 100%;
 }
 
-#BandPostFormUserInfo {
+#PostFormUserInfo {
   width: 100%;
-  grid-area: BandPostFormUserInfo;
+  grid-area: PostFormUserInfo;
   display: grid;
   grid-template-columns: auto 10px auto;
   grid-template-areas: 
@@ -392,57 +392,57 @@ input, textarea {
   align-items: center;
 }
 
-#BandPostFormUserInfoName {
+#PostFormUserInfoName {
   grid-area: Bandname;
   justify-self: center;
   align-self: center;
 }
 
-#BandPostFormUserInfoLocation {
+#PostFormUserInfoLocation {
   grid-area: Bandlocation;
   justify-self: center;
   align-self: center;
 }
 
-#BandPostFormUserInfoLink {
+#PostFormUserInfoLink {
   grid-area: Bandlink;
   font-size: 30px;
   justify-self: center;
   align-self: center;
 }
 
-#BandPostFormInput {
+#PostFormInput {
   height: 100%;
   width: 100%;
-  grid-area: BandPostFormInput;
+  grid-area: PostFormInput;
   display: grid;
   grid-template-rows: 20% 20% 60%;
   grid-template-areas: 
-    'BandPostFormInputLocation'
-    'BandPostFormInputDate'
-    'BandPostFormInputDescription';
+    'PostFormInputLocation'
+    'PostFormInputDate'
+    'PostFormInputDescription';
   justify-content: center;
   align-items: center;
 }
 
-#BandPostFormInputLocation {
-  grid-area: BandPostFormInputLocation;
+#PostFormInputLocation {
+  grid-area: PostFormInputLocation;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 35px;
 }
 
-#BandPostFormInputDate {
-  grid-area: BandPostFormInputDate;
+#PostFormInputDate {
+  grid-area: PostFormInputDate;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 50px;
 }
 
-#BandPostFormInputDescription {
-  grid-area: BandPostFormInputDescription;
+#PostFormInputDescription {
+  grid-area: PostFormInputDescription;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -452,7 +452,7 @@ input, textarea {
   padding-right: 15px;
 }
 
-#BandPostPreviewPage {
+#PostPreviewPage {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -461,7 +461,7 @@ input, textarea {
   justify-content: center;
 }
 
-#BandPostPreview {
+#PostPreview {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-areas: "PostImagePreview PostDetailsPreview";
@@ -492,7 +492,7 @@ input, textarea {
   align-items: center;
 }
 
-#BandPostPreviewButton {
+#PostPreviewButton {
   font-size: 20px;
 }
 

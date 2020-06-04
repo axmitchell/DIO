@@ -97,14 +97,14 @@ class App extends Component {
     const { postPhoto, postLocation, postDate, postDescription } = this.state;
     if (postPhoto && postLocation && postDate && postDescription) {
       let convertedDate = new Date(postDate.slice(0,6) + '20' + postDate.slice(6,8));
-      const bandPost = {
+      const post = {
         userId: Number(this.state.userId),
         photo: postPhoto,
         location: postLocation,
         date: convertedDate,
         description: postDescription,
       }
-      axios.post('/sets', bandPost) 
+      axios.post('/sets', post) 
         .then(() => {
           this.getSets();
           this.clearStateForPostPage();

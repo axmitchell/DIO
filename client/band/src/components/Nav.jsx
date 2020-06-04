@@ -29,33 +29,33 @@ const Nav = props => {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => handlePage('BandPostForm')}>ADD</button>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => handlePage('PostForm')}>ADD</button>
           <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('filter posts')}>FILTER</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={handleNavButtonClick}>{'< - -'}</button>
         </div>
       )
     }
-    if (page === 'BandPostForm') {
+    if (page === 'PostForm') {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => handlePage('BandPostPreview')}>PREVIEW</button>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => handlePage('PostPreview')}>PREVIEW</button>
           <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={handlePostSubmit}>SAVE</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
         </div>
       )
     } 
-    if (page === 'BandPostPreview') {
+    if (page === 'PostPreview') {
         return (
           <div id='Nav'>
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
-            <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => handlePage('BandPostForm')}>EDIT</button>
+            <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => handlePage('PostForm')}>EDIT</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={handlePostSubmit}>SAVE</button>
             <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
           </div>
         )
     } 
-    if (page === 'BandPost') {
+    if (page === 'Post') {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
@@ -70,7 +70,7 @@ const Nav = props => {
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
           <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={handlePostDelete}>CONFIRM</button>
-          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => handlePage('BandPost')}>CANCEL</button>
+          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => handlePage('Post')}>CANCEL</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
         </div>
       )
