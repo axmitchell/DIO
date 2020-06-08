@@ -1,11 +1,11 @@
 import React from 'react';
 
 const SurfPost = props => {
-  const { post, handleSurfGalleryState } = props;
+  const { post, handleSurfPageState } = props;
   const { photo, name, location, link, date, description } = post;
   return (
     <div id='PostForm'>
-      <button id='PreviousSet' onClick={handleSurfGalleryState}/>
+      <button id='PreviousSet' onClick={handleSurfPageState}/>
       <div id='PostFormImage' className='Content'>
         <img src={photo}></img>
       </div>
@@ -20,7 +20,7 @@ const SurfPost = props => {
           <div id='PostFormInputDescription'>{description}</div>
         </div>
       </div>
-      <button id='NextSet' onClick={handleSurfGalleryState}/>
+      <button id='NextSet' onClick={handleSurfPageState}/>
     </div>
   )
 }

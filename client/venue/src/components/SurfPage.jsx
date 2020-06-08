@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SurfPost from './SurfPost.jsx';
 import axios from 'axios';
 
-class SurfGallery extends Component {
+class SurfPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,31 +11,33 @@ class SurfGallery extends Component {
       photo: '', 
       name: '', 
       location: '', 
+      userLocation: '',
       link: '', 
       date: '', 
       description: '',
     }
-    this.handleSurfGalleryState = this.handleSurfGalleryState.bind(this);
+    this.handleSurfPageState = this.handleSurfPageState.bind(this);
   }
 
   componentDidMount() {
-    axios.get(`/shows`)
+    axios.get(`/sets`)
       .then(res => {
         const { date } = res.data[0];
         this.setState({
           otherUserPosts: res.data,
           photo: res.data[0].photo, 
           name: res.data[0].user.name, 
-          location: res.data[0].user.location, 
+          location: res.data[0].location, 
+          userLocation: res.data[0].user.location,
           link: res.data[0].user.link, 
-          date: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
+          date:  `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
           description: res.data[0].description,
         })
       })
       .catch(console.log)
   }
 
-  handleSurfGalleryState(e) {
+  handleSurfPageState(e) {
     const { selectedPost, otherUserPosts } = this.state
     let nextPost;
     if (e.target.id === 'NextSet' && selectedPost < otherUserPosts.length - 1) {
@@ -48,7 +50,8 @@ class SurfGallery extends Component {
       selectedPost: nextPost,
       photo: otherUserPosts[nextPost].photo, 
       name: otherUserPosts[nextPost].user.name, 
-      location: otherUserPosts[nextPost].user.location, 
+      location: otherUserPosts[nextPost].location, 
+      userLocation: otherUserPosts[nextPost].user.location,
       link: otherUserPosts[nextPost].user.link, 
       date: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
       description: otherUserPosts[nextPost].description,
@@ -56,22 +59,22 @@ class SurfGallery extends Component {
   }
 
   render() {
-    const { photo, name, location, link, date, description } = this.state;
-    let currentPost = { photo, name, location, link, date, description }
+    const { photo, name, location, userLocation, link, date, description } = this.state;
+    let currentPost = { photo, name, location, userLocation, link, date, description }
     if (this.state.otherUserPosts.length === 0) {
       return (
-        <div id='SurfGallery' className='Content' style={{width: '90%', height: '80%'}}>
+        <div id='SurfPage' className='Content' style={{width: '90%', height: '80%'}}>
           NO USER POSTS JUST YET
         </div>
       )
     } else {
       return (
-        <div id='SurfGallery' className='Content'>
-          <SurfPost key={currentPost.link} post={currentPost} handleSurfGalleryState={this.handleSurfGalleryState}/>
+        <div id='SurfPage' className='Content'>
+          <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState}/>
         </div>
       )
     }
   }
 }
 
-export default SurfGallery;
+export default SurfPage;
