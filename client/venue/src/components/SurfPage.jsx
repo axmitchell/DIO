@@ -72,17 +72,13 @@ class SurfPage extends Component {
         )
       } else {
         return (
-          <div id='SurfPage' className='Content'>
-            <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState}/>
-          </div>
+          <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState}/>
         )
       }
     }
     if (page === 'SurfPostForm') {
       return (
-        <div id='SurfPage' className='Content' style={{width: '90%', height: '80%'}}>
-          <SurfPostForm />
-        </div>
+        <SurfPostForm />
       )
     }
   }

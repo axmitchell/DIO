@@ -93,7 +93,7 @@ const Nav = props => {
           <div id='Nav'>
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('CONFIRM CHOICE')}>CONFIRM</button>
-            <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
+            <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('create posts')}>CREATE</button>
             <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
           </div>
         )

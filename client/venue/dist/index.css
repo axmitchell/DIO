@@ -231,7 +231,7 @@ input, textarea {
   border-style: solid;
   border-color: green;
   border-width: 1px;
-  width: 21%;
+  min-width: 220px;
   height: 320px;
   text-align: center;
   cursor: pointer;
@@ -645,17 +645,33 @@ input, textarea {
 
 
 /* ----- SURF ----- */
-/* #PostGallery {
-  display: flex;
+#SurfPostForm {
+  display: grid;
   width: 90%;
   height: 80%;
-  justify-content: start;
-  align-items: start;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 'SurfPostFormGallery SurfPostFormPreview';
 }
 
-#PostGallery div {
-  margin: 15px;
-} */
+#placeholder {
+  grid-area: SurfPostFormGallery;
+  width: 100%;
+  height: 100%;
+}
+
+#SurfPostFormPreview {
+  display: grid;
+  grid-area: SurfPostFormPreview;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: 
+    'SelectedSurfPostInfo'
+    'SelectedUserPost';
+}
+
+.placeholder {
+  text-align: center
+}
 
 /* ----- Search ----- */
 
