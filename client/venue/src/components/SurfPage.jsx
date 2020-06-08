@@ -78,7 +78,7 @@ class SurfPage extends Component {
     }
     if (page === 'SurfPostForm') {
       return (
-        <SurfPostForm />
+        <SurfPostForm currentPost={currentPost}/>
       )
     }
   }

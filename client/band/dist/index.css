@@ -516,9 +516,13 @@ input, textarea {
 }
 
 #SurfPostFormPreview {
+  display: grid;
   grid-area: SurfPostFormPreview;
   width: 100%;
   height: 100%;
+  grid-template-areas: 
+    'SelectedSurfPostInfo'
+    'SelectedUserPost'; 
 }
 
 .placeholder {
