@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SurfPost from './SurfPost.jsx';
+import SurfPostForm from './SurfPostForm.jsx';
 import axios from 'axios';
 
 class SurfPage extends Component {
@@ -56,18 +57,28 @@ class SurfPage extends Component {
   }
 
   render() {
-    const { photo, name, location, link, date, description } = this.state;
+    const { photo, name, location, link, date, description, otherUserPosts } = this.state;
     let currentPost = { photo, name, location, link, date, description }
-    if (this.state.otherUserPosts.length === 0) {
+    const { page } = this.props;
+    if (page === '') {
+      if (otherUserPosts.length === 0) {
+        return (
+          <div id='SurfPage' className='Content' style={{width: '90%', height: '80%'}}>
+            NO USER POSTS JUST YET
+          </div>
+        )
+      } else {
+        return (
+          <div id='SurfPage' className='Content'>
+            <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState}/>
+          </div>
+        )
+      }
+    }
+    if (page === 'SurfPostForm') {
       return (
         <div id='SurfPage' className='Content' style={{width: '90%', height: '80%'}}>
-          NO USER POSTS JUST YET
-        </div>
-      )
-    } else {
-      return (
-        <div id='SurfPage' className='Content'>
-          <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState}/>
+          <SurfPostForm />
         </div>
       )
     }

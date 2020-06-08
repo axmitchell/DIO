@@ -19,7 +19,7 @@ const Content = props => {
       content = <PostPage userInfo={userInfo} handlePage={handlePage} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo} handlePostSubmit={handlePostSubmit} handlePostView={handlePostView}/>
       break;
     case 'NavSurfButton':
-      content = <SurfPage/>
+      content = <SurfPage page={page}/>
       break;
     case 'NavSearchButton':
       content = <Users />

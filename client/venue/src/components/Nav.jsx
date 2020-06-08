@@ -77,14 +77,28 @@ const Nav = props => {
     }
   }
   if (selectedNavButton === 'NavSurfButton') {
-    return (
-      <div id='Nav'>
-        <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
-        <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('reply to post')}>REPLY</button>
-        <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
-        <button id='NavSearchButton' className='NavButtons backButton' onClick={handleNavButtonClick}>{'< - -'}</button>
-      </div>
-    )
+    if (selectedNavButton === 'NavSurfButton') {
+      if (page === '') {
+        return (
+          <div id='Nav'>
+            <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
+            <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => {handlePage('SurfPostForm')}}>REPLY</button>
+            <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={handleNavButtonClick}>{'< - -'}</button>
+          </div>
+        )
+      }
+      if (page === 'SurfPostForm') {
+        return (
+          <div id='Nav'>
+            <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
+            <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('CONFIRM CHOICE')}>CONFIRM</button>
+            <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
+          </div>
+        )
+      }
+    } 
   } 
   if (selectedNavButton === 'NavSearchButton') {
     return (
