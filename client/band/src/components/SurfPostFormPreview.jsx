@@ -6,10 +6,12 @@ const SurfPostFormPreview = props => {
   return(
     <div id='SurfPostFormPreview' className='Content'>      
       <div id='SelectedSurfPostInfo' className='placeholder'>
-        {name} ({location})
-        {/* {link} */}
-        {date}
-        {description}
+        <div id='SelectedSurfPostInfoName'>
+          <a href={link}>{name}</a>
+          ({location})
+        </div>
+        <div id='SelectedSurfPostInfoDate'>{date}</div>
+        <div id='SelectedSurfPostInfoDescription'>{description}</div>
       </div>
       <div id='SelectedUserPost' className='placeholder'>
         SELECTED USER POST

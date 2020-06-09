@@ -11,9 +11,8 @@ const SurfPost = props => {
       </div>
       <div id='SurfPostDetails' className='Content'>
         <div id='SurfPostUserInfo'>
-          <div id='SurfPostUserInfoName'>{name}</div>
+          <a id='SurfPostUserInfoName' href={link} target="_blank">{name}</a>
           <div id='SurfPostUserInfoLocation'>({userLocation})</div>
-          <a id='SurfPostUserInfoLink' href={link} target="_blank">link</a>
         </div>
         <div id='SurfPostInput'>
           <div id='SurfPostInputLocation'>{location}</div>

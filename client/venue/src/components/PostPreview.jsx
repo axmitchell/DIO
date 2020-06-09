@@ -2,6 +2,7 @@ import React from 'react';
 
 const PostPreview = props => {
   const { postPhoto, postLocation, postDate, postDescription } = props.postInfo;
+  const { link, location, name } = props.userInfo;
   return (
     <div id='PostForm'>
       <div id='PostFormImage' className='Content'>
@@ -9,9 +10,8 @@ const PostPreview = props => {
       </div>
       <div id='PostFormDetails' className='Content'>
         <div id='PostFormUserInfo'>
-          <div id='PostFormUserInfoName'>{props.userInfo.name}</div>
-          <div id='PostFormUserInfoLocation'>({props.userInfo.location})</div>
-          <a id='PostFormUserInfoLink' href={props.userInfo.link} target="_blank">link</a>
+          <a id='PostFormUserInfoName' href={link} target="_blank">{name}</a>
+          <div id='PostFormUserInfoLocation'>({location})</div>
         </div>
         <div id='PostFormInput'>
           <div id='PostFormInputLocation'>{postLocation}</div>

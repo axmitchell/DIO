@@ -532,8 +532,7 @@ input, textarea {
   display: grid;
   grid-template-columns: auto 10px auto;
   grid-template-areas: 
-    'Venuename . Venuelocation'
-    'Venuelink Venuelink Venuelink';
+    'Venuename . Venuelocation';
   justify-content: center;
   align-items: center;
 }
@@ -546,13 +545,6 @@ input, textarea {
 
 #PostFormUserInfoLocation {
   grid-area: Venuelocation;
-  justify-self: center;
-  align-self: center;
-}
-
-#PostFormUserInfoLink {
-  grid-area: Venuelink;
-  font-size: 30px;
   justify-self: center;
   align-self: center;
 }
@@ -664,9 +656,26 @@ input, textarea {
   grid-area: SurfPostFormPreview;
   width: 100%;
   height: 100%;
+  grid-template-rows: 30% 70%;
   grid-template-areas: 
     'SelectedSurfPostInfo'
     'SelectedUserPost'; 
+}
+
+#SelectedSurfPostInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  font-size: 35px;
+  border-style: solid;
+  border-color: green;
+}
+
+#SelectedSurfPostInfoDescription {
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .placeholder {

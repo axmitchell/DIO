@@ -11,9 +11,8 @@ const SurfPost = props => {
       </div>
       <div id='PostFormDetails' className='Content'>
         <div id='PostFormUserInfo'>
-          <div id='PostFormUserInfoName'>{name}</div>
+          <a id='PostFormUserInfoName' href={link} target="_blank">{name}</a>
           <div id='PostFormUserInfoLocation'>({location})</div>
-          <a id='PostFormUserInfoLink' href={link} target="_blank">link</a>
         </div>
         <div id='PostFormInput'>
           <div id='PostFormInputDate'>{date}</div>

@@ -2,6 +2,7 @@ import React from 'react';
 
 const PostForm = props => {
   const { postPhoto, postLocation, postDate, postDescription } = props.postInfo;
+  const { name, link, location } = props.userInfo;
   return (
       <div id='PostForm'>
           <form id='PostFormImage' className='Content'>
@@ -9,9 +10,8 @@ const PostForm = props => {
           </form>
           <form  id='PostFormDetails' className='Content'>
             <div id='PostFormUserInfo'>
-              <div id='PostFormUserInfoName'>{props.userInfo.name}</div>
-              <div id='PostFormUserInfoLocation'>({props.userInfo.location})</div>
-              <a id='PostFormUserInfoLink' href={props.userInfo.link} target="_blank">bandcamp</a>
+              <a id='PostFormUserInfoName' href={link} target="_blank">{name}</a>
+              <div id='PostFormUserInfoLocation'>({location})</div>
             </div>
             <div id='PostFormInput'>
               <input name='postLocation' value={postLocation} placeholder='location' onChange={props.handlePostFormChange} style={{width: '60%', display: 'flex', justifySelf: 'center'}}/>
