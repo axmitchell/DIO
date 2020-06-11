@@ -1,19 +1,17 @@
 import React from 'react';
 
 const SurfPostFormPreview = props => {
-  const { currentPost } = props;
-  const { name, location, link, date, description, userLocation } = currentPost;
-  return(
-    <div id='SelectedSurfPost'>      
-      <div id='SurfPostDetails' className='SelectedSurfPost'>
-        <div id='SurfPostUserInfo'>
-          <a id='SurfPostUserInfoName' href={link} target="_blank">{name}</a>
-          <div id='SurfPostUserInfoLocation'>({userLocation})</div>
+  const { currentPost, userInfo } = props;
+  return (
+    <div id='SelectedUserPost'>
+      <div id='PostFormDetails' className='SelectedUserPost'>
+        <div id='PostFormUserInfo'>
+          <a id='PostFormUserInfoName' href={userInfo.link} target="_blank">{userInfo.name}</a>
+          <div id='PostFormUserInfoLocation'>({userInfo.location})</div>
         </div>
-        <div id='SurfPostInput'>
-          <div id='SurfPostInputLocation'>{location}</div>
-          <div id='SurfPostInputDate'>{date}</div>
-          <div id='SurfPostInputDescription'>{description}</div>
+        <div id='PostFormInput'>
+          <div id='PostFormInputDate'>{currentPost.date}</div>
+          <textarea name='postDescription' placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}}/>
         </div>
       </div>
     </div>
