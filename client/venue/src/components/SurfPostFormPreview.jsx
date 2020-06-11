@@ -2,19 +2,19 @@ import React from 'react';
 
 const SurfPostFormPreview = props => {
   const { currentPost } = props;
-  const { name, userLocation, location, link, date, description } = currentPost;
+  const { name, location, link, date, description, userLocation } = currentPost;
   return(
-    <div id='SurfPostFormPreview' className='Content'>      
-      <div id='SelectedSurfPostInfo' className='placeholder'>
-        <div id='SelectedSurfPostInfoName'>
-          <a href={link}>{name}</a>
-          ({userLocation})
+    <div id='SelectedSurfPost'>      
+      <div id='SurfPostDetails' className='SelectedSurfPost'>
+        <div id='SurfPostUserInfo'>
+          <a id='SurfPostUserInfoName' href={link} target="_blank">{name}</a>
+          <div id='SurfPostUserInfoLocation'>({userLocation})</div>
         </div>
-        <div id='SelectedSurfPostInfoLocation'>{location} - {date}</div>
-        <div id='SelectedSurfPostInfoDescription'>{description}</div>
-      </div>
-      <div id='SelectedUserPost' className='placeholder'>
-        SELECTED USER POST
+        <div id='SurfPostInput'>
+          <div id='SurfPostInputLocation'>{location}</div>
+          <div id='SurfPostInputDate'>{date}</div>
+          <div id='SurfPostInputDescription'>{description}</div>
+        </div>
       </div>
     </div>
   )

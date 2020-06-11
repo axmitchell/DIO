@@ -14,7 +14,7 @@ const PostPreview = props => {
           <div id='PostFormUserInfoLocation'>({location})</div>
         </div>
         <div id='PostFormInput'>
-          <div id='PostFormInputLocation'>{postLocation}</div>
+          {/* <div id='PostFormInputLocation'>{postLocation}</div> */}
           <div id='PostFormInputDate'>{postDate}</div>
           <div id='PostFormInputDescription'>{postDescription}</div>
         </div>

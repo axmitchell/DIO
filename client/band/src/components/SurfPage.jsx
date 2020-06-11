@@ -69,13 +69,13 @@ class SurfPage extends Component {
         )
       } else {
         return (
-          <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState}/>
+          <SurfPost key={currentPost.link} post={currentPost} handleSurfPageState={this.handleSurfPageState} userInfo={userInfo}/>
         )
       }
     }
     if (page === 'SurfPostForm') {
       return (
-          <SurfPostForm currentPost={currentPost}/>
+          <SurfPostForm currentPost={currentPost} userInfo={userInfo}/>
       )
     }
   }

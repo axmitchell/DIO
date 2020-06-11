@@ -62,7 +62,7 @@ class SurfPage extends Component {
   render() {
     const { photo, name, location, userLocation, link, date, description, otherUserPosts } = this.state;
     let currentPost = { photo, name, location, userLocation, link, date, description }
-    const { page } = this.props;
+    const { page, userInfo } = this.props;
     if (page === '') {
       if (otherUserPosts.length === 0) {
         return (
@@ -78,7 +78,7 @@ class SurfPage extends Component {
     }
     if (page === 'SurfPostForm') {
       return (
-        <SurfPostForm currentPost={currentPost}/>
+        <SurfPostForm currentPost={currentPost} userInfo={userInfo}/>
       )
     }
   }

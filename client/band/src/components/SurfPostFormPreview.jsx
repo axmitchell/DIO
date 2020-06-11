@@ -4,20 +4,19 @@ const SurfPostFormPreview = props => {
   const { currentPost } = props;
   const { name, location, link, date, description } = currentPost;
   return(
-    <div id='SurfPostFormPreview' className='Content'>      
-      <div id='SelectedSurfPostInfo' className='placeholder'>
-        <div id='SelectedSurfPostInfoName'>
-          <a href={link}>{name}</a>
-          ({location})
+    <div id='SelectedSurfPost'>      
+      <div id='PostFormDetails' className='SelectedSurfPost'>
+        <div id='PostFormUserInfo'>
+          <a id='PostFormUserInfoName' href={link} target="_blank">{name}</a>
+          <div id='PostFormUserInfoLocation'>({location})</div>
         </div>
-        <div id='SelectedSurfPostInfoDate'>{date}</div>
-        <div id='SelectedSurfPostInfoDescription'>{description}</div>
-      </div>
-      <div id='SelectedUserPost' className='placeholder'>
-        SELECTED USER POST
+        <div id='PostFormInput'>
+          <div id='PostFormInputDate'>{date}</div>
+          <div id='PostFormInputDescription'>{description}</div>
+        </div>
       </div>
     </div>
   )
 }
 
-export default SurfPostFormPreview;
+export default SurfPostFormPreview; 
