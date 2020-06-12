@@ -81,7 +81,6 @@ class App extends Component {
         postFront: !this.state.postFront
       })
     }
-    console.log(e.target.id)
   }
 
   handlePage(page) {
