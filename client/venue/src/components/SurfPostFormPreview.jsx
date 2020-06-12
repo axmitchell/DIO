@@ -1,7 +1,8 @@
 import React from 'react';
 
 const SurfPostFormPreview = props => {
-  const { currentPost, userInfo, postFront, flipPost} = props;
+  const { currentPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange} = props;
+  const { postPhoto, postLocation, postDate, postDescription } = postInfo;
   if (postFront) {
     return (
       <div id='SelectedUserPost'>
@@ -12,7 +13,7 @@ const SurfPostFormPreview = props => {
           </div>
           <div id='PostFormInput'>
             <div id='PostFormInputDate'>{currentPost.date}</div>
-            <textarea name='postDescription' placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}}/>
+            <textarea name='postDescription' value={postDescription} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={handlePostFormChange}/>
           </div>
         </div>
       </div>
@@ -22,7 +23,7 @@ const SurfPostFormPreview = props => {
     return (
       <div id='SelectedUserPost'>
         <form id='PostFormImage' className='SelectedUserPost SelectedUserPostPhoto' onClick={flipPost}>
-          <input name='postPhoto' placeholder='post image link'/>
+          <input name='postPhoto' value={postPhoto} placeholder='post image link' onChange={handlePostFormChange}/>
         </form>
       </div>
     )
