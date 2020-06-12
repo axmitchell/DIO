@@ -1,7 +1,8 @@
 import React from 'react';
 
 const SurfPostFormPreview = props => {
-  const { currentPost, userInfo, postFront, flipPost} = props;
+  const { currentPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange} = props;
+  const { postPhoto, postLocation, postDate, postDescription } = postInfo;
   if (postFront) {
     return (
       <div id='SelectedUserPost'>
