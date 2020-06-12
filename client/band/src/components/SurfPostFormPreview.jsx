@@ -1,8 +1,9 @@
 import React from 'react';
 
 const SurfPostFormPreview = props => {
-  const { currentPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange} = props;
+  const { currentSurfPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange} = props;
   const { postPhoto, postLocation, postDate, postDescription } = postInfo;
+  const { surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription } = currentSurfPost;
   if (postFront) {
     return (
       <div id='SelectedUserPost'>
@@ -12,8 +13,8 @@ const SurfPostFormPreview = props => {
             <div id='PostFormUserInfoLocation'>({userInfo.location})</div>
           </div>
           <div id='PostFormInput'>
-            <div id='PostFormInputLocation'>{currentPost.location}</div>
-            <div id='PostFormInputDate'>{currentPost.date}</div>
+            <div id='PostFormInputLocation'>{surfPostLocation}</div>
+            <div id='PostFormInputDate'>{surfPostDate}</div>
             <textarea name='postDescription' value={postDescription} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={handlePostFormChange}/>
           </div>
         </div>

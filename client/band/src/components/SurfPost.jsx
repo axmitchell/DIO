@@ -1,25 +1,25 @@
 import React from 'react';
 
 const SurfPost = props => {
-  const { post, handleSurfPageState } = props;
-  const { photo, name, location, link, date, description } = post;
+  const { currentSurfPost, handleSurfPostView } = props;
+  const { surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription } = currentSurfPost;
   return (
     <div id='PostForm'>
-      <button id='PreviousSet' onClick={handleSurfPageState}/>
+      <button id='PreviousSet' onClick={handleSurfPostView}/>
       <div id='PostFormImage' className='Content'>
-        <img src={photo}></img>
+        <img src={surfPostPhoto}></img>
       </div>
       <div id='PostFormDetails' className='Content'>
         <div id='PostFormUserInfo'>
-          <a id='PostFormUserInfoName' href={link} target="_blank">{name}</a>
-          <div id='PostFormUserInfoLocation'>({location})</div>
+          <a id='PostFormUserInfoName' href={surfPostLink} target="_blank">{surfPostName}</a>
+          <div id='PostFormUserInfoLocation'>({surfPostLocation})</div>
         </div>
         <div id='PostFormInput'>
-          <div id='PostFormInputDate'>{date}</div>
-          <div id='PostFormInputDescription'>{description}</div>
+          <div id='PostFormInputDate'>{surfPostDate}</div>
+          <div id='PostFormInputDescription'>{surfPostDescription}</div>
         </div>
       </div>
-      <button id='NextSet' onClick={handleSurfPageState}/>
+      <button id='NextSet' onClick={handleSurfPostView}/>
     </div>
   )
 }

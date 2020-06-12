@@ -20,7 +20,16 @@ class App extends Component {
       postLocation: '',
       postDate: '',
       postDescription: '',
-      postId: ''
+      postId: '',
+      otherUserPosts: [],
+      selectedSurfPost: 0,
+      surfPostPhoto: '', 
+      surfPostName: '', 
+      surfPostLocation: '', 
+      surfPostLink: '', 
+      surfPostDate: '', 
+      surfPostDescription: '',
+      postFront: true,
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
@@ -29,7 +38,10 @@ class App extends Component {
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.getSets = this.getSets.bind(this);
+    this.getShows = this.getShows.bind(this);
     this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
+    this.handleSurfPostView = this.handleSurfPostView.bind(this);
+    this.flipPost = this.flipPost.bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +49,39 @@ class App extends Component {
     axios.get(`/users/${userId}`)
       .then(({ data }) => {
         this.setState(data)
-        this.getSets()
+        this.getSets();
+        this.getShows();
       })
       .catch(console.log)
+  }
+
+  handleSurfPostView(e) {
+    const { selectedSurfPost, otherUserPosts } = this.state
+    let nextPost;
+    if (e.target.id === 'NextSet' && selectedSurfPost < otherUserPosts.length - 1) {
+      nextPost = selectedSurfPost + 1;
+    } else if (e.target.id === 'PreviousSet' && selectedSurfPost > 0) {
+      nextPost = selectedSurfPost - 1;
+    }
+    const { date } = otherUserPosts[nextPost]
+    this.setState({
+      selectedSurfPost: nextPost,
+      surfPostPhoto: otherUserPosts[nextPost].photo, 
+      surfPostName: otherUserPosts[nextPost].user.name, 
+      surfPostLocation: otherUserPosts[nextPost].user.location, 
+      surfPostLink: otherUserPosts[nextPost].user.link, 
+      surfPostDate: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
+      surfPostDescription: otherUserPosts[nextPost].description,
+    })
+  }
+
+  flipPost(e) {
+    if (e.target.id && e.target.id !== 'PostFormUserInfoName') {
+      this.setState({
+        postFront: !this.state.postFront
+      })
+    }
+    console.log(e.target.id)
   }
 
   handlePage(page) {
@@ -115,15 +157,32 @@ class App extends Component {
 
   getSets() {
     axios.get(`/sets/${Number(this.state.userId)}`)
-    .then(res => {
-      res.data.forEach(post => {
-        post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`;
+      .then(res => {
+        res.data.forEach(post => {
+          post.date = `${post.date.slice(5,7)}/${post.date.slice(8,10)}/${post.date.slice(2,4)}`;
+        })
+        this.setState({
+          posts: res.data,
+        })
       })
-      this.setState({
-        posts: res.data,
+      .catch(console.log)
+  }
+
+  getShows() {
+    axios.get(`/shows`)
+      .then(res => {
+        const { date } = res.data[0];
+        this.setState({
+          otherUserPosts: res.data,
+          surfPostPhoto: res.data[0].photo, 
+          surfPostName: res.data[0].user.name, 
+          surfPostLocation: res.data[0].user.location, 
+          surfPostLink: res.data[0].user.link, 
+          surfPostDate: `${date.slice(5,7)}/${date.slice(8,10)}/${date.slice(2,4)}`, 
+          surfPostDescription: res.data[0].description,
+        })
       })
-    })
-    .catch(console.log)
+      .catch(console.log)
   }
 
   handlePostDelete() {
@@ -147,13 +206,14 @@ class App extends Component {
   }
 
   render() {
-    const { userId, name, link, location, about, photo, posts, selectedNavButton, page, postPhoto, postDescription, postDate, postLocation } = this.state;
+    const { userId, name, link, location, about, photo, posts, selectedNavButton, page, postPhoto, postDescription, postDate, postLocation, surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription, otherUserPosts, postFront } = this.state;
     const userInfo = { userId, name, link, location, about, photo, posts }
     const postInfo = { postPhoto, postDescription, postDate, postLocation }
+    const currentSurfPost = { surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription }
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} />
+        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
       </div>
     )
   }
