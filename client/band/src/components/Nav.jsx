@@ -91,8 +91,8 @@ const Nav = props => {
       return (
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
-          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={handleSurfPostReply}>PREVIEW</button>
-          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('SAVE POST')}>SAVE</button>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('preview post')}>PREVIEW</button>
+          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={handleSurfPostReply}>SAVE</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
         </div>
       )
