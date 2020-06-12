@@ -42,6 +42,7 @@ class App extends Component {
     this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
     this.handleSurfPostView = this.handleSurfPostView.bind(this);
     this.flipPost = this.flipPost.bind(this);
+    this.handleSurfPostReply = this.handleSurfPostReply.bind(this);
   }
 
   componentDidMount() {
@@ -154,6 +155,21 @@ class App extends Component {
     }
   }
 
+  handleSurfPostReply() {
+    const { postPhoto, surfPostDate, postDescription, surfPostLocation } = this.state;
+    if (postPhoto && postDescription) {
+      let convertedDate = new Date(surfPostDate.slice(0,6) + '20' + surfPostDate.slice(6,8));
+      let venuePost = {
+        userId: Number(this.state.userId),
+        photo: postPhoto,
+        location: surfPostLocation,
+        date: convertedDate,
+        description: postDescription,
+      }
+      console.log(venuePost)
+    }
+  }
+
   getSets() {
     axios.get(`/sets/${Number(this.state.userId)}`)
       .then(res => {
@@ -211,7 +227,7 @@ class App extends Component {
     const currentSurfPost = { surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply}/>
         <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
       </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Nav = props => {
-  const { handleNavButtonClick, handlePage, appState, handlePostDelete, handlePostSubmit } = props
+  const { handleNavButtonClick, handlePage, appState, handlePostDelete, handlePostSubmit, handleSurfPostReply } = props
   const { name, selectedNavButton, page } = appState
   let profileButtonText = name.toUpperCase();
   if (selectedNavButton === '') {
@@ -93,7 +93,7 @@ const Nav = props => {
           <div id='Nav'>
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('PREVIEW POST')}>PREVIEW</button>
-            <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('SAVE POST')}>SAVE</button>
+            <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={handleSurfPostReply}>SAVE</button>
             <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
           </div>
         )
