@@ -672,6 +672,12 @@ input, textarea {
   border-style: solid;
 }
 
+.SelectedUserPostPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .placeholder {
   text-align: center
 }

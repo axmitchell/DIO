@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SurfPostFormPreview = props => {
+const SelectedSurfPost = props => {
   const { currentPost } = props;
   const { name, location, link, date, description, userLocation } = currentPost;
   return(
@@ -20,4 +20,4 @@ const SurfPostFormPreview = props => {
   )
 }
 
-export default SurfPostFormPreview;
+export default SelectedSurfPost;

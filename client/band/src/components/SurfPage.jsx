@@ -15,8 +15,10 @@ class SurfPage extends Component {
       link: '', 
       date: '', 
       description: '',
+      postFront: true,
     }
     this.handleSurfPageState = this.handleSurfPageState.bind(this);
+    this.flipPost = this.flipPost.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +36,15 @@ class SurfPage extends Component {
         })
       })
       .catch(console.log)
+  }
+
+  flipPost(e) {
+    if (e.target.id && e.target.id !== 'PostFormUserInfoName') {
+      this.setState({
+        postFront: !this.state.postFront
+      })
+    }
+    console.log(e.target.id)
   }
 
   handleSurfPageState(e) {
@@ -57,7 +68,7 @@ class SurfPage extends Component {
   }
 
   render() {
-    const { photo, name, location, link, date, description, otherUserPosts } = this.state;
+    const { photo, name, location, link, date, description, otherUserPosts, postFront } = this.state;
     let currentPost = { photo, name, location, link, date, description }
     const { page, userInfo } = this.props;
     if (page === '') {
@@ -75,7 +86,7 @@ class SurfPage extends Component {
     }
     if (page === 'SurfPostForm') {
       return (
-          <SurfPostForm currentPost={currentPost} userInfo={userInfo}/>
+          <SurfPostForm currentPost={currentPost} userInfo={userInfo} postFront={postFront} flipPost={this.flipPost}/>
       )
     }
   }
