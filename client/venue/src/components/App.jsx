@@ -201,7 +201,12 @@ class App extends Component {
         date: convertedDate,
         description: postDescription,
       }
-      console.log(venuePost)
+      axios.post('/shows', venuePost) 
+        .then(() => {
+          this.getShows();
+          this.clearStateForPostPage();
+        })
+        .catch(console.log)
     }
   }
 

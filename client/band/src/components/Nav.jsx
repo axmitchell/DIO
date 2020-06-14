@@ -82,7 +82,7 @@ const Nav = props => {
         <div id='Nav'>
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
           <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => {handlePage('SurfPostForm')}}>REPLY</button>
-          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => alert('filter posts')}>FILTER</button>
+          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={(e) => e.target.innerHTML = 'DATE FILTER'}>FILTER</button>
           <button id='NavSearchButton' className='NavButtons backButton' onClick={handleNavButtonClick}>{'< - -'}</button>
         </div>
       )
