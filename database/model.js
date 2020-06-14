@@ -87,8 +87,51 @@ Show.associate = models => {
   Show.belongsTo(models.User);
 };
 
+const Connection = sequelize.define('connections', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  bandId: {
+    type: Sequelize.INTEGER,
+  },
+  venueId: {
+    type: Sequelize.INTEGER,
+  },
+  setId: {
+    type: Sequelize.INTEGER,
+  },
+  showId: {
+    type: Sequelize.INTEGER,
+  },
+  messengerId: {
+    type: Sequelize.INTEGER,
+  },
+  conversation: {
+    type: Sequelize.JSON,
+  },
+  messengerStatus: {
+    type: Sequelize.ENUM('requested', 'cancelled'),
+  },
+  recipientStatus: {
+    type: Sequelize.ENUM('recieved', 'accepted','denied'),
+  },
+  collaboration: {
+    type: Sequelize.BOOLEAN,
+  },
+},
+{
+  timestamps: false,
+});
+
+Connection.associate = models => {
+  Connection.belongsTo(models.User);
+};
+
 module.exports = {
   User,
   Set,
   Show,
+  Connection,
 };

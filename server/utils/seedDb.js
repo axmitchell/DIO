@@ -35,6 +35,18 @@ const sets = [
   }
 ];
 
+const connection = {
+  bandId: 1,
+  venueId: 2,
+  setId: 1,
+  showId: 1,
+  messengerId: 1,
+  conversation: '[]',
+  messengerStatus: 'requested',
+  recipientStatus: 'received',
+  collaboration: false,
+}
+
 const shows = [
   {
     userId: 2,
@@ -73,17 +85,30 @@ const createUsers = () => {
   db.User.bulkCreate([band, venue])
     .then(() => console.log('users sucessfully created'))
     .then(() => seedPosts())
-    .catch(err => console.log('error seeding users: ', err));
+    .catch(err => console.log('error creating users: ', err));
 };
 
 const seedPosts = () => {
-  db.Set.bulkCreate(sets)
-    .then(() => console.log('sets sucessfully seeded'))
-    .catch(err => console.log('error seeding sets: ', err));
+  const setsToCreate = db.Set.bulkCreate(sets);
+  const showsToCreate = db.Show.bulkCreate(shows);
+  Promise.all([setsToCreate, showsToCreate])
+    .then(() => {
+      console.log('posts successfully created');
+      seedConnection()
+    })
+    .catch(err => console.log('error creating posts:', err))
+  // db.Set.bulkCreate(sets)
+  //   .then(() => console.log('sets sucessfully seeded'))
+  //   .catch(err => console.log('error seeding sets: ', err));
   
-  db.Show.bulkCreate(shows)
-    .then(() => console.log('shows sucessfully seeded'))
-    .catch(err => console.log('error seeding shows: ', err));
+  // db.Show.bulkCreate(shows)
+  //   .then(() => console.log('shows sucessfully seeded'))
+  //   .catch(err => console.log('error seeding shows: ', err));
 };
 
+const seedConnection = () => {
+  db.Connection.create(connection)
+    .then(() => console.log('connection sucessfully created'))
+    .catch(err => console.log('error creating connection: ', err));
+}
 
