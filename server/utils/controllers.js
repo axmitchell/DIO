@@ -85,6 +85,14 @@ addShows = (req, res) => {
     });
 };
 
+addConnection = (req, res) => {
+  db.Connection.create(req.body)
+    .then(() => res.sendes.send(201))
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+}
+
 module.exports = {
   getUser,
   getShows,
@@ -92,5 +100,6 @@ module.exports = {
   addSets,
   deleteSet,
   deleteShow,
-  addShows
+  addShows,
+  addConnection
 };

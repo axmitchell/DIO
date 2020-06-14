@@ -23,6 +23,7 @@ class App extends Component {
       postId: '',
       otherUserPosts: [],
       selectedSurfPost: 0,
+      surfPostId: 0,
       surfPostPhoto: '', 
       surfPostName: '', 
       surfPostLocation: '', 
@@ -67,6 +68,7 @@ class App extends Component {
     const { date } = otherUserPosts[nextPost]
     this.setState({
       selectedSurfPost: nextPost,
+      surfPostId: otherUserPosts[nextPost].id,
       surfPostPhoto: otherUserPosts[nextPost].photo, 
       surfPostName: otherUserPosts[nextPost].user.name, 
       surfPostLocation: otherUserPosts[nextPost].user.location, 
@@ -194,6 +196,7 @@ class App extends Component {
         const { date } = res.data[0];
         this.setState({
           otherUserPosts: res.data,
+          surfPostId: res.data[0].id,
           surfPostPhoto: res.data[0].photo, 
           surfPostName: res.data[0].user.name, 
           surfPostLocation: res.data[0].user.location, 
