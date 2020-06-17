@@ -23,6 +23,7 @@ class App extends Component {
       postId: '',
       otherUserPosts: [],
       selectedSurfPost: 0,
+      surfPostUserId: 0,
       surfPostId: 0,
       surfPostPhoto: '', 
       surfPostName: '', 
@@ -68,6 +69,7 @@ class App extends Component {
     const { date } = otherUserPosts[nextPost]
     this.setState({
       selectedSurfPost: nextPost,
+      surfPostUserId: otherUserPosts[nextPost].userId,
       surfPostId: otherUserPosts[nextPost].id,
       surfPostPhoto: otherUserPosts[nextPost].photo, 
       surfPostName: otherUserPosts[nextPost].user.name, 
@@ -139,8 +141,8 @@ class App extends Component {
   handlePostSubmit(e) {
     e.preventDefault()
     const { postPhoto, postLocation, postDate, postDescription } = this.state;
-    if (postPhoto && postLocation && postDate && postDescription) {
-      let convertedDate = new Date(postDate.slice(0,6) + '20' + postDate.slice(6,8));
+    let convertedDate = new Date(postDate);
+    if (postPhoto && convertedDate.getTime() && postLocation && postDescription) {
       const post = {
         userId: Number(this.state.userId),
         photo: postPhoto,
@@ -160,7 +162,7 @@ class App extends Component {
   handleSurfPostReply() {
     const { postPhoto, surfPostDate, postDescription, surfPostLocation } = this.state;
     if (postPhoto && postDescription) {
-      let convertedDate = new Date(surfPostDate.slice(0,6) + '20' + surfPostDate.slice(6,8));
+      let convertedDate = new Date(surfPostDate);
       let bandPost = {
         userId: Number(this.state.userId),
         photo: postPhoto,
@@ -175,6 +177,22 @@ class App extends Component {
         })
         .catch(console.log)
     }
+  }
+
+  createConnection() {
+    const { surfPostId, surfPostUserId, userId } = this.state;
+    const connection = {
+      bandId: userId,
+      venueId: surfPostUserId,
+      setId: '???',
+      showId: surfPostId,
+      messengerId: userId,
+      // conversation: '[]',
+      // messengerStatus: 'requested',
+      // recipientStatus: 'received',
+      // collaboration: false,
+    }
+    console.log(connection)
   }
 
   getSets() {
@@ -196,6 +214,7 @@ class App extends Component {
         const { date } = res.data[0];
         this.setState({
           otherUserPosts: res.data,
+          surfPostUserId: res.data[0].userId,
           surfPostId: res.data[0].id,
           surfPostPhoto: res.data[0].photo, 
           surfPostName: res.data[0].user.name, 
