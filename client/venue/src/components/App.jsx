@@ -181,7 +181,7 @@ class App extends Component {
     e.preventDefault()
     const { postPhoto, postLocation, postDate, postDescription } = this.state;
     let convertedDate = new Date(postDate);
-    if (postPhoto && !!convertedDate && postDescription) {
+    if (postPhoto && convertedDate.getTime() && postDescription) {
       const venuePost = {
         userId: Number(this.state.userId),
         photo: postPhoto,
@@ -210,26 +210,33 @@ class App extends Component {
       axios.post('/shows', venuePost) 
         .then(() => {
           this.getShows();
+          this.createConnection(convertedDate)
           this.clearStateForPostPage();
         })
         .catch(console.log)
     }
   }
 
-  createConnection() {
+  createConnection(date) {
     const { surfPostId, surfPostUserId, userId } = this.state;
-    const connection = {
-      bandId: surfPostUserId,
-      venueId: userId,
-      setId: surfPostId,
-      showId: '???',
-      messengerId: userId,
-      // conversation: '[]',
-      // messengerStatus: 'requested',
-      // recipientStatus: 'received',
-      // collaboration: false,
-    }
-    console.log(connection)
+    axios.get(`/shows/${Number(this.state.userId)}?date=${date}`)
+      .then(res => {
+        const connection = {
+          bandId: surfPostUserId,
+          venueId: userId,
+          setId: surfPostId,
+          showId: res.data.id,
+          messengerId: userId,
+          conversation: '[]',
+          messengerStatus: 'requested',
+          recipientStatus: 'received',
+          collaboration: false,
+        };
+        axios.post('/connection', connection)
+          .then(res => console.log('Connection submitted'))
+          .catch(console.log)
+      })
+      .catch(console.log)
   }
 
   getShows() {

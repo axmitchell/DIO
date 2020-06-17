@@ -94,7 +94,7 @@ const seedPosts = () => {
   Promise.all([setsToCreate, showsToCreate])
     .then(() => {
       console.log('posts successfully created');
-      seedConnection()
+      // seedConnection()
     })
     .catch(err => console.log('error creating posts:', err))
   // db.Set.bulkCreate(sets)

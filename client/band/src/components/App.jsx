@@ -173,26 +173,33 @@ class App extends Component {
       axios.post('/sets', bandPost) 
         .then(() => {
           this.getSets();
+          this.createConnection(convertedDate)
           this.clearStateForPostPage();
         })
         .catch(console.log)
     }
   }
 
-  createConnection() {
+  createConnection(date) {
     const { surfPostId, surfPostUserId, userId } = this.state;
-    const connection = {
-      bandId: userId,
-      venueId: surfPostUserId,
-      setId: '???',
-      showId: surfPostId,
-      messengerId: userId,
-      // conversation: '[]',
-      // messengerStatus: 'requested',
-      // recipientStatus: 'received',
-      // collaboration: false,
-    }
-    console.log(connection)
+    axios.get(`/sets/${Number(this.state.userId)}?date=${date}`)
+      .then(res => {
+        const connection = {
+          bandId: userId,
+          venueId: surfPostUserId,
+          setId: res.data.id,
+          showId: surfPostId,
+          messengerId: userId,
+          conversation: '[]',
+          messengerStatus: 'requested',
+          recipientStatus: 'received',
+          collaboration: false,
+        }
+        axios.post('/connection', connection)
+          .then(res => console.log('Connection submitted'))
+          .catch(console.log)
+      })
+      .catch(console.log)
   }
 
   getSets() {
