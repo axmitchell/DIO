@@ -1,4 +1,5 @@
 import React from 'react';
+import ConnectionsGallery from './ConnectionsGallery.jsx';
 
 const Post = props => {
   const { postInfo } = props;
@@ -13,9 +14,7 @@ const Post = props => {
         </div>
         <div id='PostDescription'>{postDescription}</div>
       </div>
-      <div id='PostCollabsList' className='Content'>
-        COLLAB THREADS GO HERE
-      </div>
+      < ConnectionsGallery />
     </div>
   )
 }

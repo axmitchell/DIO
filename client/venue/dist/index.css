@@ -266,7 +266,7 @@ input, textarea {
 #Post {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-areas: "PostInfo PostCollabsList";
+  grid-template-areas: "PostInfo ConnectionsGallery";
   width: 90%;
   height: 80%;
 }
@@ -311,8 +311,8 @@ input, textarea {
   padding-right: 20px;
 }
 
-#PostCollabsList {
-  grid-area: PostCollabsList;
+#ConnectionsGallery {
+  grid-area: ConnectionsGallery;
   width: 100%;
   height: 100%;
   border-style: solid;

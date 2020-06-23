@@ -32,6 +32,7 @@ class App extends Component {
       surfPostDate: '', 
       surfPostDescription: '',
       postFront: true,
+      connections: [],
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
@@ -54,6 +55,7 @@ class App extends Component {
         this.setState(data)
         this.getSets();
         this.getShows();
+        this.getConnections();
       })
       .catch(console.log)
   }
@@ -195,9 +197,20 @@ class App extends Component {
           recipientStatus: 'received',
           collaboration: false,
         }
-        axios.post('/connection', connection)
+        axios.post('/connections', connection)
           .then(res => console.log('Connection submitted'))
           .catch(console.log)
+      })
+      .catch(console.log)
+  }
+
+  getConnections() {
+    let { userId } = this.state;
+    axios.get(`/connections?bandId=${userId}`)
+      .then(res => {
+        this.setState({
+          connections: res.data
+        })
       })
       .catch(console.log)
   }

@@ -129,6 +129,27 @@ addConnection = (req, res) => {
     });
 }
 
+getConnections = (req, res) => {
+  if (req.query.bandId) {
+    db.Connection.findAll({
+      where: {bandId: req.query.bandId},
+    })
+      .then(data => {
+        res.send(data)
+      })
+      .catch(err => res.status(500).send(err));
+  }
+  if (req.query.venueId) {
+    db.Connection.findAll({
+      where: {venueId: req.query.venueId},
+    })
+      .then(data => {
+        res.send(data)
+      })
+      .catch(err => res.status(500).send(err));
+  }
+}
+
 module.exports = {
   getUser,
   getShows,
@@ -137,5 +158,6 @@ module.exports = {
   deleteSet,
   deleteShow,
   addShows,
-  addConnection
+  addConnection,
+  getConnections
 };

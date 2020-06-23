@@ -33,6 +33,7 @@ class App extends Component {
       surfPostDate: '', 
       surfPostDescription: '',
       postFront: true,
+      connections: [],
     }
     this.handleNavButtonClick = this.handleNavButtonClick.bind(this);
     this.handlePage = this.handlePage.bind(this);
@@ -42,6 +43,7 @@ class App extends Component {
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.getShows = this.getShows.bind(this);
     this.getSets = this.getSets.bind(this);
+    this.getConncections = this.getConncections.bind(this);
     this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
     this.handleSurfPostView = this.handleSurfPostView.bind(this);
     this.flipPost = this.flipPost.bind(this);
@@ -71,6 +73,7 @@ class App extends Component {
         this.setState(data)
         this.getShows()
         this.getSets()
+        this.getConnections()
       })
       .catch(console.log)
   }
@@ -88,6 +91,17 @@ class App extends Component {
     } else {
       this.setState({ page })
     }
+  }
+
+  getConnections() {
+    let { userId } = this.state;
+    axios.get(`/connections?venueId=${userId}`)
+      .then(res => {
+        this.setState({
+          connections: res.data
+        })
+      })
+      .catch(console.log)
   }
 
   getSets() {
@@ -232,7 +246,7 @@ class App extends Component {
           recipientStatus: 'received',
           collaboration: false,
         };
-        axios.post('/connection', connection)
+        axios.post('/connections', connection)
           .then(res => console.log('Connection submitted'))
           .catch(console.log)
       })

@@ -23,7 +23,8 @@ app.get('/shows/:userId', controllers.getShows);
 app.post('/sets', controllers.addSets);
 app.post('/shows', controllers.addShows);
 
-app.post('/connection', controllers.addConnection)
+app.post('/connections', controllers.addConnection)
+app.get('/connections', controllers.getConnections)
 
 app.delete('/sets/:postId', controllers.deleteSet);
 app.delete('/shows/:postId', controllers.deleteShow);
