@@ -493,7 +493,7 @@ input, textarea {
 
 
 /* ----- SURF ----- */
-#SurfPostForm {
+#SurfReply {
   display: grid;
   width: 1000px;
   height: 80%;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SurfPostFormPreview = props => {
+const SurfReplyPreview = props => {
   const { currentSurfPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange} = props;
   const { postPhoto, postLocation, postDate, postDescription } = postInfo;
   const { surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription } = currentSurfPost;
@@ -15,7 +15,7 @@ const SurfPostFormPreview = props => {
           <div id='PostFormInput'>
             <div id='PostFormInputLocation'>{surfPostLocation}</div>
             <div id='PostFormInputDate'>{surfPostDate}</div>
-            <textarea name='postDescription' value={postDescription} placeholder='description' style={{resize: 'none', width: '14em', height: '5em'}} onChange={handlePostFormChange}/>
+            <div id='PostFormInputDescription'>{postDescription}</div>
           </div>
         </div>
       </div>
@@ -24,12 +24,12 @@ const SurfPostFormPreview = props => {
   if (!postFront) {
     return (
       <div id='SelectedUserPost'>
-        <form id='PostFormImage' className='SelectedUserPost SelectedUserPostPhoto' onClick={flipPost}>
-        <input name='postPhoto' value={postPhoto} placeholder='post image link' onChange={handlePostFormChange}/>
-        </form>
+        <div id='PostFormImage' className='SelectedUserPost SelectedUserPostPhoto'>
+          <img src={postPhoto} onClick={flipPost}></img>
+        </div>
       </div>
     )
   }
 }
 
-export default SurfPostFormPreview;
+export default SurfReplyPreview;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SurfPostFormPreview = props => {
+const SurfReplyForm = props => {
   const { currentSurfPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange} = props;
   const { postPhoto, postLocation, postDate, postDescription } = postInfo;
   const { surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription } = currentSurfPost;
@@ -31,4 +31,4 @@ const SurfPostFormPreview = props => {
   }
 }
 
-export default SurfPostFormPreview;
+export default SurfReplyForm;

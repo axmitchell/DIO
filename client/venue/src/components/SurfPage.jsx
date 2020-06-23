@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SurfPost from './SurfPost.jsx';
-import SurfPostForm from './SurfPostForm.jsx';
+import SurfReply from './SurfReply.jsx';
 
 const SurfPage = props => {
   const { page, userInfo, handlePostFormChange, postInfo, currentSurfPost, otherUserPosts, handleSurfPostView, postFront, flipPost } = props;
@@ -18,9 +18,9 @@ const SurfPage = props => {
       )
     }
   }
-  if (page === 'SurfPostForm') {
+  if (page === 'SurfReplyForm' || page === 'SurfReplyPreview') {
     return (
-        <SurfPostForm currentSurfPost={currentSurfPost} userInfo={userInfo} postFront={postFront} flipPost={flipPost} postInfo={postInfo} handlePostFormChange={handlePostFormChange}/>
+        <SurfReply page={page} currentSurfPost={currentSurfPost} userInfo={userInfo} postFront={postFront} flipPost={flipPost} postInfo={postInfo} handlePostFormChange={handlePostFormChange}/>
     )
   }
 }
