@@ -507,6 +507,29 @@ input, textarea {
   font-size: 20px;
 }
 
+#PostConnection {
+  display: grid;
+  width: 90%;
+  height: 80%;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 'PostConnectionChat PostConnectionInfo';
+}
+
+#PostConnectionChat {
+  grid-area: PostConnectionChat;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+}
+
+#PostConnectionInfo {
+  grid-area: PostConnectionInfo;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: green;
+}
 
 
 /* ----- SURF ----- */

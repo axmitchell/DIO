@@ -42,6 +42,7 @@ class App extends Component {
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.getSets = this.getSets.bind(this);
     this.getShows = this.getShows.bind(this);
+    this.getConnections = this.getConnections.bind(this)
     this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
     this.handleSurfPostView = this.handleSurfPostView.bind(this);
     this.flipPost = this.flipPost.bind(this);

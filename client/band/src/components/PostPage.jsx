@@ -3,6 +3,7 @@ import PostGallery from './PostGallery.jsx'
 import PostForm from './PostForm.jsx';
 import PostPreview from './PostPreview.jsx';
 import Post from './Post.jsx';
+import PostConnection from './PostConnection.jsx';
 
 const PostPage = props => {
   const { page, userInfo, postInfo, handlePostFormChange, handlePage, handlePostView, connections } = props;
@@ -21,7 +22,7 @@ const PostPage = props => {
     )
   } else if (page === 'PostConnection') {
     return (
-      <div>HOWDY</div>
+      <PostConnection />
     )
   } else {
     return (
