@@ -232,10 +232,12 @@ class App extends Component {
   }
 
   createConnection(date) {
-    const { surfPostId, surfPostUserId, userId } = this.state;
+    const { surfPostId, surfPostName, surfPostUserId, userId, name } = this.state;
     axios.get(`/shows/${Number(this.state.userId)}?date=${date}`)
       .then(res => {
         const connection = {
+          bandName: surfPostName,
+          venueName: name,
           bandId: surfPostUserId,
           venueId: userId,
           setId: surfPostId,
@@ -284,14 +286,14 @@ class App extends Component {
   }
 
   render() {
-    const { userId, name, link, location, about, photo, posts, selectedNavButton, page, postPhoto, postDescription, postDate, postLocation, surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription, otherUserPosts, postFront } = this.state;
+    const { connections, userId, name, link, location, about, photo, posts, selectedNavButton, page, postId, postPhoto, postDescription, postDate, postLocation, surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription, otherUserPosts, postFront } = this.state;
     const userInfo = { userId, name, link, location, about, photo, posts }
-    const postInfo = { postPhoto, postDescription, postDate, postLocation }
+    const postInfo = { postId, postPhoto, postDescription, postDate, postLocation }
     const currentSurfPost = { surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription }
     return(
       <div id='Dashboard'>
         <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply}/>
-        <Content selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
+        <Content connections={connections} selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
       </div>
     )
   }

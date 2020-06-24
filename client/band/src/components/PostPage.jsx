@@ -5,7 +5,7 @@ import PostPreview from './PostPreview.jsx';
 import Post from './Post.jsx';
 
 const PostPage = props => {
-  const { page, userInfo, postInfo, handlePostFormChange, handlePage, handlePostView} = props;
+  const { page, userInfo, postInfo, handlePostFormChange, handlePage, handlePostView, connections } = props;
   const { posts } = userInfo;
   if (page === 'PostForm') {
     return(
@@ -13,11 +13,15 @@ const PostPage = props => {
     )
   } else if (page === 'Post' || page === 'PostDrop') {
     return (
-      <Post postInfo={postInfo}/>
+      <Post postInfo={postInfo} connections={connections} handlePage={handlePage}/>
     )
   } else if (page === 'PostPreview') {
     return (
       <PostPreview userInfo={userInfo} postInfo={postInfo}/>
+    )
+  } else if (page === 'PostConnection') {
+    return (
+      <div>HOWDY</div>
     )
   } else {
     return (

@@ -2,8 +2,8 @@ import React from 'react';
 import ConnectionsGallery from './ConnectionsGallery.jsx';
 
 const Post = props => {
-  const { postInfo } = props;
-  const { postPhoto, postLocation, postDate, postDescription } = postInfo;
+  const { postInfo, connections, handlePage } = props;
+  const { postId, postPhoto, postLocation, postDate, postDescription } = postInfo;
   return (
     <div id='Post'>
       <div id='PostInfo' className='Content'>
@@ -14,7 +14,7 @@ const Post = props => {
         </div>
         <div id='PostDescription'>{postDescription}</div>
       </div>
-      < ConnectionsGallery />
+      < ConnectionsGallery handlePage={handlePage} connections={connections} postId={postId}/>
     </div>
   )
 }

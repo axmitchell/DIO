@@ -36,6 +36,8 @@ const sets = [
 ];
 
 const connection = {
+  bandName: 'Index',
+  venueName: 'The Void',
   bandId: 1,
   venueId: 2,
   setId: 1,

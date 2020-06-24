@@ -6,7 +6,7 @@ import Users from './Users.jsx';
 import PostPage from './PostPage.jsx';
 
 const Content = props => {
-  const { selectedNavButton, userInfo, page, handlePage, handlePostFormChange, postInfo, handlePostSubmit, handlePostView, currentSurfPost, flipPost, otherUserPosts, postFront, handleSurfPostView } = props;
+  const { selectedNavButton, userInfo, page, handlePage, handlePostFormChange, postInfo, handlePostSubmit, handlePostView, currentSurfPost, flipPost, otherUserPosts, postFront, handleSurfPostView, connections } = props;
   let content
   switch (selectedNavButton) {
     case '':
@@ -16,7 +16,7 @@ const Content = props => {
       content = <UserPage userInfo={userInfo} page={page}/>
       break;
     case 'NavPostButton':
-      content = <PostPage userInfo={userInfo} handlePage={handlePage} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo} handlePostSubmit={handlePostSubmit} handlePostView={handlePostView}/>
+      content = <PostPage userInfo={userInfo} handlePage={handlePage} page={page} handlePostFormChange={handlePostFormChange} postInfo={postInfo} handlePostSubmit={handlePostSubmit} handlePostView={handlePostView} connections={connections}/>
       break;
     case 'NavSurfButton':
       content = <SurfPage page={page} userInfo={userInfo} handlePostFormChange={handlePostFormChange} postInfo={postInfo} currentSurfPost={currentSurfPost} flipPost={flipPost} handleSurfPostView={handleSurfPostView} otherUserPosts={otherUserPosts} postFront={postFront}/>

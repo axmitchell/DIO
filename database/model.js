@@ -93,6 +93,12 @@ const Connection = sequelize.define('connections', {
     primaryKey: true,
     autoIncrement: true,
   },
+  bandName: {
+    type: Sequelize.STRING,
+  },
+  venueName: {
+    type: Sequelize.STRING,
+  },
   bandId: {
     type: Sequelize.INTEGER,
   },
