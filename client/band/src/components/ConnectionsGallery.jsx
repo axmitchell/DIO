@@ -3,15 +3,21 @@ import ConnectionsThumbnail from './ConnectionsThumbnail.jsx';
 
 const ConnectionsGallery = props => {
   const { connections, postId, handlePage } = props;
-  return (
-    <div id='ConnectionsGallery' className='Content'>
-      {connections.map(connection => {
-        if (connection.id === postId) {
-          return <ConnectionsThumbnail key={connections.id} handlePage={handlePage} name={connection.venueName}/>
-        }
-      })}
-    </div>
-  )
+  if (connections.length === 0) {
+    return (
+      <div id='ConnectionsGallery' className='Content' style={{textAlign: "center", display: "flex", justifyContent: "center"}}>
+        NO CONNECTIONS YET
+      </div>
+    )
+  } else {
+    return (
+      <div id='ConnectionsGallery' className='Content'>
+        {connections.map(connection => 
+          <ConnectionsThumbnail key={connections.id} handlePage={handlePage} name={connection.venueName}/>
+        )}
+      </div>
+    )
+  }
 }
 
 export default ConnectionsGallery;

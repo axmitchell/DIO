@@ -4,6 +4,10 @@ import ConnectionsGallery from './ConnectionsGallery.jsx';
 const Post = props => {
   const { postInfo, connections, handlePage } = props;
   const { postId, postPhoto, postLocation, postDate, postDescription } = postInfo;
+  let relevantConnections = []
+  connections.forEach(connection => {
+    if (connection.id === postId) relevantConnections.push(connection)
+  })
   return (
     <div id='Post'>
       <div id='PostInfo' className='Content'>
@@ -14,7 +18,7 @@ const Post = props => {
         </div>
         <div id='PostDescription'>{postDescription}</div>
       </div>
-      < ConnectionsGallery handlePage={handlePage} connections={connections} postId={postId}/>
+      < ConnectionsGallery handlePage={handlePage} connections={relevantConnections} postId={postId}/>
     </div>
   )
 }
