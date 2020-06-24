@@ -75,6 +75,16 @@ const Nav = props => {
         </div>
       )
     }
+    if (page === 'PostConnection') {
+      return (
+        <div id='Nav'>
+          <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
+          <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('send message')}>SEND</button>
+          <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('cancel connection')}>CANCEL</button>
+          <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('Post')}>{'< - - < - - < - -'}</button>
+        </div>
+      )
+    }
   }
   if (selectedNavButton === 'NavSurfButton') {
     if (page === '') {
