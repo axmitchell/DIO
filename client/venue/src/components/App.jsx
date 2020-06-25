@@ -126,7 +126,7 @@ class App extends Component {
   }
 
   flipPost(e) {
-    if (e.target.id && e.target.id !== 'PostFormUserInfoName') {
+    if ((e.target.id && e.target.id !== 'PostFormUserInfoName') || e.target.tagName === 'IMG') {
       this.setState({
         postFront: !this.state.postFront
       })
