@@ -180,8 +180,16 @@ class App extends Component {
   }
 
   handlePostView(post) {
-    const { photo, date, description, id, user } = post;
-    const { location } = user
+    const { posts, surfPostId, surfPostLocation, surfPostDate, location } = this.state;
+    if (arguments.length === 0 && surfPostId) {
+      console.log(posts)
+      let compatiblePostIndex = posts.findIndex(post => location === surfPostLocation && post.date === surfPostDate);
+      console.log(compatiblePostIndex)
+      if (compatiblePostIndex !== -1) {
+        post = posts[compatiblePostIndex]
+      } else { return; }
+    }
+    const { photo, date, description, id } = post;
     this.setState({
       postId: id,
       postPhoto: photo,
@@ -292,7 +300,7 @@ class App extends Component {
     const currentSurfPost = { surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply}/>
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply} handlePostView={this.handlePostView} />
         <Content connections={connections} selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
       </div>
     )
