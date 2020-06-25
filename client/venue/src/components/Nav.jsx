@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Nav = props => {
-  const { handleNavButtonClick, handlePage, appState, handlePostDelete, handlePostSubmit, handleSurfPostReply, handlePostView } = props
+  const { handleNavButtonClick, handlePage, appState, handlePostDelete, handlePostSubmit, handleSurfPostReply, handlePostView, clearPostState } = props
   const { name, selectedNavButton, page } = appState
   let profileButtonText = name.toUpperCase();
   if (selectedNavButton === '') {
@@ -104,7 +104,7 @@ const Nav = props => {
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => {handlePage('SurfReplyPreview')}}>PREVIEW</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={handleSurfPostReply}>SAVE</button>
-            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => { clearPostState(); handlePage('') }}>{'< - - < - -'}</button>
           </div>
         )
       }
@@ -114,7 +114,7 @@ const Nav = props => {
             <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE SURF</div>
             <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={() => {handlePage('SurfReplyForm')}}>EDIT</button>
             <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}}  onClick={handleSurfPostReply}>SAVE</button>
-            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('')}>{'< - - < - -'}</button>
+            <button id='NavSearchButton' className='NavButtons backButton' onClick={() => { clearPostState(); handlePage('') }}>{'< - - < - -'}</button>
           </div>
         )
       }

@@ -4,9 +4,9 @@ import SurfReplyForm from './SurfReplyForm.jsx';
 import SurfReplyPreview from './SurfReplyPreview.jsx';
 
 const SurfReply = props => {
-  const { page, currentSurfPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange, handlePostView } = props;
+  const { page, currentSurfPost, userInfo, postFront, flipPost, postInfo, handlePostFormChange } = props;
   
-  if (postInfo.id !== 0) {
+  if (postInfo.postId !== 0) {
     return (
       <div id='SurfReply' className='Content'>
         <SurfReplyPreview currentSurfPost={currentSurfPost} userInfo={userInfo} postFront={postFront} flipPost={flipPost} postInfo={postInfo} handlePostFormChange={handlePostFormChange}/>

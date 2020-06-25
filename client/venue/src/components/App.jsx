@@ -20,7 +20,7 @@ class App extends Component {
       postLocation: '',
       postDate: '',
       postDescription: '',
-      postId: '',
+      postId: 0,
       otherUserPosts: [],
       selectedSurfPost: 0,
       surfPostUserId: 0,
@@ -46,6 +46,7 @@ class App extends Component {
     this.getConnections = this.getConnections.bind(this)
     this.clearStateForPostPage = this.clearStateForPostPage.bind(this);
     this.handleSurfPostView = this.handleSurfPostView.bind(this);
+    this.clearPostState = this.clearPostState.bind(this);
     this.flipPost = this.flipPost.bind(this);
     this.handleSurfPostReply = this.handleSurfPostReply.bind(this);
   }
@@ -82,7 +83,7 @@ class App extends Component {
     if (page === '') {
       this.setState({
         page: '',
-        postId: '',
+        postId: 0,
         postPhoto: '',
         postLocation: '',
         postDate: '',
@@ -221,21 +222,26 @@ class App extends Component {
 
   handleSurfPostReply() {
     const { postPhoto, surfPostDate, postDescription } = this.state;
-    if (postPhoto && postDescription) {
-      let convertedDate = new Date(surfPostDate);
-      let venuePost = {
-        userId: Number(this.state.userId),
-        photo: postPhoto,
-        date: convertedDate,
-        description: postDescription,
+    let convertedDate = new Date(surfPostDate);
+    if (postId === 0) {
+      if (postPhoto && postDescription) {
+        let venuePost = {
+          userId: Number(this.state.userId),
+          photo: postPhoto,
+          date: convertedDate,
+          description: postDescription,
+        }
+        axios.post('/shows', venuePost) 
+          .then(() => {
+            this.getShows();
+            this.createConnection(convertedDate)
+            this.clearStateForPostPage();
+          })
+          .catch(console.log)
       }
-      axios.post('/shows', venuePost) 
-        .then(() => {
-          this.getShows();
-          this.createConnection(convertedDate)
-          this.clearStateForPostPage();
-        })
-        .catch(console.log)
+    } else {
+      this.createConnection(convertedDate)
+      this.clearStateForPostPage();
     }
   }
 
@@ -293,6 +299,16 @@ class App extends Component {
     })
   }
 
+  clearPostState() {
+    this.setState({
+      postId: 0,
+      postPhoto: '',
+      postLocation: '',
+      postDate: '',
+      postDescription: '',
+    })
+  }
+
   render() {
     const { connections, userId, name, link, location, about, photo, posts, selectedNavButton, page, postId, postPhoto, postDescription, postDate, postLocation, surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription, otherUserPosts, postFront } = this.state;
     const userInfo = { userId, name, link, location, about, photo, posts }
@@ -300,7 +316,7 @@ class App extends Component {
     const currentSurfPost = { surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply} handlePostView={this.handlePostView} />
+        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply} handlePostView={this.handlePostView} clearPostState={this.clearPostState}/>
         <Content connections={connections} selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
       </div>
     )
