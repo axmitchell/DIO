@@ -221,10 +221,10 @@ class App extends Component {
   }
 
   handleSurfPostReply() {
-    const { postPhoto, surfPostDate, postDescription } = this.state;
+    const { postPhoto, surfPostDate, postDescription, postId } = this.state;
     let convertedDate = new Date(surfPostDate);
     if (postId === 0) {
-      if (postPhoto && postDescription) {
+      if (postPhoto !== '' && postDescription) {
         let venuePost = {
           userId: Number(this.state.userId),
           photo: postPhoto,
@@ -263,7 +263,7 @@ class App extends Component {
           collaboration: false,
         };
         axios.post('/connections', connection)
-          .then(res => console.log('Connection submitted'))
+          .then(res => this.getConnections())
           .catch(console.log)
       })
       .catch(console.log)

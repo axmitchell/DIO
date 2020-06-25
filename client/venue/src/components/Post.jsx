@@ -6,7 +6,7 @@ const Post = props => {
   const { postId, postPhoto, postLocation, postDate, postDescription } = postInfo;
   let relevantConnections = []
   connections.forEach(connection => {
-    if (connection.id === postId) relevantConnections.push(connection)
+    if (connection.showId === postId) relevantConnections.push(connection)
   })
   return (
     <div id='Post'>

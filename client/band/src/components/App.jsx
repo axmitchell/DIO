@@ -174,7 +174,7 @@ class App extends Component {
     const { postPhoto, surfPostDate, postDescription, surfPostLocation, postId } = this.state;
     let convertedDate = new Date(surfPostDate);
     if (postId === 0) {
-      if (postPhoto && postDescription) {
+      if (postPhoto !== '' && postDescription) {
         let bandPost = {
           userId: Number(this.state.userId),
           photo: postPhoto,
@@ -214,7 +214,7 @@ class App extends Component {
           collaboration: false,
         }
         axios.post('/connections', connection)
-          .then(res => console.log('Connection submitted'))
+          .then(res => this.getConnections())
           .catch(console.log)
       })
       .catch(console.log)
