@@ -130,7 +130,7 @@ addConnection = (req, res) => {
 }
 
 getConnections = (req, res) => {
-  db.Connection.belongsTo(db.User, {foreignKey: 'userId'})
+  // db.Connection.belongsTo(db.User, {foreignKey: 'userId'})
   if (req.query.bandId) {
     db.Connection.findAll({
       where: {bandId: req.query.bandId},
