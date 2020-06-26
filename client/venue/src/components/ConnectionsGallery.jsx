@@ -13,7 +13,7 @@ const ConnectionsGallery = props => {
     return (
       <div id='ConnectionsGallery' className='Content'>
         {connections.map(connection => 
-          <ConnectionsThumbnail key={connections.id} handlePage={handlePage} name={connection.bandName}/>
+          <ConnectionsThumbnail key={connection.id} handlePage={handlePage} name={connection.bandName}/>
         )}
       </div>
     )

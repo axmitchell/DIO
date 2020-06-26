@@ -130,9 +130,11 @@ addConnection = (req, res) => {
 }
 
 getConnections = (req, res) => {
+  db.Connection.belongsTo(db.User, {foreignKey: 'userId'})
   if (req.query.bandId) {
     db.Connection.findAll({
       where: {bandId: req.query.bandId},
+      // include: {model: db.User, attributes: { exclude: ["type", "id", "about", "photo"], required: false }}
     })
       .then(data => {
         res.send(data)
@@ -142,6 +144,7 @@ getConnections = (req, res) => {
   if (req.query.venueId) {
     db.Connection.findAll({
       where: {venueId: req.query.venueId},
+      // include: {model: db.User, attributes: { exclude: ["type", "id", "about", "photo"], required: false }}
     })
       .then(data => {
         res.send(data)
