@@ -3,7 +3,7 @@ import SurfPost from './SurfPost.jsx';
 import SurfReply from './SurfReply.jsx';
 
 const SurfPage = props => {
-  const { page, userInfo, handlePostFormChange, postInfo, currentSurfPost, otherUserPosts, handleSurfPostView, postFront, flipPost, handlePostView } = props;
+  const { windowSize, page, userInfo, handlePostFormChange, postInfo, currentSurfPost, otherUserPosts, handleSurfPostView, postFront, flipPost, handlePostView } = props;
   const { surfPostPhoto, surfPostName, surfPostLocation, surfPostUserLocation, surfPostLink, surfPostDate, surfPostDescription } = currentSurfPost;
   if (page === '') {
     if (otherUserPosts.length === 0) {
@@ -14,13 +14,13 @@ const SurfPage = props => {
       )
     } else {
       return (
-        <SurfPost key={surfPostLink + surfPostDate} currentSurfPost={currentSurfPost} handleSurfPostView={handleSurfPostView} userInfo={userInfo}/>
+        <SurfPost windowSize={windowSize} key={surfPostLink + surfPostDate} currentSurfPost={currentSurfPost} handleSurfPostView={handleSurfPostView} userInfo={userInfo} flipPost={flipPost} postFront={postFront}/>
       )
     }
   }
   if (page === 'SurfReplyForm' || page === 'SurfReplyPreview') {
     return (
-        <SurfReply page={page} currentSurfPost={currentSurfPost} handlePostView={handlePostView} userInfo={userInfo} postFront={postFront} flipPost={flipPost} postInfo={postInfo} handlePostFormChange={handlePostFormChange}/>
+        <SurfReply windowSize={windowSize} page={page} currentSurfPost={currentSurfPost} handlePostView={handlePostView} userInfo={userInfo} postFront={postFront} flipPost={flipPost} postInfo={postInfo} handlePostFormChange={handlePostFormChange}/>
     )
   }
 }

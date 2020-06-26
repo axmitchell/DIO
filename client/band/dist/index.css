@@ -579,9 +579,184 @@ input, textarea {
   text-align: center
 }
 
+#SurfPost {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 
+    "SurfPostImage SurfPostDetails";
+  align-self: center;
+}
+
+#PreviousSet {
+  grid-area: SurfPostImage;
+  height: 500px;
+  width: 60px;
+  background: transparent;
+  position: absolute;
+  border: 0px;
+}
+
+#PreviousShow {
+  grid-area: PostFormImage;
+  height: 100%;
+}
+
+#NextSet {
+  display: flex;
+  justify-self: end;
+  grid-area: SurfPostDetails;
+  height: 500px;
+  width: 60px;
+  background: transparent;
+  border: 0px;
+}
+
+#NextShow {
+  grid-area: PostFormDetails;
+  height: 100%;
+}
+
+#SurfPostImage {
+  grid-area: SurfPostImage;
+  width: 500px;
+  height: 500px;
+}
+
+#SurfPostImage img {
+  width: 100%;
+  height: 100%
+}
+
+#SurfPostDetails {
+  grid-area: SurfPostDetails;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  grid-template-areas: 
+    'SurfPostUserInfo'
+    'SurfPostInput';
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+#SurfPostUserInfo {
+  width: 100%;
+  grid-area: SurfPostUserInfo;
+  display: grid;
+  grid-template-columns: auto 10px auto;
+  grid-template-areas: 
+    'Venuename . Venuelocation';
+  justify-content: center;
+  align-items: center;
+}
+
+#SurfPostUserInfoName {
+  grid-area: Venuename;
+  justify-self: center;
+  align-self: center;
+}
+
+#SurfPostUserInfoLocation {
+  grid-area: Venuelocation;
+  justify-self: center;
+  align-self: center;
+}
+
+#SurfPostInput {
+  height: 100%;
+  width: 100%;
+  grid-area: SurfPostInput;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  grid-template-areas: 
+    'SurfPostInputDate'
+    'SurfPostInputDescription';
+  justify-content: center;
+  align-items: center;
+}
+
+#SurfPostInputDate {
+  grid-area: SurfPostInputDate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+#SurfPostInputDescription {
+  grid-area: SurfPostInputDescription;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /* ----- Search ----- */
 
 #Users {
   width: 90%;
   height: 80%;
+}
+
+@media screen and (max-width: 1400px) {
+  #SurfPost {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "SurfPostSide";
+    align-self: center;
+  }
+  
+  #PreviousSet {
+    grid-area: SurfPostSide;
+    height: 600px;
+    width: 60px;
+    background: transparent;
+    position: absolute;
+    border: 0px;
+  }
+
+  #NextSet {
+    display: flex;
+    justify-self: end;
+    grid-area: SurfPostSide;
+    height: 600px;
+    width: 60px;
+    background: transparent;
+    border: 0px;
+  }
+
+  #SurfPostImage {
+    grid-area: SurfPostSide;
+    width: 600px;
+    height: 600px;
+  }
+
+  #SurfPostDetails {
+    grid-area: SurfPostSide;
+    display: grid;
+    grid-template-rows: 40% 60%;
+    grid-template-areas: 
+      'SurfPostUserInfo'
+      'SurfPostInput';
+    width: 600px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #SurfPostInputDescription {
+    grid-area: SurfPostInputDescription;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

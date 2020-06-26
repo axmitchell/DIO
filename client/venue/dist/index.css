@@ -408,8 +408,7 @@ input, textarea {
   display: grid;
   grid-template-columns: auto 10px auto;
   grid-template-areas: 
-    'Venuename . Venuelocation'
-    'Venuelink Venuelink Venuelink';
+    'Venuename . Venuelocation';
   justify-content: center;
   align-items: center;
 }
@@ -422,13 +421,6 @@ input, textarea {
 
 #SurfPostUserInfoLocation {
   grid-area: Venuelocation;
-  justify-self: center;
-  align-self: center;
-}
-
-#SurfPostUserInfoLink {
-  grid-area: Venuelink;
-  font-size: 30px;
   justify-self: center;
   align-self: center;
 }
@@ -452,7 +444,7 @@ input, textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 35px;
+  font-size: 50px;
 }
 
 #SurfPostInputDate {
@@ -735,4 +727,64 @@ input, textarea {
 #Users {
   width: 90%;
   height: 80%;
+}
+
+@media screen and (max-width: 1400px) {
+  #SurfPost {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+      "SurfPostSide";
+    align-self: center;
+  }
+  
+  #PreviousSet {
+    grid-area: SurfPostSide;
+    height: 600px;
+    width: 60px;
+    background: transparent;
+    position: absolute;
+    border: 0px;
+  }
+
+  #NextSet {
+    display: flex;
+    justify-self: end;
+    grid-area: SurfPostSide;
+    height: 600px;
+    width: 60px;
+    background: transparent;
+    border: 0px;
+  }
+
+  #SurfPostImage {
+    grid-area: SurfPostSide;
+    width: 600px;
+    height: 600px;
+  }
+
+  #SurfPostDetails {
+    grid-area: SurfPostSide;
+    display: grid;
+    grid-template-rows: 40% 60%;
+    grid-template-areas: 
+      'SurfPostUserInfo'
+      'SurfPostInput';
+    width: 600px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+#SurfPostInputDescription {
+  grid-area: SurfPostInputDescription;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
 }

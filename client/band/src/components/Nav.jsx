@@ -1,9 +1,11 @@
 import React from 'react';
 
 const Nav = props => {
-  const { handleNavButtonClick, handlePage, appState, handlePostDelete, handlePostSubmit, handleSurfPostReply, handlePostView, clearPostState } = props
+  const { windowSize, handleNavButtonClick, handlePage, appState, handlePostDelete, handlePostSubmit, handleSurfPostReply, handlePostView, clearPostState } = props
   const { name, selectedNavButton, page } = appState
   let profileButtonText = name.toUpperCase();
+  let threeBackArrows = '< - - < - - < - -';
+  if (windowSize < 1200 ) threeBackArrows = '< - < - < -'
   if (selectedNavButton === '') {
     return(
       <div id='Nav'>
@@ -81,7 +83,7 @@ const Nav = props => {
           <div id='NavProfileButton' className='ChangedNavProfile SelectedNavButton'>THE ARCHIVES</div>
           <button id='NavPostButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('send message')}>SEND</button>
           <button id='NavSurfButton' className='NavButtons' style={{justifyContent: 'flex-end'}} onClick={() => alert('cancel connection')}>CANCEL</button>
-          <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('Post')}>{'< - - < - - < - -'}</button>
+          <button id='NavSearchButton' className='NavButtons backButton' onClick={() => handlePage('Post')}>{threeBackArrows}</button>
         </div>
       )
     }

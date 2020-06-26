@@ -7,6 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      windowSize: '',
       userId: 1,
       name: '',
       link: '',
@@ -51,6 +52,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.setState({ windowSize: window.innerWidth })
+    window.addEventListener("resize", () => this.setState({windowSize: window.innerWidth}));
+
     const { userId } = this.state;
     axios.get(`/users/${userId}`)
       .then(({ data }) => {
@@ -60,6 +64,10 @@ class App extends Component {
         this.getConnections();
       })
       .catch(console.log)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", () => this.setState({windowSize: window.innerWidth}));
   }
 
   handleSurfPostView(e) {
@@ -295,14 +303,14 @@ class App extends Component {
   }
 
   render() {
-    const { connections, userId, name, link, location, about, photo, posts, selectedNavButton, page, postId, postPhoto, postDescription, postDate, postLocation, surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription, otherUserPosts, postFront } = this.state;
+    const { windowSize, connections, userId, name, link, location, about, photo, posts, selectedNavButton, page, postId, postPhoto, postDescription, postDate, postLocation, surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription, otherUserPosts, postFront } = this.state;
     const userInfo = { userId, name, link, location, about, photo, posts }
     const postInfo = { postId, postPhoto, postDescription, postDate, postLocation }
     const currentSurfPost = { surfPostPhoto, surfPostName, surfPostLocation, surfPostLink, surfPostDate, surfPostDescription }
     return(
       <div id='Dashboard'>
-        <Nav handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply} handlePostView={this.handlePostView} clearPostState={this.clearPostState}/>
-        <Content connections={connections} selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
+        <Nav windowSize={windowSize} handleNavButtonClick={this.handleNavButtonClick} appState={ this.state } handlePage={this.handlePage} handlePostSubmit={this.handlePostSubmit} handlePostDelete={this.handlePostDelete} handleSurfPostReply={this.handleSurfPostReply} handlePostView={this.handlePostView} clearPostState={this.clearPostState}/>
+        <Content windowSize={windowSize} connections={connections} selectedNavButton={selectedNavButton} userInfo={userInfo} page={page} handlePage={this.handlePage} handlePostFormChange={this.handlePostFormChange} postInfo={postInfo} handlePostSubmit={this.handlePostSubmit} handlePostView={this.handlePostView} handleSurfPostView={this.handleSurfPostView} currentSurfPost={currentSurfPost} otherUserPosts={otherUserPosts} flipPost={this.flipPost} postFront={postFront}/>
       </div>
     )
   }

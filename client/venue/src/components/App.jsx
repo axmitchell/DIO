@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      windowWidth: '',
+      windowSize: '',
       userId: 2,
       name: '',
       link: '',
@@ -85,9 +85,9 @@ class App extends Component {
       .catch(console.log)
   }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", () => this.setState({windowSize: window.innerWidth}));
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("resize", () => this.setState({windowSize: window.innerWidth}));
+  }
 
   handlePage(page) {
     if (page === '') {
